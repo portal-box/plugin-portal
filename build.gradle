@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'com.Zestarr'
@@ -15,6 +16,13 @@ repositories {
         name = 'sonatype'
         url = 'https://oss.sonatype.org/content/groups/public/'
     }
+    maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+}
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
 }
 
 dependencies {
@@ -25,6 +33,14 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    compileOnly "org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT"
+    implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
+}
+
+shadowJar {
+    relocate 'co.aikar.commands', 'com.zestarr.pluginportal.acf'
+    relocate 'co.aikar.locales', 'com.zestarr.pluginportal.locales'
 }
 
 def targetJavaVersion = 17
@@ -35,6 +51,14 @@ java {
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
+}
+
+//compileKotlin {
+//    kotlinOptions.javaParameters = true
+//}
+
+jar {
+    destinationDirectory.set(file("C:/Users/revelcw/Projects/1.19.2 Testing Server/plugins"))
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -51,3 +75,5 @@ processResources {
         expand props
     }
 }
+
+build.dependsOn shadowJar
