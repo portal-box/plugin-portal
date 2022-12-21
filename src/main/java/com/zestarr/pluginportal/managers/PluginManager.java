@@ -16,23 +16,20 @@ import java.util.Map;
 import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginListFileConfig;
 
 public class PluginManager {
-    // Map to store the plugins
     private HashMap<String, Plugin> plugins = new HashMap<>();
     private File downloadFolder;
 
     public void loadPlugins() throws IOException {
         FileConfiguration config = getPluginListFileConfig();
         for (String str : getPluginListFileConfig().getConfigurationSection("Plugins.").getKeys(false)) {
-
             Plugin plugin = new Plugin();
-            plugin.setName(config.getString("Plugins." + str + ".name"));
-            plugin.setDisplayName(config.getString("Plugins." + str + ".displayName"));
+            plugin.setFileName(config.getString("Plugins." + str + ".fileName"));
+            plugin.setDisplayName(str);
             plugin.setDescription(config.getString("Plugins." + str + ".description"));
             plugin.setDownloadLink(config.getString("Plugins." + str + ".downloadLink"));
             plugin.setVersion(config.getString("Plugins." + str + ".version"));
             plugin.setSha256(config.getString("Plugins." + str + ".sha256"));
 
-            System.out.println("Loading Plugin: " + plugin.getName() + " | version: " + plugin.getVersion());
             plugins.put(str, plugin);
         }
 
@@ -41,7 +38,7 @@ public class PluginManager {
     public void downloadPlugins(File downloadFolder) {
         setupFolder(downloadFolder);
         for (Plugin plugin : plugins.values()) {
-            HttpUtils.download(plugin.getDownloadLink(), downloadFolder);
+            HttpUtils.download(plugin, downloadFolder);
         }
     }
 

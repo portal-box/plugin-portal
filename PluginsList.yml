@@ -1,0 +1,37 @@
+Plugins:
+  EssentialsX:
+    displayName: EssentialsX
+    description: EssentialsX is a plugin that provides a wide range of useful commands and features.
+    downloadLink: https://github.com/EssentialsX/Essentials/releases/download/$version/EssentialsX-$version.jar
+    version: 2.19.7
+    sha256: B551BC94B616646BC7057B4CDF666164FA7C4EB9C58BF509834DDF60967DD4DE
+    recommended: ["Vault"]
+    dependencies: []
+
+  Multiverse-Core:
+    displayName: Multiverse-Core
+    description: Multiverse was created at the dawn of Bukkit multiworld support.
+    downloadLink: https://dev.bukkit.org/projects/multiverse-core/files/latest
+    version: 4.3.1
+    sha256: 38C8B6A6AA168AE6A09CC0C9F77115EA975768410BC107C4CE0B32DE1BEBC787
+
+  WorldEdit:
+    displayName: WorldEdit
+    description: A Minecraft Map Editor... that runs in-game!
+    downloadLink: https://dev.bukkit.org/projects/worldedit/files/latest
+    version: 7.2.13
+    sha256: 8FF5F284DED29C6DA82DF107EB50E7E6CEF033F9491416ED9A611A69E4D34747
+
+  WorldGuard:
+    displayName: WorldGuard
+    description: Protect your server!
+    downloadLink: https://dev.bukkit.org/projects/worldguard/files/latest
+    version: 7.0.8
+    sha256: 426BDAE12472FDACE9DFDF44E327D19F802C949CCB74CC787E83900B1020E8AD
+
+  ProtocolLib:
+    displayName: ProtocolLib
+    description: ProtocolLib is a library that allows read and write access to the Minecraft protocol.
+    downloadLink: https://github.com/dmulloy2/ProtocolLib/releases/tag/4.8.0
+    version: 4.8.0
+    sha256: 95D73B881B5184BBC9629B8B1A6828F0996B754BCAA37197F2D478031CCE1683

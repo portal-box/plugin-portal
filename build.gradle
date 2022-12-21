@@ -57,10 +57,6 @@ java {
 //    kotlinOptions.javaParameters = true
 //}
 
-jar {
-    destinationDirectory.set(file("C:/Users/revelcw/Projects/1.19.2 Testing Server/plugins"))
-}
-
 tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release = targetJavaVersion

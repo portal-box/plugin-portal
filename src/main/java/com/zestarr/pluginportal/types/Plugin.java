@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Plugin {
 
-    private String name;
+    private String fileName;
     private String displayName;
     private String version;
     private String description;

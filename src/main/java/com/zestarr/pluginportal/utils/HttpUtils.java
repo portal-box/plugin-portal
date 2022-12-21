@@ -1,16 +1,9 @@
-/*
- * Skyclient Universal Installer - Skyclient installer but written in java!
- * Copyright (C) koxx12-dev [2021 - 2022]
- *
- * This program comes with ABSOLUTELY NO WARRANTY
- * This is free software, and you are welcome to redistribute it
- * under the certain conditions that can be found here
- * https://www.gnu.org/licenses/gpl-3.0.en.html
- *
- * If you have any questions please DM Zestarr#0001 on discord, NO ONE ELSE
- */
-
 package com.zestarr.pluginportal.utils;
+
+// Thanks to SkyClient for some of the code! <3
+// Dont dm them for help with this code, dm Zestarr#0001 or report a issue on github.
+
+import com.zestarr.pluginportal.types.Plugin;
 
 import java.io.*;
 import java.net.URL;
@@ -40,20 +33,41 @@ public class HttpUtils {
         return null;
     }
 
-    private static void download(String url, String path) {
-        //download file with a User Agent
+    public static void download(Plugin plugin, File folder) {
+
+        System.out.println("Downloading " + plugin.getDownloadLink() + " to " + folder.getPath());
 
         try {
-            System.out.println("Downloading " + url + " to " + path);
-            URL obj = new URL(url);
+            URL obj = new URL(plugin.getDownloadLink());
+            String fileName = "";
+
             java.net.HttpURLConnection con = (java.net.HttpURLConnection) obj.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("User-Agent", "github.com/Zestarr/PluginPortalApp");
             con.setConnectTimeout(5000);
             int responseCode = con.getResponseCode();
+
+            String contentDisposition = con.getHeaderField("Content-Disposition");
+            if (contentDisposition != null) {
+                String[] parts = contentDisposition.split(";");
+                for (String part : parts) {
+                    if (part.trim().startsWith("filename=")) {
+                        fileName = part.substring(part.indexOf('=') + 1);
+                        if (fileName.startsWith("\"") && fileName.endsWith("\"")) {
+                            fileName = fileName.substring(1, fileName.length() - 1);
+                        }
+                        break;
+                    }
+                }
+            }
+
+            if (fileName.isEmpty()) {
+                fileName = plugin.getFileName();
+            }
+
             if (responseCode == 200) {
                 BufferedInputStream in = new BufferedInputStream(con.getInputStream());
-                FileOutputStream fos = new FileOutputStream(path);
+                FileOutputStream fos = new FileOutputStream(folder.getPath() + File.separator + fileName);
                 byte[] buffer = new byte[1024];
                 int len;
                 while ((len = in.read(buffer)) > 0) {
@@ -62,22 +76,17 @@ public class HttpUtils {
                 fos.close();
                 in.close();
             } else {
-                System.out.println(responseCode + " | " + url);
+                System.out.println(responseCode + " | " + plugin.getDownloadLink());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void download(String url, File folder) {
-        download(url, folder.getAbsolutePath() + url.substring(url.lastIndexOf('/')));
-    }
-
     public static String urlEscape(String toEncode) {
         //escape url
         //noinspection deprecation
-        if (toEncode == null)
-            return null;
+        if (toEncode == null) return null;
 
         StringBuilder sb = new StringBuilder();
         for (char character : toEncode.toCharArray())//for every character in the string
