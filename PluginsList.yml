@@ -1,8 +1,8 @@
+# The name inside the tab complete is the category such as "EssentialsX"
 Plugins:
   EssentialsX:
-    displayName: EssentialsX
     description: EssentialsX is a plugin that provides a wide range of useful commands and features.
-    downloadLink: https://github.com/EssentialsX/Essentials/releases/download/$version/EssentialsX-$version.jar
+    downloadLink: https://github.com/EssentialsX/Essentials/releases/download/2.19.7/EssentialsX-2.19.7.jar
     version: 2.19.7
     sha256: B551BC94B616646BC7057B4CDF666164FA7C4EB9C58BF509834DDF60967DD4DE
     recommended: ["Vault"]
