@@ -1,21 +1,13 @@
-package com.zestarr.pluginportal.utils;
+package com.zestarr.pluginportal.utils
 
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration
+import java.io.File
 
-import java.io.File;
-
-public class ConfigUtils {
-
-    public static File getPluginFolder() {
-        return new File("plugins");
-    }
-
-    public static File getPluginListFile() {
-        return new File("Plugins.yml");
-    }
-
-    public static YamlConfiguration getPluginListFileConfig() {
-        return YamlConfiguration.loadConfiguration(getPluginListFile());
-    }
-
+object ConfigUtils {
+    val pluginFolder: File
+        get() = File("plugins")
+    val pluginListFile: File
+        get() = File("Plugins.yml")
+    val pluginListFileConfig: YamlConfiguration
+        get() = YamlConfiguration.loadConfiguration(pluginListFile)
 }

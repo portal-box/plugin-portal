@@ -1,56 +1,52 @@
-package com.zestarr.pluginportal.commands;
+package com.zestarr.pluginportal.commands
 
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.*;
-import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.types.Plugin;
-import com.zestarr.pluginportal.utils.HttpUtils;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
-import java.io.File;
-import java.net.http.HttpClient;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.zestarr.pluginportal.PluginPortal.getPluginManager;
-import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginFolder;
+import co.aikar.commands.BaseCommand
+import co.aikar.commands.annotation.CommandAlias
+import co.aikar.commands.annotation.CommandPermission
+import co.aikar.commands.annotation.Default
+import co.aikar.commands.annotation.Description
+import com.zestarr.pluginportal.PluginPortal
+import com.zestarr.pluginportal.types.Plugin
+import com.zestarr.pluginportal.utils.ConfigUtils
+import com.zestarr.pluginportal.utils.HttpUtils
+import org.bukkit.ChatColor
+import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
+import java.io.File
 
 @CommandAlias("ppm")
-public class InstallCommand extends BaseCommand {
-
+class InstallCommand : BaseCommand() {
     @Default
     @CommandPermission("ppm.install")
     @Description("Main Install Command for the ppm (PluginPortal Package Manager)")
-    public boolean onCommand(CommandSender sender, String pluginKey) {
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
+    fun onCommand(sender: CommandSender?, pluginKey: String): Boolean {
+        if (sender is Player) {
+            val player = sender
             // Check if plugin is valid
-            Map<String, Plugin> plugins = getPluginManager().getPlugins();
-            if (plugins.get(pluginKey) == null) {
-                player.sendMessage(ChatColor.RED + "Plugin not found! Plugin List: ");
-
-                for (Plugin plugin : plugins.values()) {
-                    player.sendMessage(ChatColor.GREEN + " + " + ChatColor.GRAY + plugin.getDisplayName());
+            val plugins: Map<String, Plugin?> = PluginPortal.pluginManager.getPlugins()
+            if (plugins[pluginKey] == null) {
+                player.sendMessage(ChatColor.RED.toString() + "Plugin not found! Plugin List: ")
+                for (plugin in plugins.values) {
+                    player.sendMessage(ChatColor.GREEN.toString() + " + " + ChatColor.GRAY + plugin!!.displayName)
                 }
-
-                return true;
+                return true
             } else {
-                if (new File(getPluginFolder(), pluginKey + ".jar").exists()) { // Broken, Method is to save all saved plugins "display name" and the file name to a hashmap/file and check from there
-                    player.sendMessage(ChatColor.RED + "Plugin already installed!");
-                    return true;
+                if (File(
+                        ConfigUtils.pluginFolder,
+                        "$pluginKey.jar"
+                    ).exists()
+                ) { // Broken, Method is to save all saved plugins "display name" and the file name to a hashmap/file and check from there
+                    player.sendMessage(ChatColor.RED.toString() + "Plugin already installed!")
+                    return true
                 } else {
-                    HttpUtils.download(getPluginManager().getPlugins().get(pluginKey), getPluginFolder());
-                    player.sendMessage(ChatColor.GREEN + "Intsalling Plugin!");
+                    HttpUtils.download(
+                        PluginPortal.pluginManager.getPlugins()[pluginKey],
+                        ConfigUtils.pluginFolder
+                    )
+                    player.sendMessage(ChatColor.GREEN.toString() + "Intsalling Plugin!")
                 }
             }
-
-
-
-
         }
-        return true;
+        return true
     }
 }

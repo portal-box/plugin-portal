@@ -1,77 +1,57 @@
-package com.zestarr.pluginportal;
+package com.zestarr.pluginportal
 
-import co.aikar.commands.BaseCommand;
-import co.aikar.commands.PaperCommandManager;
-import com.zestarr.pluginportal.commands.InstallCommand;
-import com.zestarr.pluginportal.managers.PluginManager;
-import com.zestarr.pluginportal.types.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
+import co.aikar.commands.*
+import com.zestarr.pluginportal.commands.InstallCommand
+import com.zestarr.pluginportal.managers.PluginManager
+import org.bukkit.plugin.java.JavaPlugin
+import java.io.File
+import java.io.IOException
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public final class PluginPortal extends JavaPlugin {
-
-    public static PluginManager pluginManager;
-    public static PaperCommandManager manager;
-
-    public static ArrayList<BaseCommand> commands = new ArrayList<>();
-    public static ArrayList<String> tabComplete = new ArrayList<>();
-
-    @Override
-    public void onEnable() {
-
-        System.out.println(getDataFolder().getAbsolutePath());
-        pluginManager = new PluginManager();
-        pluginManager.setupFolder(new File("plugins"));
+class PluginPortal : JavaPlugin() {
+    override fun onEnable() {
+        println(dataFolder.absolutePath)
+        pluginManager = PluginManager()
+        pluginManager!!.setupFolder(File("plugins"))
         try {
-            pluginManager.loadPlugins();
-        } catch (IOException e) {
-            e.printStackTrace();
+            pluginManager!!.loadPlugins()
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
 
         // Register Commands and Listeners
-
-        manager = new PaperCommandManager(this);
-
-        commands.add(new InstallCommand());
-
-        registerCommands(manager);
-
-        for (Plugin plugin : pluginManager.getPlugins().values()) {
-            tabComplete.add(plugin.getDisplayName());
+        manager = PaperCommandManager(this)
+        commands.add(InstallCommand())
+        registerCommands(manager)
+        for (plugin in pluginManager!!.getPlugins().values) {
+            tabComplete.add(plugin.displayName)
         }
     }
 
-    private void registerCommands(PaperCommandManager manager) {
+    private fun registerCommands(manager: PaperCommandManager?) {
 
         // Enable the help api.
-        manager.enableUnstableAPI("help");
+        manager!!.enableUnstableAPI("help")
 
         // Register tab-autocomplete options.
-        manager.getCommandCompletions().registerAsyncCompletion("install", c ->
-                tabComplete
-        );
-
-        for (BaseCommand command : commands) {
-            manager.registerCommand(command);
+        manager.commandCompletions.registerAsyncCompletion(
+            "install"
+        ) { c: BukkitCommandCompletionContext? -> tabComplete }
+        for (command in commands) {
+            manager.registerCommand(command)
         }
 
         // Generic exception handler
-        manager.setDefaultExceptionHandler((command, registeredCommand, sender, args, t) -> {
-            getLogger().warning("Error occured while executing command: " + command.getName());
-            return false;
-        });
+        manager.defaultExceptionHandler =
+            ExceptionHandler { command: BaseCommand, registeredCommand: RegisteredCommand<*>?, sender: CommandIssuer?, args: List<String?>?, t: Throwable? ->
+                logger.warning("Error occured while executing command: " + command.name)
+                false
+            }
     }
 
-
-    public static PluginManager getPluginManager() {
-        return pluginManager;
-    }
-
-    public static PaperCommandManager getManager() {
-        return manager;
+    companion object {
+        var pluginManager: PluginManager? = null
+        var manager: PaperCommandManager? = null
+        var commands = ArrayList<BaseCommand>()
+        var tabComplete = ArrayList<String>()
     }
 }
