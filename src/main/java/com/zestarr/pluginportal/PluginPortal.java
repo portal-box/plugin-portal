@@ -17,7 +17,7 @@ public final class PluginPortal extends JavaPlugin {
         pluginManager.setupFolder(new File("plugins"));
 
         try {
-            pluginManager.loadPlugins(getDataFolder() + "Plugins.yml");
+            pluginManager.loadPlugins();
         } catch (IOException e) {
             e.printStackTrace();
         }

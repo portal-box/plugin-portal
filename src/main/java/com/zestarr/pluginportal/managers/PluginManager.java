@@ -20,11 +20,9 @@ public class PluginManager {
     private HashMap<String, Plugin> plugins = new HashMap<>();
     private File downloadFolder;
 
-    public void loadPlugins(String yamlFile) throws IOException {
+    public void loadPlugins() throws IOException {
         FileConfiguration config = getPluginListFileConfig();
-        for (String str : getPluginListFileConfig().getConfigurationSection("Plugins.").getKeys(true)) {
-
-            System.out.println(config);
+        for (String str : getPluginListFileConfig().getConfigurationSection("Plugins.").getKeys(false)) {
 
             Plugin plugin = new Plugin();
             plugin.setName(config.getString("Plugins." + str + ".name"));
