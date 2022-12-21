@@ -43,6 +43,7 @@ public class InstallCommand extends BaseCommand {
                     return true;
                 } else {
                     HttpUtils.download(getPluginManager().getPlugins().get(pluginKey), getPluginFolder());
+                    player.sendMessage(ChatColor.GREEN + "Intsalling Plugin!");
                 }
             }
 

@@ -62,7 +62,7 @@ public class HttpUtils {
             }
 
             if (fileName.isEmpty()) {
-                fileName = plugin.getFileName();
+                fileName = plugin.getDisplayName() + ".jar";
             }
 
             if (responseCode == 200) {
