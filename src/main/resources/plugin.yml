@@ -1,0 +1,6 @@
+name: PluginPortal
+version: '${version}'
+main: com.zestarr.pluginportal.PluginPortal
+api-version: 1.19
+authors: [ Zestarr, Thatonedevil, Revelcw ]
+description: Plugin Package Manager
