@@ -51,7 +51,7 @@ public class PluginManager {
         downloadFolder = folder;
 
         HttpUtils.copyWebsite(
-                "https://raw.githubusercontent.com/Zestarr/PluginPortalApp/main/Plugins.yml",
+                "https://raw.githubusercontent.com/Zestarr/PluginPortal/master/PluginsList.yml",
                 "Plugins.yml"
         );
 
