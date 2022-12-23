@@ -4,7 +4,7 @@ Plugins:
     downloadLink: https://github.com/EssentialsX/Essentials/releases/download/2.19.7/EssentialsX-2.19.7.jar
     version: 2.19.7
     sha256: B551BC94B616646BC7057B4CDF666164FA7C4EB9C58BF509834DDF60967DD4DE
-    recommended: [ "Vault" ]
+    recommended: [ Vault ]
     dependencies: [ ]
 
   PluginManager:
@@ -18,59 +18,243 @@ Plugins:
   Multiverse-Core:
     displayName: Multiverse-Core
     description: Multiverse was created at the dawn of Bukkit multiworld support.
-    downloadLink: https://dev.bukkit.org/projects/multiverse-core/files/latest
+    downloadLink: https://www.spigotmc.org/resources/multiverse-core.390/
     version: 4.3.1
     sha256: 38C8B6A6AA168AE6A09CC0C9F77115EA975768410BC107C4CE0B32DE1BEBC787
-    recommended: [ "Vault" ]
+    recommended: [ ]
     dependencies: [ ]
 
   ProtocolLib:
     displayName: ProtocolLib
     description: ProtocolLib is a library that allows read and write access to the Minecraft protocol.
-    downloadLink: https://github.com/dmulloy2/ProtocolLib/releases/tag/4.8.0
+    downloadLink: https://github.com/dmulloy2/ProtocolLib/releases/download/4.8.0/ProtocolLib.jar
     version: 4.8.0
     sha256: 95D73B881B5184BBC9629B8B1A6828F0996B754BCAA37197F2D478031CCE1683
+    recommended: [ ]
+    dependencies: [ ]
+
+  ViaVersion:
+    displayName: ViaVersion
+    description: Our aim is to allow newer client versions to connect to older server versions.
+    downloadLink: https://github.com/ViaVersion/ViaVersion/releases/download/4.5.1/ViaVersion-4.5.1.jar
+    version: 4.5.1
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ViaRewind:
+    displayName: ViaRewind
+    description: This plugin is an addon for ViaVersion (and ViaBackwards). It allows 1.7.x and 1.8.x to connect to your 1.8-1.16.2 server.
+    downloadLink: https://www.spigotmc.org/resources/viarewind.52109/
+    version: 2.0.2
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ViaBackwards:
+    displayName: ViaBackwards
+    description: This plugin requires to have ViaVersion and Java 8 (or newer) installed.
+    downloadLink: https://github.com/ViaVersion/ViaBackwards/releases/download/4.5.1/ViaBackwards-4.5.1.jar
+    version: 4.5.1
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
 
   Spark:
     displayName: Spark
     description: A performance monitoring plugin for Spigot and Paper.
     downloadLink: https://ci.lucko.me/job/spark/359/artifact/spark-bukkit/build/libs/spark-1.10.17-bukkit.jar
     version: 1.10.17
-    sha256: none
+    sha256:
     recommended: [ ]
     dependencies: [ ]
 
   Vault:
     description: Vault is a plugin that allows servers to use a single API for all economy and permissions plugins.
-    downloadLink:
-    version:
+    downloadLink: https://www.spigotmc.org/resources/vault.34315/
+    version: 1.7.3
+    sha256:
+    dependencies: [ ]
+    recommended: [ EssentialsX, WorldGuard, LuckPerms ]
 
   WorldGuard:
     description: WorldGuard is a plugin that allows servers to define custom regions and apply various protections and restrictions to them.
     downloadLink:
     version:
+    sha256:
+    dependencies: [ WorldEdit ]
+    recommended: [ ]
 
   LuckPerms:
     description: LuckPerms is a powerful permissions plugin for Minecraft servers.
-    downloadLink:
-    version:
+    downloadLink: https://www.spigotmc.org/resources/luckperms.28140/
+    version: 5.4.40
+    sha256:
+    dependencies: [ ]
+    recommended: [ EssentialsX, Vault ]
 
-  WorldEdit:
-    description: WorldEdit is a plugin that allows players to easily build, change, and remove blocks in the game world.
-    downloadLink:
-    version:
+  FastAsyncWorldEdit:
+    description: FastAsyncWorldEdit is a fast and powerful world edit plugin for Minecraft.
+    downloadLink: https://github.com/IntellectualSites/FastAsyncWorldEdit/releases/download/2.5.0/FastAsyncWorldEdit-Bukkit-2.5.0.jar
+    version: 2.5.0
+    sha256:
+    dependencies: [ WorldEdit ]
+    recommended: [ ]
 
-  PermissionsEx:
-    description: PermissionsEx (PEX) is a plugin that allows servers to set fine-grained permissions for players.
-    downloadLink:
-    version:
+#  WorldEdit:
+#    description: WorldEdit is a plugin that allows players to easily build, change, and remove blocks in the game world.
+#    downloadLink:
+#    version:
+#    sha256:
+#    dependencies: [ Vault ]
+#    recommended: [ WorldGuard ]
 
-  McMMO:
-    description: McMMO is a plugin that adds RPG-like mechanics to Minecraft, including skills, experience, and special abilities.
-    downloadLink:
-    version:
+#  CommandNPC:
+#    description: CommandNPC is a plugin that allows servers to create NPCs that execute commands when interacted with.
+#    downloadLink:
+#    version:
+#    sha256:
+#    dependencies: [ Vault ]
+#    recommended: [ ]
 
-  PlotSquared:
-    description: PlotSquared is a plugin that allows servers to set up player plots and protect them with custom flags.
-    downloadLink:
+  MobArena:
+    description: MobArena is a plugin that allows servers to set up arenas where players can fight waves of mobs.
+    downloadLink: https://www.spigotmc.org/resources/mobarena.34110/
+    version: 0.107
+    sha256:
+    dependencies: [ ]
+    recommended: [ Vault]
+
+  Citizens:
+    description: Citizens is a plugin that allows servers to create NPCs that can be interacted with by players.
+    downloadLink: https://ci.citizensnpcs.co/job/Citizens2/lastSuccessfulBuild/artifact/dist/target/Citizens-2.0.30-b2838.jar
+    version: 2.0.30
+    sha256:
+    dependencies: [ ProtocolLib ]
+    recommended: [ Vault ]
+
+  ClearLagg:
+    description: ClearLagg is a plugin that reduces lag on servers by removing entities and blocks that are no longer needed.
+    downloadLink: https://www.spigotmc.org/resources/clearlagg.68271/
+    version: v3.2.2
+    sha256:
+    dependencies: [ ]
+    recommended: [ ]
+
+  PlotMe:
+    description: PlotMe is a plugin that allows servers to set up player plots and protect them with custom flags.
+    downloadLink: https://www.spigotmc.org/resources/plotme-official.2131/
+    version: 0.16.3
+    sha256:
+    dependencies: [ Vault ]
+    recommended: [ ]
+
+  MyPet:
+    description: MyPet is a plugin that allows players to tame and train mobs to follow them and perform tasks.
+    downloadLink: https://github.com/MyPetORG/MyPet/releases/download/3.12-SNAPSHOT-B1730/MyPet-3.12-SNAPSHOT-B1730.jar
+    version: 3.12
+    sha256:
+    dependencies: [ Vault ]
+    recommended: [ ]
+
+  HolographicDisplays:
+    description: HolographicDisplays is a plugin that allows servers to display floating text and images in the game world.
+    downloadLink: https://ci.codemc.io/job/filoghost/job/HolographicDisplays/lastSuccessfulBuild/artifact/HolographicDisplays-3.0.1-SNAPSHOT.jar
+    version: 3.0.1
+    sha256:
+    dependencies: [ ]
+    recommended: [ ]
+
+  HeadDatabase:
+    description: HeadDatabase is a plugin that allows servers to display a collection of player head textures for players to use in-game.
+    downloadLink: https://www.spigotmc.org/resources/head-database.14280/
     version:
+    sha256:
+    dependencies: [ Vault ]
+    recommended: [ ]
+
+  BetterSleeping:
+    description: BetterSleeping is a plugin that modifies the mechanics of sleeping in Minecraft, including the effects of sleeping on the time of day.
+    downloadLink: https://www.spigotmc.org/resources/bettersleeping.60837/
+    version:
+    sha256:
+    dependencies: [ ]
+    recommended: [ ]
+
+  GroupManager:
+    description: GroupManager is a plugin that allows servers to manage player permissions and ranks using groups.
+    downloadLink: https://www.spigotmc.org/resources/groupmanager.38875/
+    version:
+    sha256:
+    dependencies: [ Vault ]
+    recommended: [ ]
+
+  ColoredSigns:
+    description: ColoredSigns is a plugin that allows players to use color codes in signs.
+    downloadLink: https://www.spigotmc.org/resources/colored-signs.31676/
+    version:
+    sha256:
+    dependencies: [ ]
+    recommended: [ ]
+
+  SkRayFall:
+    description: SkRayFall is a Skript addon that adds various features from the popular plugin, McMMO, including skills, experience, and special abilities.
+    downloadLink: https://www.spigotmc.org/resources/skrayfall.10012/
+    version:
+    dependencies: [ Skript ]
+    recommended: [ ]
+
+  SkQuery:
+    description: SkQuery is a Skript addon that adds a variety of additional functions and effects to Skript, including the ability to create custom GUIs and run console commands.
+    downloadLink: https://www.spigotmc.org/resources/skquery-1-13-1-19.36631/
+    version:
+    dependencies: [ Skript ]
+    recommended: [ ]
+
+  Skript:
+    displayName: Skript
+    description: Skript is a plugin that allows you to create your own scripts.
+    downloadLink: https://github.com/SkriptLang/Skript/releases/download/2.6.4/Skript-2.6.4.jar
+    version: 2.6.4
+    sha256: 4102E1A3328CD67DA51E21B51646DADF1F10207F769EF86B859683C15BAD4B1Da
+
+  SkBee:
+    displayName: SkBee
+    description:
+    downloadLink: https://github.com/ShaneBeee/SkBee/releases/download/2.5.4/SkBee-2.5.4.jar
+    version: 2.5.4
+
+  Skript-Reflect:
+    displayName: Skript-Reflect
+    description:
+    downloadLink: https://www.spigotmc.org/resources/skript-reflect.82259/
+    version: 2.6.1
+    sha256: D9E6F45C2D16A146A65230D179AD5624BE06BB5FCCAE1C40FA281D125DD68CD8
+
+  ChestShop:
+    description: ChestShop is a plugin that allows players to create their own in-game shops using chests and signs.
+    downloadLink: https://www.spigotmc.org/resources/chestshop.51856/
+    version:
+    dependencies: [ Vault ]
+    recommended: [ ]
+
+  PlayerPoints:
+    description: PlayerPoints is an economy plugin that allows servers to create and manage virtual currencies that are earned by players for completing tasks or achieving goals.
+    downloadLink: https://www.spigotmc.org/resources/playerpoints.80745/
+    version:
+    dependencies: [ Vault ]
+    recommended: [ ]
+
+  ChatControl:
+    description: ChatControl is a plugin that allows servers to customize the chat format and add various features such as chat filtering and logging.
+    downloadLink: https://www.spigotmc.org/resources/chatcolor.22692/
+    version:
+    dependencies: [ ]
+    recommended: [ ]
+
+  AdvancedChat:
+    description: AdvancedChat is a plugin that allows servers to customize the chat format and add various features such as chat formatting, emoticons, and chat history.
+    downloadLink: https://www.spigotmc.org/resources/advanced-chat.31248/
+    version:
+    dependencies: [ ]
+    recommended: [ ]
