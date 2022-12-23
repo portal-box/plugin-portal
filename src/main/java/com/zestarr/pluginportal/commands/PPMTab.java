@@ -1,7 +1,8 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.types.Plugin;
+import com.zestarr.pluginportal.types.LocalPlugin;
+import com.zestarr.pluginportal.types.OnlinePlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,7 @@ public class PPMTab implements TabCompleter {
             switch (args[0].toLowerCase()) {
 
                 case "install": case "search":
-                    for (Plugin plugin : PluginPortal.getPluginManager().getPlugins().values()) {
+                    for (OnlinePlugin plugin : PluginPortal.getPluginManager().getPlugins().values()) {
 
                         results.add(plugin.getDisplayName());
 
@@ -43,8 +44,8 @@ public class PPMTab implements TabCompleter {
                     return StringUtil.copyPartialMatches(args[1], results, new ArrayList<>());
 
                 case "update":
-                    for (Plugin plugin : PluginPortal.getDataManager().getInstalledPlugins().values()) {
-                        results.add(plugin.getDisplayName());
+                    for (LocalPlugin plugin : PluginPortal.getDataManager().getInstalledPlugins().values()) {
+                        results.add(plugin.getOnlinePlugin().getDisplayName());
                     }
 
                     return StringUtil.copyPartialMatches(args[1], results, new ArrayList<>());

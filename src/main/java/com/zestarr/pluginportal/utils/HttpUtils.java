@@ -1,7 +1,8 @@
 package com.zestarr.pluginportal.utils;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.types.Plugin;
+import com.zestarr.pluginportal.types.LocalPlugin;
+import com.zestarr.pluginportal.types.OnlinePlugin;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,7 +16,10 @@ import java.net.URL;
 
 public class HttpUtils {
 
-    public static void download(Plugin plugin, File folder) {
+    public static void download(OnlinePlugin plugin, File folder) {
+
+        LocalPlugin localPlugin = new LocalPlugin(plugin);
+
         try {
             URL obj = new URL(plugin.getDownloadLink());
             String fileName = "";
@@ -49,7 +53,7 @@ public class HttpUtils {
                 }
                 fos.close();
                 in.close();
-                plugin.setFile(new File(folder.getPath() + File.separator + fileName));
+                localPlugin.setFile(new File(folder.getPath() + File.separator + fileName));
                 PluginPortal.getDataManager().savePluginToFile(plugin, true);
             } else {
                 System.out.println("[PPM] DOWNLOAD ERROR: " + responseCode + " | " + plugin.getDownloadLink() + " | " + plugin.getDisplayName() + " | " + plugin.getDisplayName());
@@ -57,6 +61,8 @@ public class HttpUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
     public static void copyWebsite(String websiteURL, String filePath) {

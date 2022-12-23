@@ -1,7 +1,8 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.types.Plugin;
+import com.zestarr.pluginportal.types.LocalPlugin;
+import com.zestarr.pluginportal.types.OnlinePlugin;
 import com.zestarr.pluginportal.utils.HttpUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -20,68 +21,74 @@ import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginFolder;
 public class PPMTestingCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player player) {
 
             // Install Command
             if (args.length >= 1) {
                 if (args[0].equalsIgnoreCase("install")) {
                     if (args[1] == null) {
-                        player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlease specify a plugin to install!"));
+                        sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlease specify a plugin to install!"));
                         return true;
                     }
-                    Map<String, Plugin> plugins = getPluginManager().getPlugins();
+                    Map<String, OnlinePlugin> plugins = getPluginManager().getPlugins();
                     if (plugins.get(args[1]) == null) {
-                        player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin Not Found! &7Plugin List: "));
+                        sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin Not Found! &7Plugin List: "));
 
-                        for (Plugin plugin : plugins.values()) {
-                            player.sendMessage(ChatColor.GREEN + " + " + ChatColor.GRAY + plugin.getDisplayName());
+                        for (OnlinePlugin plugin : plugins.values()) {
+                            sender.sendMessage(ChatColor.GREEN + " + " + ChatColor.GRAY + plugin.getDisplayName());
                         }
 
                         return true;
                     } else {
                         if (PluginPortal.getDataManager().isPluginInstalled(PluginPortal.getPluginManager().getPlugins().get(args[1]))) {
-                            player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin already downloaded"));
+                            sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin already downloaded"));
                             return true;
                         } else {
                             HttpUtils.download(getPluginManager().getPlugins().get(args[1]), getPluginFolder());
 
-                            player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Plugin has been downloaded!"));
+                            sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Plugin has been downloaded!"));
                         }
                     }
                 } else if (args[0].equalsIgnoreCase("uninstall")) {
-                    if (PluginPortal.getDataManager().isPluginInstalled(PluginPortal.getPluginManager().getPlugins().get(args[1]))) {
+
+                    if (PluginPortal.getDataManager().getInstalledPlugins().containsKey(args[1])) {
                         File file = new File(getPluginFolder(), args[1] + ".jar");
                         file.delete();
+                        sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Plugin has been uninstalled!"));
                         getDataManager().savePluginToFile(getPluginManager().getPlugins().get(args[1]), false);
-                        player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Uninstalled plugin..."));
+
+                    } else if (new File(getPluginFolder(), args[1] + ".jar").exists()) {
+                        File file = new File(getPluginFolder(), args[1] + ".jar");
+                        sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Uninstalled Third-Party plugin... &8(" + file.getName() + ")"));
+                        file.delete();
+
                     } else {
-                        player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin not installed..."));
+                        sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin not installed..."));
                     }
                 } else if (args[0].equalsIgnoreCase("list")) {
-                    player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Plugin List: "));
+                    sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Plugin List: "));
 
-                    for (Plugin plugin : PluginPortal.getDataManager().getInstalledPlugins().values()) {
-                        player.sendMessage(format(plugin.getIsInstalled() ? "&c- &7PluginName &7(&aInstalled&7)" : "&a+ &7PluginName &7(&cUninstalled&7)").replace("PluginName", plugin.getDisplayName()));
+                    for (LocalPlugin plugin : PluginPortal.getDataManager().getInstalledPlugins().values()) {
+                        sender.sendMessage(format(plugin.getIsInstalled() ? "&c- &7PluginName &7(&aInstalled&7)" : "&a+ &7PluginName &7(&cUninstalled&7)").replace("PluginName", plugin.getOnlinePlugin().getDisplayName()));
                     }
                 } else if (args[0].equalsIgnoreCase("update")) {
-                    player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cThis Feature may not work correctly."));
+                    sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cThis Feature may not work correctly."));
                     if (PluginPortal.getDataManager().isPluginInstalled(PluginPortal.getPluginManager().getPlugins().get(args[1]))) {
                         PluginPortal.getPluginManager().updatePlugin(PluginPortal.getPluginManager().getPlugins().get(args[1]));
-                        player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Updated plugin..."));
+                        sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Updated plugin..."));
                     } else {
-                        player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin not installed..."));
+                        sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin not installed..."));
                     }
                 } else if (args[0].equalsIgnoreCase("search")) {
-                    Map<String, Plugin> plugins = getPluginManager().getPlugins();
+                    Map<String, OnlinePlugin> plugins = getPluginManager().getPlugins();
 
                     if (plugins.containsKey(args[1])) {
-                        player.sendMessage("&7&l[&b&lPPM&7] &8&l> &7Plugin Found: &7" + plugins.get(args[1]).getDisplayName());
+                        sender.sendMessage("&7&l[&b&lPPM&7] &8&l> &7Plugin Found: &7" + plugins.get(args[1]).getDisplayName());
                     } else {
-                        player.sendMessage("&7&l[&b&lPPM&7] &8&l> &cPlugin not found!");
+                        sender.sendMessage("&7&l[&b&lPPM&7] &8&l> &cPlugin not found!");
                     }
 
                 } else if (args[0].equalsIgnoreCase("dontrunthis")) {
-                    for (Plugin plugin : getPluginManager().getPlugins().values()) {
+                    for (OnlinePlugin plugin : getPluginManager().getPlugins().values()) {
                         File folder = new File(getPluginFolder() + File.separator + "DebugPlugins");
                         folder.mkdirs();
                         HttpUtils.download(plugin, new File(getPluginFolder() + File.separator + "DebugPlugins"));
@@ -89,16 +96,12 @@ public class PPMTestingCommand implements CommandExecutor {
                     }
 
                 } else {
-                    player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &l&cUsage: /ppm <arg> <plugin>"));
+                    sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &l&cUsage: /ppm <arg> <plugin>"));
                 }
 
             } else {
-                player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cUsage: /ppm <arg> <plugin>"));
+                sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cUsage: /ppm <arg> <plugin>"));
             }
-
-        } else {
-            sender.sendMessage("[PPM] > You must be a player to use this command!");
-        }
 
         return false;
     }

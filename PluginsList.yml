@@ -8,6 +8,15 @@ Plugins:
     recommended: ["Vault"]
     dependencies: []
 
+  PluginManager:
+    description: PluginManager is a plugin that allows you to manage your plugins (Reload them).
+    downloadLink: https://github.com/Lenni0451/SpigotPluginManager/releases/download/2.7.2/PluginManager.jar
+    version: 2.7.2
+    sha256: none
+    recommended: []
+    dependencies: []
+
+
   Multiverse-Core:
     displayName: Multiverse-Core
     description: Multiverse was created at the dawn of Bukkit multiworld support.

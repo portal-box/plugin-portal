@@ -21,6 +21,7 @@ public final class PluginPortal extends JavaPlugin {
         pluginManager = new PluginManager();
         try {
             pluginManager.loadPlugins();
+            pluginManager.loadPluginList();
         } catch (IOException e) {
             e.printStackTrace();
         }

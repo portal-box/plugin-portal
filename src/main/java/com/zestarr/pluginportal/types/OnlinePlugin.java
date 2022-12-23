@@ -5,9 +5,9 @@ import lombok.Data;
 import java.io.File;
 
 @Data
-public class Plugin {
+public class OnlinePlugin {
 
-    private String defaultName; // Optional
+    private String defaultFileName; // Optional
     private String displayName;
     private String version;
     private String description;
@@ -15,7 +15,5 @@ public class Plugin {
     private String sha256;
     private String[] dependencies; // Optional
     private String[] recommendedPlugins; // Optional
-    private Boolean isInstalled = false; // Not inside PluginList.yml
-    private File file; // Not inside PluginList.yml
 
 }
