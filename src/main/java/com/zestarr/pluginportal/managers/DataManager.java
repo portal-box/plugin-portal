@@ -3,6 +3,7 @@ package com.zestarr.pluginportal.managers;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.zestarr.pluginportal.types.Plugin;
+import com.zestarr.pluginportal.utils.JsonUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,9 +15,16 @@ public class DataManager {
 
     private static HashMap<String, Plugin> downloadedPlugins = new HashMap<>();
 
-    public void setupData() {
+    public void setupData() throws IOException {
         createPluginDataFile();
-        loadPlugins();
+        try {
+            for (Plugin plugin : JsonUtils.readMapFromJson(createPluginDataFile()).values()) {
+                downloadedPlugins.put(plugin.getDisplayName(), plugin);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public File createPluginDataFile() {
@@ -41,26 +49,23 @@ public class DataManager {
     }
 
     public void savePluginToFile(Plugin plugin, Boolean wasThisInstalled) {
+        plugin.setIsInstalled(wasThisInstalled);
+        downloadedPlugins.put(plugin.getDisplayName(), plugin);
         try {
-            plugin.setIsInstalled(wasThisInstalled);
-            downloadedPlugins.put(plugin.getDisplayName(), plugin);
-            Writer writer = new FileWriter(createPluginDataFile(), false);
-            Gson gson = new Gson();
-            System.out.println(downloadedPlugins);
-            gson.toJson(downloadedPlugins.values(), writer);
-            writer.flush();
-            writer.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            JsonUtils.writeMapToJson(downloadedPlugins, createPluginDataFile());
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
     public void loadPlugins() {
+        /*
+        System.out.println("loading plugins");
         try {
             Gson gson = new Gson();
             Reader reader = new FileReader(createPluginDataFile());
-            ArrayList<Object> objectArrayList = gson.fromJson(reader, new TypeToken<List<Plugin>>(){}.getType());
+            System.out.println("heres the problem");
+            HashMap<String, Object> objectArrayList = gson.fromJson(reader, new TypeToken<HashMap<Plugin>>(){}.getType());
             if (objectArrayList != null) {
                 for (Object object : objectArrayList) {
                     if (object instanceof Plugin) {
@@ -75,6 +80,8 @@ public class DataManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+         */
 
     }
 

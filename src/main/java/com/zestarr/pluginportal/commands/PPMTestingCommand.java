@@ -25,7 +25,10 @@ public class PPMTestingCommand implements CommandExecutor {
             // Install Command
             if (args.length >= 1) {
                 if (args[0].equalsIgnoreCase("install")) {
-
+                    if (args[1] == null) {
+                        player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlease specify a plugin to install!"));
+                        return true;
+                    }
                     Map<String, Plugin> plugins = getPluginManager().getPlugins();
                     if (plugins.get(args[1]) == null) {
                         player.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin Not Found! &7Plugin List: "));

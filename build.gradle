@@ -36,6 +36,11 @@ dependencies {
 
     compileOnly "org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT"
     implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
+
+    implementation 'org.json:json:20090211'
+    // Implementation for the latest version of Json Jackson
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+
 }
 
 shadowJar {
