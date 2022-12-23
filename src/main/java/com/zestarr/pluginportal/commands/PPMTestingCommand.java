@@ -97,7 +97,7 @@ public class PPMTestingCommand implements CommandExecutor {
                     for (OnlinePlugin plugin : getPluginManager().getPlugins().values()) {
                         File folder = new File(getPluginFolder() + File.separator + "DebugPlugins");
                         folder.mkdirs();
-                        HttpUtils.download(plugin, new File(getPluginFolder() + File.separator + "DebugPlugins"));
+                        HttpUtils.downloadPlugin(plugin);
                         getDataManager().savePluginToFile(plugin, true);
                     }
 

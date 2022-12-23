@@ -229,13 +229,13 @@ public class HttpUtils {
             String urlPart = url.substring(url.lastIndexOf("/") + 1);
             if (urlPart.contains(".")) { urlPart = urlPart.substring(urlPart.lastIndexOf(".") + 1); }
             try {
-                download("https://api.spiget.org/v2/resources/" + urlPart + "/download");
+                download(url);
                 return true;
             } catch (IOException exception) {
                 exception.printStackTrace();
                 return false;
             }
-            // Download from Github
+            // Download from GitHub
         } else if (url.contains("https://github.com") && url.endsWith(".jar")) {
             try {
                 download(url);
