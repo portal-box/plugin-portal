@@ -41,3 +41,12 @@ Plugins:
     downloadLink: https://github.com/dmulloy2/ProtocolLib/releases/tag/4.8.0
     version: 4.8.0
     sha256: 95D73B881B5184BBC9629B8B1A6828F0996B754BCAA37197F2D478031CCE1683
+
+  Spark:
+    displayName: Spark
+    description: A performance monitoring plugin for Spigot and Paper.
+    downloadLink: https://ci.lucko.me/job/spark/359/artifact/spark-bukkit/build/libs/spark-1.10.17-bukkit.jar
+    version: 1.10.17
+    sha256: none
+    recommended: []
+    dependencies: []

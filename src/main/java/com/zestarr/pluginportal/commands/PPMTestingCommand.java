@@ -82,6 +82,8 @@ public class PPMTestingCommand implements CommandExecutor {
 
                 } else if (args[0].equalsIgnoreCase("dontrunthis")) {
                     for (Plugin plugin : getPluginManager().getPlugins().values()) {
+                        File folder = new File(getPluginFolder() + File.separator + "DebugPlugins");
+                        folder.mkdirs();
                         HttpUtils.download(plugin, new File(getPluginFolder() + File.separator + "DebugPlugins"));
                         getDataManager().savePluginToFile(plugin, true);
                     }
