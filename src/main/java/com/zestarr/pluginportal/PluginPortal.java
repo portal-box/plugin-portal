@@ -5,8 +5,11 @@ import com.zestarr.pluginportal.commands.PPMTab;
 import com.zestarr.pluginportal.commands.PPMTestingCommand;
 import com.zestarr.pluginportal.managers.DataManager;
 import com.zestarr.pluginportal.managers.PluginManager;
+import com.zestarr.pluginportal.utils.ConfigUtils;
+import com.zestarr.pluginportal.utils.HttpUtils;
 import com.zestarr.pluginportal.utils.JsonUtils;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.common.util.report.qual.ReportOverride;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,9 +22,13 @@ public final class PluginPortal extends JavaPlugin {
     @Override
     public void onEnable() {
         pluginManager = new PluginManager();
+
+
+
         try {
-            pluginManager.loadPlugins();
+            ConfigUtils.getPluginListFile().createNewFile();
             pluginManager.loadPluginList();
+            pluginManager.loadPlugins();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -37,6 +44,11 @@ public final class PluginPortal extends JavaPlugin {
 
         getCommand("ppm").setExecutor(new PPMTestingCommand());
         getCommand("ppm").setTabCompleter(new PPMTab());
+    }
+
+    @Override
+    public void onDisable() {
+        dataManager.saveData();
     }
 
 

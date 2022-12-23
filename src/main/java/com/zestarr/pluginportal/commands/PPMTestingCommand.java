@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 import static com.zestarr.pluginportal.PluginPortal.getDataManager;
@@ -19,6 +20,7 @@ import static com.zestarr.pluginportal.utils.ChatUtils.format;
 import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginFolder;
 
 public class PPMTestingCommand implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -43,7 +45,7 @@ public class PPMTestingCommand implements CommandExecutor {
                             sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin already downloaded"));
                             return true;
                         } else {
-                            HttpUtils.download(getPluginManager().getPlugins().get(args[1]), getPluginFolder());
+                            HttpUtils.downloadPlugin(getPluginManager().getPlugins().get(args[1]));
 
                             sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Plugin has been downloaded!"));
                         }
@@ -73,7 +75,11 @@ public class PPMTestingCommand implements CommandExecutor {
                 } else if (args[0].equalsIgnoreCase("update")) {
                     sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cThis Feature may not work correctly."));
                     if (PluginPortal.getDataManager().isPluginInstalled(PluginPortal.getPluginManager().getPlugins().get(args[1]))) {
-                        PluginPortal.getPluginManager().updatePlugin(PluginPortal.getPluginManager().getPlugins().get(args[1]));
+                        try {
+                            PluginPortal.getPluginManager().updatePlugin(PluginPortal.getDataManager().getInstalledPlugins().get(args[1]));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Updated plugin..."));
                     } else {
                         sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin not installed..."));

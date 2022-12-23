@@ -1,6 +1,7 @@
 package com.zestarr.pluginportal.managers;
 
 import com.zestarr.pluginportal.PluginPortal;
+import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
 import com.zestarr.pluginportal.utils.HttpUtils;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,7 +10,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginFolder;
 import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginListFileConfig;
 
 public class PluginManager {
@@ -40,10 +40,9 @@ public class PluginManager {
 
     }
 
-    public Boolean isPluginUpToDate(OnlinePlugin plugin) {
-
-        if (PluginPortal.getDataManager().isPluginInstalled(plugin)) {
-            if (plugin.getVersion().equals(PluginPortal.getDataManager().getInstalledPlugins().get(plugin.getDisplayName()).getOnlinePlugin().getVersion())) {
+    public Boolean isPluginUpToDate(LocalPlugin plugin) {
+        if (plugin.getIsInstalled()) {
+            if (plugin.getOnlinePlugin().getVersion().equals(PluginPortal.getPluginManager().getPlugins().get(plugin.getOnlinePlugin().getDisplayName()).getVersion())) {
                 return true;
             }
         }
@@ -51,10 +50,11 @@ public class PluginManager {
         return false;
     }
 
-    public void updatePlugin(OnlinePlugin plugin) {
+    public void updatePlugin(LocalPlugin plugin) throws IOException {
         if (!isPluginUpToDate(plugin)) {
-            PluginPortal.getDataManager().getInstalledPlugins().get(plugin.getDisplayName()).getFile().delete();
-            HttpUtils.download(plugin, getPluginFolder());
+            plugin.getFile().delete();
+            plugin.setIsInstalled(false);
+            HttpUtils.downloadPlugin(plugin.getOnlinePlugin());
         }
     }
 

@@ -1,21 +1,19 @@
-# The name inside the tab complete is the category such as "EssentialsX"
 Plugins:
   EssentialsX:
     description: EssentialsX is a plugin that provides a wide range of useful commands and features.
     downloadLink: https://github.com/EssentialsX/Essentials/releases/download/2.19.7/EssentialsX-2.19.7.jar
     version: 2.19.7
     sha256: B551BC94B616646BC7057B4CDF666164FA7C4EB9C58BF509834DDF60967DD4DE
-    recommended: ["Vault"]
-    dependencies: []
+    recommended: [ "Vault" ]
+    dependencies: [ ]
 
   PluginManager:
     description: PluginManager is a plugin that allows you to manage your plugins (Reload them).
     downloadLink: https://github.com/Lenni0451/SpigotPluginManager/releases/download/2.7.2/PluginManager.jar
     version: 2.7.2
     sha256: none
-    recommended: []
-    dependencies: []
-
+    recommended: [ ]
+    dependencies: [ ]
 
   Multiverse-Core:
     displayName: Multiverse-Core
@@ -24,25 +22,7 @@ Plugins:
     version: 4.3.1
     sha256: 38C8B6A6AA168AE6A09CC0C9F77115EA975768410BC107C4CE0B32DE1BEBC787
     recommended: [ "Vault" ]
-    dependencies: []
-
-  WorldEdit:
-    displayName: WorldEdit
-    description: A Minecraft Map Editor... that runs in-game!
-    downloadLink: https://dev.bukkit.org/projects/worldedit/files/latest
-    version: 7.2.13
-    sha256: 8FF5F284DED29C6DA82DF107EB50E7E6CEF033F9491416ED9A611A69E4D34747
-    recommended: [ "Vault" ]
-    dependencies: []
-
-  WorldGuard:
-    displayName: WorldGuard
-    description: Protect your server!
-    downloadLink: https://dev.bukkit.org/projects/worldguard/files/latest
-    version: 7.0.8
-    sha256: 426BDAE12472FDACE9DFDF44E327D19F802C949CCB74CC787E83900B1020E8AD
-    recommended: [ "Vault" ]
-    dependencies: []
+    dependencies: [ ]
 
   ProtocolLib:
     displayName: ProtocolLib
@@ -57,5 +37,40 @@ Plugins:
     downloadLink: https://ci.lucko.me/job/spark/359/artifact/spark-bukkit/build/libs/spark-1.10.17-bukkit.jar
     version: 1.10.17
     sha256: none
-    recommended: []
-    dependencies: []
+    recommended: [ ]
+    dependencies: [ ]
+
+  Vault:
+    description: Vault is a plugin that allows servers to use a single API for all economy and permissions plugins.
+    downloadLink:
+    version:
+
+  WorldGuard:
+    description: WorldGuard is a plugin that allows servers to define custom regions and apply various protections and restrictions to them.
+    downloadLink:
+    version:
+
+  LuckPerms:
+    description: LuckPerms is a powerful permissions plugin for Minecraft servers.
+    downloadLink:
+    version:
+
+  WorldEdit:
+    description: WorldEdit is a plugin that allows players to easily build, change, and remove blocks in the game world.
+    downloadLink:
+    version:
+
+  PermissionsEx:
+    description: PermissionsEx (PEX) is a plugin that allows servers to set fine-grained permissions for players.
+    downloadLink:
+    version:
+
+  McMMO:
+    description: McMMO is a plugin that adds RPG-like mechanics to Minecraft, including skills, experience, and special abilities.
+    downloadLink:
+    version:
+
+  PlotSquared:
+    description: PlotSquared is a plugin that allows servers to set up player plots and protect them with custom flags.
+    downloadLink:
+    version:

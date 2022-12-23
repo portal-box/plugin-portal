@@ -56,4 +56,12 @@ public class DataManager {
             exception.printStackTrace();
         }
     }
+
+    public void saveData() {
+        try {
+            JsonUtils.writeMapToJson(downloadedPlugins, createPluginDataFile());
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
 }
