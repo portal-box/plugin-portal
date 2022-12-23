@@ -77,4 +77,6 @@ processResources {
     }
 }
 
+project.buildDir = 'C:\\Users\\Zesta\\Desktop\\Projects\\MinecraftServers\\1.19\\Paper\\plugins'
+
 build.dependsOn shadowJar

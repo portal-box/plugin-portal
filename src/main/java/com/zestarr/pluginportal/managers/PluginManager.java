@@ -6,6 +6,7 @@ import com.zestarr.pluginportal.types.OnlinePlugin;
 import com.zestarr.pluginportal.utils.HttpUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,10 +34,7 @@ public class PluginManager {
 
     public void loadPluginList() {
 
-        HttpUtils.copyWebsite(
-                "https://raw.githubusercontent.com/Zestarr/PluginPortal/master/PluginsList.yml",
-                "PluginPortalPlugins.yml"
-        );
+        HttpUtils.downloadData("https://raw.githubusercontent.com/Zestarr/PluginPortal/master/PluginsList.yml", new File("PluginPortalPlugins.yml"));
 
     }
 
@@ -54,7 +52,7 @@ public class PluginManager {
         if (!isPluginUpToDate(plugin)) {
             plugin.getFile().delete();
             plugin.setIsInstalled(false);
-            HttpUtils.downloadPlugin(plugin.getOnlinePlugin());
+            HttpUtils.downloadUniversalPlugin(plugin.getOnlinePlugin());
         }
     }
 

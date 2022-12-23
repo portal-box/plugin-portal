@@ -3,6 +3,7 @@ package com.zestarr.pluginportal.commands;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
+import com.zestarr.pluginportal.utils.ConfigUtils;
 import com.zestarr.pluginportal.utils.HttpUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,6 +13,8 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Map;
 
 import static com.zestarr.pluginportal.PluginPortal.getDataManager;
@@ -45,7 +48,7 @@ public class PPMTestingCommand implements CommandExecutor {
                             sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &cPlugin already downloaded"));
                             return true;
                         } else {
-                            HttpUtils.downloadPlugin(getPluginManager().getPlugins().get(args[1]));
+                            HttpUtils.downloadUniversalPlugin(getPluginManager().getPlugins().get(args[1]));
 
                             sender.sendMessage(format("&7&l[&b&lPPM&7] &8&l> &7Plugin has been downloaded!"));
                         }
@@ -97,7 +100,12 @@ public class PPMTestingCommand implements CommandExecutor {
                     for (OnlinePlugin plugin : getPluginManager().getPlugins().values()) {
                         File folder = new File(getPluginFolder() + File.separator + "DebugPlugins");
                         folder.mkdirs();
-                        HttpUtils.downloadPlugin(plugin);
+
+                        try {
+                            HttpUtils.download(new URL(plugin.getDownloadLink()), folder);
+                        } catch (MalformedURLException e) {
+                            throw new RuntimeException(e);
+                        }
                         getDataManager().savePluginToFile(plugin, true);
                     }
 
