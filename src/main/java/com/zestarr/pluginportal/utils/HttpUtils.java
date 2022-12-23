@@ -12,6 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +21,7 @@ public class HttpUtils {
 
     private static String userAgent = "github.com/Zestarr/PluginPortal";
 
-    public static void download(URL url, File folder) {
+    public static void download(OnlinePlugin onlinePlugin, URL url, File folder) {
         try {
 
             URLConnection connection = url.openConnection();
@@ -34,16 +35,23 @@ public class HttpUtils {
             // Extract the default file name from the "Content-Disposition" header field
             String fileName = null;
             if (contentDisposition != null) {
-                Pattern pattern = Pattern.compile("filename=\"(.+)\"");
-                Matcher matcher = pattern.matcher(contentDisposition);
-                if (matcher.find()) {
-                    fileName = matcher.group(1);
+                String[] parts = contentDisposition.split(";");
+                for (String part : parts) {
+                    if (part.trim().startsWith("filename=")) {
+                        fileName = part.substring(part.indexOf('=') + 1);
+                        if (fileName.startsWith("\"") && fileName.endsWith("\"")) {
+                            fileName = fileName.substring(1, fileName.length() - 1);
+                        }
+                        break;
+                    }
                 }
             }
 
-            // If the file name was not found, use the default file name from the URL
             if (fileName == null) {
-                fileName = url.getFile();
+                fileName = onlinePlugin.getDefaultFileName();
+                if (!fileName.endsWith(".jar")) {
+                    fileName = fileName + ".jar";
+                }
             }
 
             // Get an input stream for reading the file
@@ -63,22 +71,37 @@ public class HttpUtils {
             inputStream.close();
             outputStream.close();
 
-            System.out.println("File downloaded successfully!");
+            System.out.println("&7&l[&b&lPPM&7&l] &8&l> Downloaded " + fileName + " to " + folder.getName());
+            LocalPlugin localPlugin = new LocalPlugin(onlinePlugin);
+
+            if (PluginPortal.getDeveloperMode()) {
+                if (folder == ConfigUtils.getDebugPluginFolder()) {
+                    return;
+                }
+            }
+
+            PluginPortal.getDataManager().getInstalledPlugins().put(localPlugin.getOnlinePlugin().getDisplayName(), localPlugin);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void download(OnlinePlugin plugin) {
-        download(plugin.getDownloadLink());
+    public static void download(OnlinePlugin onlinePlugin, File folder) {
+        try {
+            download(onlinePlugin, new URL(onlinePlugin.getDownloadLink()), folder);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void download(String url) {
-        try {
-            download(new URL(url), ConfigUtils.getPluginFolder());
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        }
+    public static void download(OnlinePlugin onlinePlugin) {
+        download(onlinePlugin, ConfigUtils.getPluginFolder());
+    }
+
+    public static void download(OnlinePlugin plugin, URL url) {
+        download(plugin, url, ConfigUtils.getPluginFolder());
     }
 
     public static void downloadData(URL url, File file) {
@@ -122,20 +145,35 @@ public class HttpUtils {
             exception.printStackTrace();
         }
     }
-    public static void download(URL url) {
-        download(url, ConfigUtils.getPluginFolder());
-    }
-
 
     public static void downloadUniversalPlugin(OnlinePlugin plugin) {
+        downloadUniversalPlugin(plugin, ConfigUtils.getPluginFolder());
+    }
+
+    public static void downloadUniversalPlugin(OnlinePlugin plugin, File folder) {
         String url = plugin.getDownloadLink();
+        URL downloadURL = null;
+
+        try {
+            downloadURL = new URL(url);
+        } catch (MalformedURLException exception) {
+            exception.printStackTrace();
+        }
+
+        if (downloadURL == null) { return; }
+
         // Download from SpigotMC
         if (url.contains("https://www.spigotmc.org/resources/")) {
-            download("https://api.spiget.org/v2/resources/" + StringUtils.extractNumbers(url) + "/download");
+            try {
+                download(plugin, new URL("https://api.spiget.org/v2/resources/" + StringUtils.extractNumbers(url) + "/download"), folder);
+            } catch (MalformedURLException exception) {
+                exception.printStackTrace();
+            }
+
         } else if (url.contains("https://github.com") && url.endsWith(".jar")) {
-            download(url);
+            download(plugin, downloadURL, folder);
         } else {
-            download(url);
+            download(plugin, downloadURL, folder);
         }
     }
 

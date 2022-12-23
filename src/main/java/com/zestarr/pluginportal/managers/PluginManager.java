@@ -27,6 +27,10 @@ public class PluginManager {
             plugin.setVersion(config.getString("Plugins." + str + ".version"));
             plugin.setSha256(config.getString("Plugins." + str + ".sha256"));
 
+            if (plugin.getDefaultFileName() == null) {
+                plugin.setDefaultFileName(plugin.getDisplayName() + (plugin.getVersion() == null ? "" : "-" + plugin.getVersion()));
+            }
+
             plugins.put(str, plugin);
         }
 

@@ -102,6 +102,7 @@ Plugins:
     recommended: [ ]
 
 #  WorldEdit:
+#  WorldEdit:
 #    description: WorldEdit is a plugin that allows players to easily build, change, and remove blocks in the game world.
 #    downloadLink:
 #    version:
@@ -197,32 +198,31 @@ Plugins:
     dependencies: [ ]
     recommended: [ ]
 
-  SkRayFall:
-    description: SkRayFall is a Skript addon that adds various features from the popular plugin, McMMO, including skills, experience, and special abilities.
-    downloadLink: https://www.spigotmc.org/resources/skrayfall.10012/
-    version:
-    dependencies: [ Skript ]
-    recommended: [ ]
-
-  SkQuery:
-    description: SkQuery is a Skript addon that adds a variety of additional functions and effects to Skript, including the ability to create custom GUIs and run console commands.
-    downloadLink: https://www.spigotmc.org/resources/skquery-1-13-1-19.36631/
-    version:
-    dependencies: [ Skript ]
-    recommended: [ ]
-
   Skript:
     displayName: Skript
     description: Skript is a plugin that allows you to create your own scripts.
     downloadLink: https://github.com/SkriptLang/Skript/releases/download/2.6.4/Skript-2.6.4.jar
     version: 2.6.4
     sha256: 4102E1A3328CD67DA51E21B51646DADF1F10207F769EF86B859683C15BAD4B1Da
+    dependencies: [ ]
+    recommended: [ SkBee, Skript-Reflect ]
 
   SkBee:
     displayName: SkBee
     description:
     downloadLink: https://github.com/ShaneBeee/SkBee/releases/download/2.5.4/SkBee-2.5.4.jar
     version: 2.5.4
+    dependencies: [ Skript ]
+    recommended: [ ]
+
+  Skript-Gui:
+    displayName: Skript-Gui
+    description: Skript-Gui is a plugin that allows you to create GUIs in Skript.
+    downloadLink: https://github.com/APickledWalrus/skript-gui/releases/download/1.3/skript-gui-1.3.jar
+    version: 1.3
+    sha256:
+    dependencies: [ Skript ]
+    recommended: [ ]
 
   Skript-Reflect:
     displayName: Skript-Reflect

@@ -6,18 +6,20 @@ import com.zestarr.pluginportal.commands.PPMTestingCommand;
 import com.zestarr.pluginportal.managers.DataManager;
 import com.zestarr.pluginportal.managers.PluginManager;
 import com.zestarr.pluginportal.utils.ConfigUtils;
-import com.zestarr.pluginportal.utils.HttpUtils;
-import com.zestarr.pluginportal.utils.JsonUtils;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.checkerframework.common.util.report.qual.ReportOverride;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 public final class PluginPortal extends JavaPlugin {
 
     public static PluginManager pluginManager;
     public static DataManager dataManager;
+
+    @Getter
+    @Setter
+    public static Boolean developerMode = false;
 
     @Override
     public void onEnable() {

@@ -18,7 +18,7 @@ public class PPMTab implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], List.of("install", "update", "list", "search"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[0], List.of("install", "update", "list", "search", "devtoggle"), new ArrayList<>());
             // Removed Uninstall and Delete due to it being not very possible to do without doing a lot of magic.
 
         } else if (args.length == 2) {
@@ -32,6 +32,11 @@ public class PPMTab implements TabCompleter {
                         results.add(plugin.getDisplayName());
 
                     }
+
+                    if (PluginPortal.getDeveloperMode()) {
+                        results.add("*");
+                    }
+
                     return StringUtil.copyPartialMatches(args[1], results, new ArrayList<>());
 
                 case "uninstall": case "delete":
