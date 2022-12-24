@@ -222,6 +222,8 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/skript-reflect.82259/
     version: 2.6.1
     sha256: D9E6F45C2D16A146A65230D179AD5624BE06BB5FCCAE1C40FA281D125DD68CD8
+    dependencies: [ Skript ]
+    recommended: [ ]
 
   ChestShop:
     description: ChestShop is a plugin that allows players to create their own in-game shops using chests and signs.
@@ -370,14 +372,6 @@ Plugins:
   AutoMessage:
     description:
     downloadLink: https://www.spigotmc.org/resources/372
-    version:
-    sha256:
-    recommended: [ ]
-    dependencies: [ ]
-
-  Multiverse-Core:
-    description:
-    downloadLink: https://www.spigotmc.org/resources/390
     version:
     sha256:
     recommended: [ ]
@@ -567,7 +561,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  KitPvP[FFA,1vs1]:
+  KitPvP:
     description:
     downloadLink: https://www.spigotmc.org/resources/1583
     version:
@@ -1415,13 +1409,13 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  [ 1.13.2-1.17 ]SuperLuckyBlockLite:
-                   description:
-                   downloadLink: https://www.spigotmc.org/resources/10545
-                   version:
-                   sha256:
-                   recommended: [ ]
-                   dependencies: [ ]
+  SuperLuckyBlockLite:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10545
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
 
   AntiWorldownloader:
     description:
@@ -1439,13 +1433,13 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  [ 1.8.8/1.19.2 ]UltraCosmetics[OPENSOURCE&FREE!!]:
-                    description:
-                    downloadLink: https://www.spigotmc.org/resources/10905
-                    version:
-                    sha256:
-                    recommended: [ ]
-                    dependencies: [ ]
+  UltraCosmetics[OPENSOURCE&FREE!!]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10905
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
 
   LordPermissions|1.7-1.11:
     description:
@@ -1551,13 +1545,13 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  [ REVIVED ]Spawners:
-               description:
-               downloadLink: https://www.spigotmc.org/resources/11845
-               version:
-               sha256:
-               recommended: [ ]
-               dependencies: [ ]
+  Spawners:
+   description:
+   downloadLink: https://www.spigotmc.org/resources/11845
+   version:
+   sha256:
+   recommended: [ ]
+   dependencies: [ ]
 
   MineSecureLite-AntiHackSystem[Aimbot,BowAimbot...]BungeeCordSupport:
     description:
@@ -1871,13 +1865,13 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  [ MiniGames ]SuperSurvivalGames[Free/Bungee/MySQL]:
-                 description:
-                 downloadLink: https://www.spigotmc.org/resources/16863
-                 version:
-                 sha256:
-                 recommended: [ ]
-                 dependencies: [ ]
+  SuperSurvivalGames[Free/Bungee/MySQL]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/16863
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
 
   BetterTeams:
     description:
@@ -2447,14 +2441,6 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  Multiverse-Corefor1.9&1.10&1.11&1.12:
-    description:
-    downloadLink: https://www.spigotmc.org/resources/23327
-    version:
-    sha256:
-    recommended: [ ]
-    dependencies: [ ]
-
   MobHeads(MobHunting)[Java8]:
     description:
     downloadLink: https://www.spigotmc.org/resources/23423
@@ -2487,7 +2473,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  SkyWars:
+  SkyWarsForMinigamesLib:
     description:
     downloadLink: https://www.spigotmc.org/resources/23852
     version:
@@ -2559,7 +2545,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  ★RandomLootChest★:
+  RandomLootChest:
     description:
     downloadLink: https://www.spigotmc.org/resources/26009
     version:
@@ -2879,14 +2865,6 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  ColoredSigns:
-    description:
-    downloadLink: https://www.spigotmc.org/resources/31676
-    version:
-    sha256:
-    recommended: [ ]
-    dependencies: [ ]
-
   AnvilLogin:
     description:
     downloadLink: https://www.spigotmc.org/resources/31861
@@ -2895,7 +2873,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  SetSpawn||[1.17-1.19.2]||ALotofFeatures&FullyCustomisable!:
+  SetSpawn:
     description:
     downloadLink: https://www.spigotmc.org/resources/31966
     version:
@@ -2911,7 +2889,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  AntiCreeper||[1.17-1.19.2]||PreventExplosions&DamageCausedbyThem!:
+  AntiCreeper:
     description:
     downloadLink: https://www.spigotmc.org/resources/32129
     version:
