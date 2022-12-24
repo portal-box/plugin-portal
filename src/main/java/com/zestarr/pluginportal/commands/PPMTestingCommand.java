@@ -109,9 +109,9 @@ public class PPMTestingCommand implements CommandExecutor {
                     sender.sendMessage("&7&l[&b&lPPM&7&l] &8&l> &cPlugin not found!");
                 }
 
-            } else if (args[0].equalsIgnoreCase("devtoggle")) {
+            } else if (args[0].equalsIgnoreCase("debug")) {
                 PluginPortal.setDeveloperMode(!PluginPortal.getDeveloperMode());
-                sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Developer Mode: " + (PluginPortal.getDeveloperMode() ? "&aEnabled" : "&cDisabled")));
+                sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Debug Mode: " + (PluginPortal.getDeveloperMode() ? "&aEnabled" : "&cDisabled")));
             } else {
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &l&cUsage: /ppm <arg> <plugin>"));
             }

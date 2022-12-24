@@ -17,6 +17,8 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.zestarr.pluginportal.utils.ChatUtils.format;
+
 public class HttpUtils {
 
     private static String userAgent = "github.com/Zestarr/PluginPortal";
@@ -157,7 +159,7 @@ public class HttpUtils {
         try {
             downloadURL = new URL(url);
         } catch (MalformedURLException exception) {
-            exception.printStackTrace();
+
         }
 
         if (downloadURL == null) { return; }

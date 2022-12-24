@@ -166,14 +166,6 @@ Plugins:
     dependencies: [ ]
     recommended: [ ]
 
-  HeadDatabase:
-    description: HeadDatabase is a plugin that allows servers to display a collection of player head textures for players to use in-game.
-    downloadLink: https://www.spigotmc.org/resources/head-database.14280/
-    version:
-    sha256:
-    dependencies: [ Vault ]
-    recommended: [ ]
-
   BetterSleeping:
     description: BetterSleeping is a plugin that modifies the mechanics of sleeping in Minecraft, including the effects of sleeping on the time of day.
     downloadLink: https://www.spigotmc.org/resources/bettersleeping.60837/
@@ -258,3 +250,2703 @@ Plugins:
     version:
     dependencies: [ ]
     recommended: [ ]
+
+
+
+    # Scraped
+
+  BungeeSuiteCore:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BungeeKickStop:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/13
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BungeePortals:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NoCheatPlus:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  IPWhitelist:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/61
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SimpleHomes:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/64
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SlashServer:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/75
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LibsHungergames-MCPVPstyle:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/79
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Lib'sDisguises[Free]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/81
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SkyWars:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/167
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BossShopPro-ThemostpowerfulChestGUIshop/menuplugin.:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/222
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ServerListPlus:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/241
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChatControl™-TheUltimateChatPlugin[500,000+Downloads][1.2.5-1.16.4]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/271
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BukkitGames(HungerGames):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/279
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AutoMessage:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/372
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Multiverse-Core:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/390
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BungeeAdminTools-Basicsedition:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/444
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  KillerMoney:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/485
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Auctions:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/571
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AcidIsland:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/581
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Nicky:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/590
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  VentureChat:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/771
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AlwaysOnline:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/820
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PvPManagerLite:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/845
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  (FREE)CrateReloaded-MysteryCrate[1.8-1.19.X]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/861
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ParticleHats:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1007
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TrailGUI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1091
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AntiHax:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1157
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  HubThat:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1166
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PlotSquaredv4:v6outnow!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1177
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PromotionEssentials:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1184
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Trading:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1203
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ASkyBlock:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1220
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Prison:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1223
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ActionBarAPI[1.8-1.14.2]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1315
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ActionAnnouncer:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1320
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TitleAPI[1.8-1.17]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1325
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SuperVanish>>Beinvisible:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1331
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChatColor+:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1546
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  KitPvP[FFA,1vs1]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1583
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RandomCoords(RTP):AdvancedRandomTeleporter:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1680
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SuperTrails:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1879
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MineResetLitePlus:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/1898
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BetonQuest-AllYourAdventureSupplies|VersatileQuests|In-depthConversations:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2117
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  InfernalMobs:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2156
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ModernLWC-ContinuationofLWC:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2162
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  KingKits:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2209
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TerrainControl:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2214
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ColoredAnvils:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2216
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ArmorStandTools:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2237
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CityWorld:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2250
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  GUIShop:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2451
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CustomTab-Customizeyourtablistheaderandfooter![1.8/1.9/1.10]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2470
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SexyMotd:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2474
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MaintenanceMode:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2548
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AdminGUI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2561
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ActionBarHealth:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2661
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ResidenceReloaded1.8.x:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2697
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DemoTroll:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2754
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  IslandWorld(Skyblockreplacement):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2757
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AnimMOTD:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2786
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BottledExp:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2815
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CustomSkins:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2983
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AreaShop:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/2991
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SpawnerShop➜Sign&GUIShops!➜Permissions➜Economy:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3005
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ClearChat3.2-CustomGUI&PlaceholderAPIsupport-Roadto50k:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3031
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Lockette-UUIDsupported!!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3054
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Brewery:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3082
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Banknotes:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3200
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Autorank:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3239
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BlockLocker:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3268
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Thirst:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3316
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MobHunting:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3582
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Parties-Anadvancedpartiesmanager:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3709
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Quests:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3711
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChatReaction:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3748
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DeathMessages:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3789
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SkyWarsReloaded:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3796
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SimpleCrates|EasytoConfigure|Spigot1.8-1.12:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3820
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NametagEdit:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/3836
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  JobsReborn:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4216
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  EpicRename:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4341
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DeluxeTags:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4390
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LightAPI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4510
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AdminFun:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4621
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AnimatedMenu:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4690
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CombatTagPlus:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4775
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LockedItems:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4822
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  WorldGuardExtraFlags:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4823
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SkillAPI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4824
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DeluxeJoin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4846
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Holograms:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/4924
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CratesPlus-FreeCratesPlugin![1.8-1.16.4]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5018
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RandomTP[�?ʀɪɢɪɴᴀʟ]|Sign|GUI-Menu|NowRecoded!|BestRandomTeleportPlugin!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5084
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NameManager:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5147
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CommandBlocker:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5280
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AntiWorldFly:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5357
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MessageAnnouncer:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5408
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SimpleTPA||Spigot1.8&1.7:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5447
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  iDisguise:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5509
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Broadcast:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5747
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AdvancedReport-Over11kDownloads!1.7&1.8&1.9:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5759
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MineResetLite:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/5773
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DiceFurniturePlugin/MöbelPlugin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6006
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  icJukeBox:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6129
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SignColors:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6135
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PhoenixAnti-Cheat:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6207
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PlaceholderAPI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6245
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ResourcePackDownloader:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6262
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  [ KITPVP ]Epickitsandfeatures:
+              description:
+              downloadLink: https://www.spigotmc.org/resources/6483
+              version:
+              sha256:
+              recommended: [ ]
+              dependencies: [ ]
+
+  StaffEssentials:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6531
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BungeeSigns:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6563
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AncientGates:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6583
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LuckyBlock[1.8-1.15]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6886
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AntiLag:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/7296
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TNTRun|MultipleModes|LeaderHeadssupport|MySQL|Muchmore...:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/7320
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CustomMobs:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/7339
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TablistPrefix[Workson1.8-1.11]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/7576
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  EconomyBank:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/7674
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ArmorStandEditor[dead]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/7688
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SilkSpawners||★Readytorock!1.8-1.18.2supported★:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/7811
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Shop:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8185
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MOTD[1.8-1.19.2]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8390
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  FunnyWarps:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8541
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TokenManager:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8610
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AdvancedBan:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8695
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SuperBuildBattle:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8775
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Morph:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8846
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CustomEnderChest:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/8868
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PEX-Rankup:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9006
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Capes:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9068
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PlayerVaults:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9228
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  KitAdder:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9231
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ✯BiteSkyWarsReloaded-MultiArena-Kits-Cages✯:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9245
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BetterEnchants:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9268
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DungeonsXL:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9488
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PartyandFriendsForBungeecord|Supports1.7.xto1.19.x:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9531
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NPCPolice(Policing,Bounty,Jails,andmore!):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9553
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LobbySystem:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/9721
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AlwaysSpawn|Spawn-TP|SpawnOnJoin!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10058
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SimpleJail:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10079
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ProtectionStones:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10096
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChatBubbles:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10147
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CommandSigns:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10512
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AntiOP:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10543
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  [ 1.13.2-1.17 ]SuperLuckyBlockLite:
+                   description:
+                   downloadLink: https://www.spigotmc.org/resources/10545
+                   version:
+                   sha256:
+                   recommended: [ ]
+                   dependencies: [ ]
+
+  AntiWorldownloader:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10616
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  GadgetsMenu[1.8-1.19.3][Free]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10885
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  [ 1.8.8/1.19.2 ]UltraCosmetics[OPENSOURCE&FREE!!]:
+                    description:
+                    downloadLink: https://www.spigotmc.org/resources/10905
+                    version:
+                    sha256:
+                    recommended: [ ]
+                    dependencies: [ ]
+
+  LordPermissions|1.7-1.11:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10930
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SignShop:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/10997
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MVdWPlaceholderAPI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11182
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PickupMoney:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11334
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ShopChest:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11431
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CustomRecipes[Abandoned]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11440
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ProReports:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11443
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SuperbVote:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11626
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  WildTP:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11653
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DeluxeMenus:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11734
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  zPermissions:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11736
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChatFormat|PlaceholderAPISupport!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11780
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AdvanceRespawn:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11816
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  [ REVIVED ]Spawners:
+               description:
+               downloadLink: https://www.spigotmc.org/resources/11845
+               version:
+               sha256:
+               recommended: [ ]
+               dependencies: [ ]
+
+  MineSecureLite-AntiHackSystem[Aimbot,BowAimbot...]BungeeCordSupport:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11996
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  sTablist×Tablist,Titleandmore:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12234
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  HolographicShop:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12248
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CClearChat(Updated1.8-1.13.2):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12528
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BungeeChat:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12592
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CrazyWarps:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12696
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  EChest:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12773
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  sTeam:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12803
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NoLagg:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12936
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Zenchantments:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12948
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NoPlugins:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/12965
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SpawnTP:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/13527
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  EssentialsWarpGui[OpenSource]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/13571
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TabPrefixesReloaded:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/13679
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Sudo:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/13730
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NPCDestinations-CreateLivingNPC's:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/13863
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SafeTrade:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/13885
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  HomeSpawn:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/14108
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  FastLogin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/14153
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AutoRespawnPlus:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/14412
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SimpleSit[Spigot/Bukkit1.8.8through1.19]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/14706
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Itemizer:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/14733
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BooksawUtils:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/14828
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  QuickBoard-FreeScoreboardPlugin|Scroller|Changeabletext|PlaceholderAPI|Anti-Flicker:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15057
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Staff+|TheUltimateModerationPlugin|1.7-1.11:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15151
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  EssentialsKitGui[OpenSource]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15160
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PlayerHeads:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15165
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  HealthBar:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15230
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  VotingPlugin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15358
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MobStacker:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15596
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  FactionMobs:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15803
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RedProtectAnti-Grief|ServerProtection|RegionManagement[1.7-1.18+]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15841
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  HeadDrops[1.8-1.18+]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/15964
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SimpleRename:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/16220
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AdvancedAntiSwear:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/16354
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ProjectKorra(Items):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/16525
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PVPArena:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/16584
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SpawnOnJoin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/16637
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  DailyRewards:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/16708
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  [ MiniGames ]SuperSurvivalGames[Free/Bungee/MySQL]:
+                 description:
+                 downloadLink: https://www.spigotmc.org/resources/16863
+                 version:
+                 sha256:
+                 recommended: [ ]
+                 dependencies: [ ]
+
+  BetterTeams:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/17129
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Backpack|Storeanyitem|Greatforsurvivalservers:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/17192
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  WorldEditSelectionVisualizer[1.7.10-1.19]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/17311
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LobbyAPI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/17659
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  StaffChat:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/17706
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Rankup:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/17933
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TreeCapitator:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18083
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ConsoleSpamFix:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18410
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  �?�SimpleHealthBar�?�[Supports1.9]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18413
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Wilderness-Tp:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18431
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  HolographicExtension:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18461
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CommandSpy:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18498
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AntiBotAttack:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18540
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Wolf-AntiCheat1.7|1.8:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18614
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BetterChairs:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18705
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Marriage(Reloaded)[1.15-1.8]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/18998
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChatItem-Displayitemsinchat!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19064
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  GuiSignShop[1.12.2][DISCONTINUED]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19133
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MarriageMaster(MC1.7-1.19):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19273
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Minepacks(BackpackPlugin)(MC1.7-1.19):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19286
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NoteBlockAPI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19287
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  UltimateBossBar-Thebestbossbarpluginoutthere!Nowsupportsallversions!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19303
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LoginSecurity:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19362
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  IronElevators[1.4.6-1.19.X]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19451
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  OldCombatMechanics-Disable1.9hitcooldown:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19510
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Trey'sDoubleJump[API]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19630
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  StopProxy-ProtectyourserverfromProxies&Bots!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19653
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  GemsEconomy:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19655
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  WhosAFK:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19669
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MobMoney:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/19852
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PexTablistandNametags:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20111
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Duels:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20171
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SinglePlayerSleep:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20173
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TreeFeller-Async:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20385
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ✪SuperLobbyDeluxe|[1.8.8-1.19.x]✪:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20400
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LockettePro-UUIDSupport[Abandoned-restarting]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20427
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  FastCraft-CraftItemsInOneClick!(1.7-1.19):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20544
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Gravestones:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20545
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  FurnitureMaker:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20667
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PvPLevels:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20807
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AnimatedScoreboard:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20848
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SKYWARS|Reloaded1.11.2:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/20924
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Denizen:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21039
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CubeSkyWars:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21330
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LagMonitor:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21348
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChangeSkin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21469
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ★TabListPro★|NameAnimations,Sorting,Header/Footer,EasySetup[1.8-1.16]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21532
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MCRealistic[1.17+]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21628
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Multiverse-Inventoriesfor1.9&1.10&1.11&1.12:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21681
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TpLogin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21692
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  EasyInventory:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21750
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MoneyPouch[1.8-1.19]|PackageswithmoneyorXP:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/21905
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Sentinel:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22017
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Lottery:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22137
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MyCommand:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22272
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AnimationLib:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22295
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Clans-ClanSystem|[1.7-1.16]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22304
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PlayerReport»1.7-1.17.1•GUIfor/reports•API:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22371
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AntiRelog:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22434
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MoneyHunters-Earnmoneyforsimpletasks:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22450
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ✨WarpsGUI«1.8-1.14»✨HomesandWarpsinGUI✅:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22484
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PexGUI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22690
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ChatColor:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22692
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NTAC-AdvancedNoCheatPluspatchwork[Spigot1.9]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22746
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PvPManager:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22779
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RandomTeleport(wilderness)[1.17]-AMUSTFORFACTIONSANDSURVIVALSERVERS:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22835
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  GrapplingHook:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22854
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RealScoreboard(1.13to1.19.3):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/22928
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Nicknamer+:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23177
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SimpleScore|AnimatedScoreboard:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23243
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  KeepChunks:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23307
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Multiverse-Corefor1.9&1.10&1.11&1.12:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23327
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MobHeads(MobHunting)[Java8]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23423
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Parkour:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23685
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Quests[1.8-1.19]|Setupgoalsforplayers:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23696
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MinigamesLib:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23844
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SkyWars:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/23852
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RankVouchers:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/24148
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SpigotPing-ADDEDIN-TABLISTPING:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/24419
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TuSKe:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/25136
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TabBlock:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/25310
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RegionName[WorldGuardShowRegion]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/25470
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  WorldEditCUI:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/25524
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SkyPvP[1.8]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/25772
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TigerReports:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/25773
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ★RandomLootChest★:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26009
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  NickAPI|AdvancedNickAPI|1.8-1.19:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26013
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PlayTime:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26016
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MultiChat(FULLRGBCOLOURSUPPORT):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26204
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Heads:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26467
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RogueParkour[Randomgeneratedparkour]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26563
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ImageOnMap:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26585
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MyItems[1.8.x-1.10.x]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26610
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ♛MoreTP♛[1.8.8-1.12.X✔]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26630
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  /ftop|FactionsTopbyNovucs:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/26905
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  /gamemode->/gm[GER]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/27053
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MuteChat(1.8-1.12):
+    description:
+    downloadLink: https://www.spigotmc.org/resources/27156
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ✘AutoNick×600+Nicknames,Bungeecordandmore✘:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/27441
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ViaBackwards:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/27448
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Vehicraft3.1//CraftableVehicles:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/27454
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ItemEditor:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/27637
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BedWars:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/27903
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  LuckPerms:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28140
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Timber:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28236
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ⚡Admin360-Reloaded⚡Anadvanced/helpopoption✅Tickets✅Rating✅Leaderboard✅MySQL:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28285
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  zTag|ChangePlayernames&Skins|1.8.0-1.13.2:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28444
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ColorTab-ColorfulHeader+Footer+Prefix:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28683
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  VehiclesWorldGuardFlags:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28788
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  MinetopiaSDB|BedrijfsRekeningen|Bijnaprecies99%:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28830
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Backpack:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/28934
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CustomHeads[1.8-1.19.2]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29057
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Backpack:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29439
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  PlayerSkills:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29477
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  iPortal|Transportation&BungeecordPortals:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29552
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Warps,Portalsandmore!|Warp&TeleportSystem|1.8-1.19:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29595
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CustomCrates:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29805
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CorpseReborn:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29875
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  StackMob-Enhanceyourserversperformancewithoutthesacrifice:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/29999
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SlashWarp・Renewed!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/30008
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  HeadsInventory[1.17-1.19]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/30167
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  CitizensCMD:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/30224
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  Music:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/30348
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  3DManeuverGear||AttackonTitan:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/30608
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  TrollPlugin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/30624
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  RandomTP:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/31056
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  BloodInMinecraft:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/31549
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  GunsPlugin-[CreateYourOwnCustomGunsInMinecraft!!]:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/31569
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  OnePlayerSleep:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/31585
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  ColoredSigns:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/31676
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AnvilLogin:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/31861
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SetSpawn||[1.17-1.19.2]||ALotofFeatures&FullyCustomisable!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/31966
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  SmoothSleep:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/32043
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  AntiCreeper||[1.17-1.19.2]||PreventExplosions&DamageCausedbyThem!:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/32129
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
+
+  GroupManagerPEX:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/32206
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
