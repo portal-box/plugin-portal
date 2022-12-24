@@ -337,7 +337,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  BossShopPro-ThemostpowerfulChestGUIshop/menuplugin.:
+  BossShopPro-ThemostpowerfulChestGUIshop/menuplugin:
     description:
     downloadLink: https://www.spigotmc.org/resources/222
     version:
@@ -1153,7 +1153,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  LuckyBlock[1.8-1.15]:
+  LuckyBlock:
     description:
     downloadLink: https://www.spigotmc.org/resources/6886
     version:
@@ -1169,7 +1169,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  TNTRun|MultipleModes|LeaderHeadssupport|MySQL|Muchmore...:
+  TNTRun:
     description:
     downloadLink: https://www.spigotmc.org/resources/7320
     version:
