@@ -1127,13 +1127,13 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  [ KITPVP ]Epickitsandfeatures:
-              description:
-              downloadLink: https://www.spigotmc.org/resources/6483
-              version:
-              sha256:
-              recommended: [ ]
-              dependencies: [ ]
+  Epickitsandfeatures:
+    description:
+    downloadLink: https://www.spigotmc.org/resources/6483
+    version:
+    sha256:
+    recommended: [ ]
+    dependencies: [ ]
 
   StaffEssentials:
     description:
@@ -2663,14 +2663,6 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  ViaBackwards:
-    description:
-    downloadLink: https://www.spigotmc.org/resources/27448
-    version:
-    sha256:
-    recommended: [ ]
-    dependencies: [ ]
-
   Vehicraft3.1//CraftableVehicles:
     description:
     downloadLink: https://www.spigotmc.org/resources/27454
@@ -2690,14 +2682,6 @@ Plugins:
   BedWars:
     description:
     downloadLink: https://www.spigotmc.org/resources/27903
-    version:
-    sha256:
-    recommended: [ ]
-    dependencies: [ ]
-
-  LuckPerms:
-    description:
-    downloadLink: https://www.spigotmc.org/resources/28140
     version:
     sha256:
     recommended: [ ]
@@ -2767,14 +2751,6 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  Backpack:
-    description:
-    downloadLink: https://www.spigotmc.org/resources/29439
-    version:
-    sha256:
-    recommended: [ ]
-    dependencies: [ ]
-
   PlayerSkills:
     description:
     downloadLink: https://www.spigotmc.org/resources/29477
@@ -2791,7 +2767,7 @@ Plugins:
     recommended: [ ]
     dependencies: [ ]
 
-  Warps,Portalsandmore!|Warp&TeleportSystem|1.8-1.19:
+  WarpsPortalsandmore!|Warp&TeleportSystem|1.8-1.19:
     description:
     downloadLink: https://www.spigotmc.org/resources/29595
     version:
