@@ -2,7 +2,6 @@ package com.zestarr.pluginportal.type;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zestarr.pluginportal.managers.SpigetManager;
 import com.zestarr.pluginportal.utils.SpigetUtil;
 import lombok.Data;
 
@@ -44,19 +43,10 @@ public class PreviewingPlugin {
             this.iconUrl = root.get("icon").asText();
 
             switch (root.get("file").get("type").asText().toLowerCase()) {
-
-                case ".jar":
-                    this.fileType = FileType.JAR;
-                    break;
-                case ".zip":
-                    this.fileType = FileType.ZIP;
-                    break;
-                case ".sk":
-                    this.fileType = FileType.SKRIPT;
-                    break;
-                default: // Includes "external"
-                    this.fileType = FileType.EXTERNAL;
-                    break;
+                case ".jar" -> this.fileType = FileType.JAR;
+                case ".zip" -> this.fileType = FileType.ZIP;
+                case ".sk" -> this.fileType = FileType.SKRIPT;
+                default -> this.fileType = FileType.EXTERNAL; // Includes "external"
             }
 
 
