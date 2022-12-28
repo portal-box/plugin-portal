@@ -1,8 +1,8 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
+import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
-import com.zestarr.pluginportal.utils.HttpUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -52,7 +52,12 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cStarting to download " + spigotName + "..."));
 
                 Bukkit.getScheduler().runTaskAsynchronously(portal, () -> {
-                    HttpUtil.downloadUniversalPlugin();
+                    LocalPlugin plugin = portal.getDownloadManager().downloadPlugin(portal.getMarketplaceManager().getId(spigotName));
+                    if (plugin == null) {
+                        sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error installing " + spigotName + "."));
+                        return;
+                    }
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " (version " + plugin.getVersion() + ") has been installed."));
                 });
                 break;
             case "uninstall":

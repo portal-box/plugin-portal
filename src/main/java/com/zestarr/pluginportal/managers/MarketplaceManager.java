@@ -1,7 +1,8 @@
 package com.zestarr.pluginportal.managers;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.utils.HttpUtil;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -10,7 +11,7 @@ import java.util.*;
 
 public class MarketplaceManager {
 
-    private final HashMap<Integer, String> marketplaceCache = new HashMap<>();
+    private final BiMap<Integer, String> marketplaceCache = HashBiMap.create();
 
     public MarketplaceManager(PluginPortal portal) throws IOException {
         File file = new File(portal.getDataFolder(), "temp.yml");
@@ -24,5 +25,7 @@ public class MarketplaceManager {
     }
 
     public Collection<String> getAllNames() { return marketplaceCache.values(); }
+
+    public int getId(String spigotName) { return marketplaceCache.inverse().get(spigotName); }
 
 }
