@@ -1,24 +1,19 @@
 package com.zestarr.pluginportal.commands;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
-import com.zestarr.pluginportal.utils.ConfigUtils;
 import com.zestarr.pluginportal.utils.HttpUtils;
 import com.zestarr.pluginportal.utils.JsonUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import static com.zestarr.pluginportal.PluginPortal.getDataManager;
 import static com.zestarr.pluginportal.PluginPortal.getPluginManager;
 import static com.zestarr.pluginportal.utils.ChatUtils.format;
 import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginFolder;
@@ -74,7 +69,7 @@ public class PPMCommand implements CommandExecutor {
                     file.delete();
                     sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Plugin has been uninstalled!"));
                     PluginPortal.getDataManager().getInstalledPlugins().get(args[1]).setInstalled(false);
-                    JsonUtils.saveData(PluginPortal.getDataManager().getInstalledPlugins(), ConfigUtils.createPluginDataFile().getAbsolutePath());
+                    JsonUtils.saveData();
 
                 } else if (new File(getPluginFolder(), args[1] + ".jar").exists()) {
                     File file = new File(getPluginFolder(), args[1] + ".jar");
@@ -114,12 +109,6 @@ public class PPMCommand implements CommandExecutor {
             } else if (args[0].equalsIgnoreCase("debug")) {
                 PluginPortal.setDeveloperMode(!PluginPortal.getDeveloperMode());
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Debug Mode: " + (PluginPortal.getDeveloperMode() ? "&aEnabled" : "&cDisabled")));
-            } else if (args[0].equalsIgnoreCase("listsaved")) {
-
-                if (JsonUtils.loadData(ConfigUtils.createPluginDataFile().getAbsolutePath()) == null) return true;
-                for (LocalPlugin plugin : JsonUtils.loadData(ConfigUtils.createPluginDataFile().getAbsolutePath()).values()) {
-
-                }
 
             } else {
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &l&cUsage: /ppm <arg> <plugin>"));

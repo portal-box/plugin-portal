@@ -11,10 +11,10 @@ import java.util.Map;
 
 public class DataManager {
 
-    private static final Map<String, LocalPlugin> downloadedPlugins = new HashMap<>();
+    public static final Map<String, LocalPlugin> downloadedPlugins = new HashMap<>();
 
     public void setupData() throws IOException {
-        JsonUtils.loadData(ConfigUtils.createPluginDataFile().getAbsolutePath());
+        JsonUtils.loadData();
     }
 
     public File createPluginDataFile() {

@@ -76,14 +76,14 @@ public class HttpUtils {
             LocalPlugin localPlugin = new LocalPlugin(onlinePlugin);
 
             if (PluginPortal.getDeveloperMode()) {
-                if (folder == ConfigUtils.getDebugPluginFolder()) {
+                if (folder.equals(ConfigUtils.getDebugPluginFolder())) {
                     return;
                 }
             }
 
             localPlugin.setInstalled(true);
             PluginPortal.getDataManager().getInstalledPlugins().put(localPlugin.getOnlinePlugin().getDisplayName(), localPlugin);
-            JsonUtils.saveData(PluginPortal.getDataManager().getInstalledPlugins(), ConfigUtils.createPluginDataFile().getPath());
+            JsonUtils.saveData();
 
         } catch (IOException e) {
             e.printStackTrace();

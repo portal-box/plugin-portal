@@ -48,7 +48,7 @@ public final class PluginPortal extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        JsonUtils.saveData(dataManager.getInstalledPlugins(), ConfigUtils.createPluginDataFile().getAbsolutePath());
+        JsonUtils.saveData();
     }
 
     public static PluginManager getPluginManager() {

@@ -1,52 +1,52 @@
 package com.zestarr.pluginportal.utils;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.JsonWriter;
+import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
+import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
-import com.zestarr.pluginportal.utils.LocalPluginDeserializer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class JsonUtils {
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
-    static {
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(LocalPlugin.class, new LocalPluginDeserializer());
-        OBJECT_MAPPER.registerModule(module);
-    }
-
-    public static void saveData(Map<String, LocalPlugin> data, String filePath) {
+    public static void saveData() {
         try {
-            String json = OBJECT_MAPPER.writeValueAsString(data);
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
+            Moshi moshi = new Moshi.Builder()
+                    .build();
+            JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
+            String json = jsonAdapater.toJson(PluginPortal.getDataManager().getInstalledPlugins());
+            System.out.println(json);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(PluginPortal.getDataManager().createPluginDataFile()));
             writer.write(json);
+            writer.flush();
             writer.close();
-        } catch (IOException exception) {
+
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
     }
 
-    public static Map<String, LocalPlugin> loadData(String filePath) {
+    public static void loadData() {
         try {
-
-            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            Moshi moshi = new Moshi.Builder().build();
+            JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
+            BufferedReader reader = new BufferedReader(new FileReader(ConfigUtils.createPluginDataFile()));
             String json = reader.readLine();
-            reader.close();
-
-            return OBJECT_MAPPER.readValue(json, new TypeReference<Map<String, LocalPlugin>>() {
-            });
-        } catch (IOException exception) {
-            exception.printStackTrace();
+            Map<String, LocalPlugin> map = jsonAdapater.fromJson(json);
+            System.out.println(map);
+            if (!(map == null)) {
+                PluginPortal.getDataManager().getInstalledPlugins().putAll(map);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        return null;
     }
+
 }

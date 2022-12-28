@@ -55,7 +55,7 @@ public class PluginManager {
 
     public void updatePlugin(LocalPlugin plugin) throws IOException {
         if (!isPluginUpToDate(plugin)) {
-            plugin.getFile().delete();
+            new File(plugin.getFilePath()).delete();
             plugin.setInstalled(false);
             HttpUtils.downloadUniversalPlugin(plugin.getOnlinePlugin());
         }
