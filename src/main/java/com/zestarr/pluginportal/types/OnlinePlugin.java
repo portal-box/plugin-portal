@@ -13,6 +13,7 @@ public class OnlinePlugin {
     private String description;
     private String downloadLink;
     private String sha256;
+    private long downloadCount;
     private String[] dependencies; // Optional
     private String[] recommendedPlugins; // Optional
 

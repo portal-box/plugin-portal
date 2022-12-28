@@ -5,14 +5,9 @@ import lombok.Data;
 import java.io.File;
 
 @Data
-public class LocalPlugin {
+public class LocalPlugin extends OnlinePlugin {
 
-    private OnlinePlugin onlinePlugin;
-    private Boolean isInstalled = false; // Not inside PluginList.yml
+    private boolean isInstalled = false; // Not inside PluginList.yml
     private File file; // Not inside PluginList.yml
-
-    public LocalPlugin(OnlinePlugin plugin) {
-        onlinePlugin = plugin;
-    }
 
 }

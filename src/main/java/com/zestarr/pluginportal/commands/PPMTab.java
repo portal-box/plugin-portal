@@ -4,8 +4,8 @@ import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
 import org.bukkit.command.Command;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
@@ -18,7 +18,15 @@ public class PPMTab implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], List.of("install", "update", "list", "search", "devtoggle"), new ArrayList<>());
+            List<String> results = new ArrayList<>(List.of("install", "update", "list", "search", "debug"));
+
+            if (PluginPortal.getDeveloperMode()) {
+                results.add("listSaved");
+            }
+
+
+            return StringUtil.copyPartialMatches(args[0], results, new ArrayList<>());
+
             // Removed Uninstall and Delete due to it being not very possible to do without doing a lot of magic.
 
         } else if (args.length == 2) {
@@ -26,7 +34,8 @@ public class PPMTab implements TabCompleter {
 
             switch (args[0].toLowerCase()) {
 
-                case "install": case "search":
+                case "install":
+                case "search":
                     for (OnlinePlugin plugin : PluginPortal.getPluginManager().getPlugins().values()) {
 
                         results.add(plugin.getDisplayName());
@@ -39,7 +48,8 @@ public class PPMTab implements TabCompleter {
 
                     return StringUtil.copyPartialMatches(args[1], results, new ArrayList<>());
 
-                case "uninstall": case "delete":
+                case "uninstall":
+                case "delete":
                     if (getPluginFolder().list() == null) return results;
                     for (String file : getPluginFolder().list()) {
                         if (file.endsWith(".jar")) {

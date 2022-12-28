@@ -2,7 +2,7 @@ name: PluginPortal
 version: '${version}'
 main: com.zestarr.pluginportal.PluginPortal
 api-version: 1.19
-authors: [ Zestarr, Thatonedevil, Revelcw ]
+authors: [ Zestarr, Stephen ]
 description: Plugin Package Manager
 commands:
   ppm:

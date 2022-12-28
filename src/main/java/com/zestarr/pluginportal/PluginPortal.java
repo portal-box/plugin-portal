@@ -1,11 +1,11 @@
 package com.zestarr.pluginportal;
 
-import co.aikar.commands.PaperCommandManager;
 import com.zestarr.pluginportal.commands.PPMTab;
-import com.zestarr.pluginportal.commands.PPMTestingCommand;
+import com.zestarr.pluginportal.commands.PPMCommand;
 import com.zestarr.pluginportal.managers.DataManager;
 import com.zestarr.pluginportal.managers.PluginManager;
 import com.zestarr.pluginportal.utils.ConfigUtils;
+import com.zestarr.pluginportal.utils.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,8 +25,6 @@ public final class PluginPortal extends JavaPlugin {
     public void onEnable() {
         pluginManager = new PluginManager();
 
-
-
         try {
             ConfigUtils.getPluginListFile().createNewFile();
             pluginManager.loadPluginList();
@@ -44,15 +42,14 @@ public final class PluginPortal extends JavaPlugin {
 
         // Register Testing Command
 
-        getCommand("ppm").setExecutor(new PPMTestingCommand());
+        getCommand("ppm").setExecutor(new PPMCommand());
         getCommand("ppm").setTabCompleter(new PPMTab());
     }
 
     @Override
     public void onDisable() {
-        dataManager.saveData();
+        JsonUtils.saveData(dataManager.getInstalledPlugins(), ConfigUtils.createPluginDataFile().getAbsolutePath());
     }
-
 
     public static PluginManager getPluginManager() {
         return pluginManager;

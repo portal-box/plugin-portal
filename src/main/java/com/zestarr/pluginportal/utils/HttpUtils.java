@@ -1,6 +1,5 @@
 package com.zestarr.pluginportal.utils;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.google.gson.JsonObject;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
@@ -82,8 +81,9 @@ public class HttpUtils {
                 }
             }
 
+            localPlugin.setInstalled(true);
             PluginPortal.getDataManager().getInstalledPlugins().put(localPlugin.getOnlinePlugin().getDisplayName(), localPlugin);
-
+            JsonUtils.saveData(PluginPortal.getDataManager().getInstalledPlugins(), ConfigUtils.createPluginDataFile().getPath());
 
         } catch (IOException e) {
             e.printStackTrace();

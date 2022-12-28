@@ -23,4 +23,17 @@ public class ConfigUtils {
         return YamlConfiguration.loadConfiguration(getPluginListFile());
     }
 
+    public static File createPluginDataFile() {
+        File file = new File("PluginData.json");
+        try {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+
+        return file;
+    }
+
 }

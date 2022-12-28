@@ -26,6 +26,7 @@ public class PluginManager {
             plugin.setDownloadLink(config.getString("Plugins." + str + ".downloadLink"));
             plugin.setVersion(config.getString("Plugins." + str + ".version"));
             plugin.setSha256(config.getString("Plugins." + str + ".sha256"));
+            plugin.setDownloadCount(config.getLong("Plugins." + str + ".downloadCount"));
 
             if (plugin.getDefaultFileName() == null) {
                 plugin.setDefaultFileName(plugin.getDisplayName() + (plugin.getVersion() == null ? "" : "-" + plugin.getVersion()));
@@ -43,7 +44,7 @@ public class PluginManager {
     }
 
     public Boolean isPluginUpToDate(LocalPlugin plugin) {
-        if (plugin.getIsInstalled()) {
+        if (plugin.isInstalled()) {
             if (plugin.getOnlinePlugin().getVersion().equals(PluginPortal.getPluginManager().getPlugins().get(plugin.getOnlinePlugin().getDisplayName()).getVersion())) {
                 return true;
             }
@@ -55,7 +56,7 @@ public class PluginManager {
     public void updatePlugin(LocalPlugin plugin) throws IOException {
         if (!isPluginUpToDate(plugin)) {
             plugin.getFile().delete();
-            plugin.setIsInstalled(false);
+            plugin.setInstalled(false);
             HttpUtils.downloadUniversalPlugin(plugin.getOnlinePlugin());
         }
     }

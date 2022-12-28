@@ -1,20 +1,21 @@
 package com.zestarr.pluginportal.commands;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
 import com.zestarr.pluginportal.utils.ConfigUtils;
 import com.zestarr.pluginportal.utils.HttpUtils;
+import com.zestarr.pluginportal.utils.JsonUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Map;
 
 import static com.zestarr.pluginportal.PluginPortal.getDataManager;
@@ -22,7 +23,7 @@ import static com.zestarr.pluginportal.PluginPortal.getPluginManager;
 import static com.zestarr.pluginportal.utils.ChatUtils.format;
 import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginFolder;
 
-public class PPMTestingCommand implements CommandExecutor {
+public class PPMCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -72,7 +73,8 @@ public class PPMTestingCommand implements CommandExecutor {
                     File file = new File(getPluginFolder(), args[1] + ".jar");
                     file.delete();
                     sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Plugin has been uninstalled!"));
-                    getDataManager().savePluginToFile(getPluginManager().getPlugins().get(args[1]), false);
+                    PluginPortal.getDataManager().getInstalledPlugins().get(args[1]).setInstalled(false);
+                    JsonUtils.saveData(PluginPortal.getDataManager().getInstalledPlugins(), ConfigUtils.createPluginDataFile().getAbsolutePath());
 
                 } else if (new File(getPluginFolder(), args[1] + ".jar").exists()) {
                     File file = new File(getPluginFolder(), args[1] + ".jar");
@@ -86,7 +88,7 @@ public class PPMTestingCommand implements CommandExecutor {
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Plugin List: "));
 
                 for (LocalPlugin plugin : PluginPortal.getDataManager().getInstalledPlugins().values()) {
-                    sender.sendMessage(format(plugin.getIsInstalled() ? "&c- &7PluginName &7(&aInstalled&7)" : "&a+ &7PluginName &7(&cUninstalled&7)").replace("PluginName", plugin.getOnlinePlugin().getDisplayName()));
+                    sender.sendMessage(format(plugin.isInstalled() ? "&c- &7PluginName &7(&aInstalled&7)" : "&a+ &7PluginName &7(&cUninstalled&7)").replace("PluginName", plugin.getOnlinePlugin().getDisplayName()));
                 }
             } else if (args[0].equalsIgnoreCase("update")) {
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cThis Feature may not work correctly."));
@@ -112,6 +114,13 @@ public class PPMTestingCommand implements CommandExecutor {
             } else if (args[0].equalsIgnoreCase("debug")) {
                 PluginPortal.setDeveloperMode(!PluginPortal.getDeveloperMode());
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Debug Mode: " + (PluginPortal.getDeveloperMode() ? "&aEnabled" : "&cDisabled")));
+            } else if (args[0].equalsIgnoreCase("listsaved")) {
+
+                if (JsonUtils.loadData(ConfigUtils.createPluginDataFile().getAbsolutePath()) == null) return true;
+                for (LocalPlugin plugin : JsonUtils.loadData(ConfigUtils.createPluginDataFile().getAbsolutePath()).values()) {
+
+                }
+
             } else {
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &l&cUsage: /ppm <arg> <plugin>"));
             }
@@ -121,5 +130,6 @@ public class PPMTestingCommand implements CommandExecutor {
         }
 
         return false;
+
     }
 }

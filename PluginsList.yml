@@ -3,7 +3,8 @@ Plugins:
     description: EssentialsX is a plugin that provides a wide range of useful commands and features.
     downloadLink: https://github.com/EssentialsX/Essentials/releases/download/2.19.7/EssentialsX-2.19.7.jar
     version: 2.19.7
-    sha256: B551BC94B616646BC7057B4CDF666164FA7C4EB9C58BF509834DDF60967DD4DE
+    sha256:
+    downloadCount:
     recommended: [ Vault ]
     dependencies: [ ]
 
@@ -11,7 +12,8 @@ Plugins:
     description: PluginManager is a plugin that allows you to manage your plugins (Reload them).
     downloadLink: https://github.com/Lenni0451/SpigotPluginManager/releases/download/2.7.2/PluginManager.jar
     version: 2.7.2
-    sha256: none
+    sha256:
+    downloadCount: none
     recommended: [ ]
     dependencies: [ ]
 
@@ -20,7 +22,8 @@ Plugins:
     description: Multiverse was created at the dawn of Bukkit multiworld support.
     downloadLink: https://www.spigotmc.org/resources/multiverse-core.390/
     version: 4.3.1
-    sha256: 38C8B6A6AA168AE6A09CC0C9F77115EA975768410BC107C4CE0B32DE1BEBC787
+    sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -29,7 +32,8 @@ Plugins:
     description: ProtocolLib is a library that allows read and write access to the Minecraft protocol.
     downloadLink: https://github.com/dmulloy2/ProtocolLib/releases/download/4.8.0/ProtocolLib.jar
     version: 4.8.0
-    sha256: 95D73B881B5184BBC9629B8B1A6828F0996B754BCAA37197F2D478031CCE1683
+    sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -39,6 +43,7 @@ Plugins:
     downloadLink: https://github.com/ViaVersion/ViaVersion/releases/download/4.5.1/ViaVersion-4.5.1.jar
     version: 4.5.1
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -48,6 +53,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/viarewind.52109/
     version: 2.0.2
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -57,6 +63,7 @@ Plugins:
     downloadLink: https://github.com/ViaVersion/ViaBackwards/releases/download/4.5.1/ViaBackwards-4.5.1.jar
     version: 4.5.1
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -66,6 +73,7 @@ Plugins:
     downloadLink: https://ci.lucko.me/job/spark/359/artifact/spark-bukkit/build/libs/spark-1.10.17-bukkit.jar
     version: 1.10.17
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -74,6 +82,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/vault.34315/
     version: 1.7.3
     sha256:
+    downloadCount:
     dependencies: [ ]
     recommended: [ EssentialsX, WorldGuard, LuckPerms ]
 
@@ -82,6 +91,7 @@ Plugins:
     downloadLink:
     version:
     sha256:
+    downloadCount:
     dependencies: [ WorldEdit ]
     recommended: [ ]
 
@@ -90,6 +100,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/luckperms.28140/
     version: 5.4.40
     sha256:
+    downloadCount:
     dependencies: [ ]
     recommended: [ EssentialsX, Vault ]
 
@@ -98,39 +109,42 @@ Plugins:
     downloadLink: https://github.com/IntellectualSites/FastAsyncWorldEdit/releases/download/2.5.0/FastAsyncWorldEdit-Bukkit-2.5.0.jar
     version: 2.5.0
     sha256:
+    downloadCount:
     dependencies: [ WorldEdit ]
     recommended: [ ]
-
-#  WorldEdit:
-#  WorldEdit:
-#    description: WorldEdit is a plugin that allows players to easily build, change, and remove blocks in the game world.
-#    downloadLink:
-#    version:
-#    sha256:
-#    dependencies: [ Vault ]
-#    recommended: [ WorldGuard ]
-
-#  CommandNPC:
-#    description: CommandNPC is a plugin that allows servers to create NPCs that execute commands when interacted with.
-#    downloadLink:
-#    version:
-#    sha256:
-#    dependencies: [ Vault ]
-#    recommended: [ ]
+  
+  #  WorldEdit:
+  #  WorldEdit:
+  #    description: WorldEdit is a plugin that allows players to easily build, change, and remove blocks in the game world.
+  #    downloadLink:
+  #    version:
+  #    sha256: downloadCount:
+  #    dependencies: [ Vault ]
+  #    recommended: [ WorldGuard ]
+  
+  #  CommandNPC:
+  #    description: CommandNPC is a plugin that allows servers to create NPCs that execute commands when interacted with.
+  #    downloadLink:
+  #    version:
+  #    sha256: downloadCount:
+  #    dependencies: [ Vault ]
+  #    recommended: [ ]
 
   MobArena:
     description: MobArena is a plugin that allows servers to set up arenas where players can fight waves of mobs.
     downloadLink: https://www.spigotmc.org/resources/mobarena.34110/
     version: 0.107
     sha256:
+    downloadCount:
     dependencies: [ ]
-    recommended: [ Vault]
+    recommended: [ Vault ]
 
   Citizens:
     description: Citizens is a plugin that allows servers to create NPCs that can be interacted with by players.
     downloadLink: https://ci.citizensnpcs.co/job/Citizens2/lastSuccessfulBuild/artifact/dist/target/Citizens-2.0.30-b2838.jar
     version: 2.0.30
     sha256:
+    downloadCount:
     dependencies: [ ProtocolLib ]
     recommended: [ Vault ]
 
@@ -139,6 +153,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/clearlagg.68271/
     version: v3.2.2
     sha256:
+    downloadCount:
     dependencies: [ ]
     recommended: [ ]
 
@@ -147,6 +162,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/plotme-official.2131/
     version: 0.16.3
     sha256:
+    downloadCount:
     dependencies: [ Vault ]
     recommended: [ ]
 
@@ -155,6 +171,7 @@ Plugins:
     downloadLink: https://github.com/MyPetORG/MyPet/releases/download/3.12-SNAPSHOT-B1730/MyPet-3.12-SNAPSHOT-B1730.jar
     version: 3.12
     sha256:
+    downloadCount:
     dependencies: [ Vault ]
     recommended: [ ]
 
@@ -163,6 +180,7 @@ Plugins:
     downloadLink: https://ci.codemc.io/job/filoghost/job/HolographicDisplays/lastSuccessfulBuild/artifact/HolographicDisplays-3.0.1-SNAPSHOT.jar
     version: 3.0.1
     sha256:
+    downloadCount:
     dependencies: [ ]
     recommended: [ ]
 
@@ -171,6 +189,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/bettersleeping.60837/
     version:
     sha256:
+    downloadCount:
     dependencies: [ ]
     recommended: [ ]
 
@@ -179,6 +198,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/groupmanager.38875/
     version:
     sha256:
+    downloadCount:
     dependencies: [ Vault ]
     recommended: [ ]
 
@@ -187,6 +207,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/colored-signs.31676/
     version:
     sha256:
+    downloadCount:
     dependencies: [ ]
     recommended: [ ]
 
@@ -195,7 +216,8 @@ Plugins:
     description: Skript is a plugin that allows you to create your own scripts.
     downloadLink: https://github.com/SkriptLang/Skript/releases/download/2.6.4/Skript-2.6.4.jar
     version: 2.6.4
-    sha256: 4102E1A3328CD67DA51E21B51646DADF1F10207F769EF86B859683C15BAD4B1Da
+    sha256:
+    downloadCount: 4102E1A3328CD67DA51E21B51646DADF1F10207F769EF86B859683C15BAD4B1Da
     dependencies: [ ]
     recommended: [ SkBee, Skript-Reflect ]
 
@@ -213,6 +235,7 @@ Plugins:
     downloadLink: https://github.com/APickledWalrus/skript-gui/releases/download/1.3/skript-gui-1.3.jar
     version: 1.3
     sha256:
+    downloadCount:
     dependencies: [ Skript ]
     recommended: [ ]
 
@@ -221,7 +244,8 @@ Plugins:
     description:
     downloadLink: https://www.spigotmc.org/resources/skript-reflect.82259/
     version: 2.6.1
-    sha256: D9E6F45C2D16A146A65230D179AD5624BE06BB5FCCAE1C40FA281D125DD68CD8
+    sha256:
+    downloadCount: D9E6F45C2D16A146A65230D179AD5624BE06BB5FCCAE1C40FA281D125DD68CD8
     dependencies: [ Skript ]
     recommended: [ ]
 
@@ -239,7 +263,7 @@ Plugins:
     dependencies: [ Vault ]
     recommended: [ ]
 
-  ChatControl:
+  ChatColor:
     description: ChatControl is a plugin that allows servers to customize the chat format and add various features such as chat filtering and logging.
     downloadLink: https://www.spigotmc.org/resources/chatcolor.22692/
     version:
@@ -262,6 +286,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -270,6 +295,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/13
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -278,6 +304,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -286,6 +313,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -294,6 +322,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/61
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -302,6 +331,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/64
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -310,6 +340,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/75
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -318,6 +349,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/79
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -326,6 +358,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/81
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -334,6 +367,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/167
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -342,6 +376,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/222
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -350,14 +385,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/241
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  ChatControl™-TheUltimateChatPlugin[500,000+Downloads][1.2.5-1.16.4]:
+  ChatControl:
     description:
     downloadLink: https://www.spigotmc.org/resources/271
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -366,6 +403,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/279
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -374,6 +412,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/372
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -382,6 +421,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/444
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -390,6 +430,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/485
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -398,6 +439,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/571
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -406,6 +448,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/581
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -414,6 +457,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/590
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -422,6 +466,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/771
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -430,6 +475,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/820
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -438,14 +484,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/845
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  (FREE)CrateReloaded-MysteryCrate[1.8-1.19.X]:
+  CrateReloaded-MysteryCrate[1.8-1.19.X]:
     description:
     downloadLink: https://www.spigotmc.org/resources/861
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -454,6 +502,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1007
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -462,6 +511,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1091
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -470,6 +520,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1157
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -478,6 +529,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1166
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -486,6 +538,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1177
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -494,6 +547,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1184
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -502,6 +556,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1203
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -510,6 +565,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1220
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -518,6 +574,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1223
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -526,6 +583,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1315
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -534,6 +592,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1320
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -542,6 +601,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1325
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -550,6 +610,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1331
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -558,6 +619,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1546
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -566,6 +628,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1583
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -574,6 +637,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1680
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -582,6 +646,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1879
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -590,6 +655,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/1898
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -598,6 +664,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2117
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -606,6 +673,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2156
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -614,6 +682,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2162
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -622,6 +691,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2209
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -630,6 +700,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2214
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -638,6 +709,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2216
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -646,6 +718,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2237
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -654,6 +727,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2250
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -662,6 +736,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2451
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -670,6 +745,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2470
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -678,6 +754,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2474
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -686,6 +763,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2548
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -694,6 +772,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2561
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -702,6 +781,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2661
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -710,6 +790,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2697
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -718,6 +799,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2754
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -726,6 +808,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2757
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -734,6 +817,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2786
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -742,6 +826,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2815
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -750,6 +835,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2983
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -758,6 +844,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/2991
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -766,6 +853,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3005
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -774,6 +862,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3031
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -782,6 +871,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3054
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -790,6 +880,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3082
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -798,6 +889,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3200
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -806,6 +898,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3239
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -814,6 +907,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3268
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -822,6 +916,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3316
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -830,6 +925,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3582
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -838,6 +934,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3709
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -846,6 +943,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3711
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -854,6 +952,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3748
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -862,6 +961,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3789
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -870,6 +970,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3796
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -878,6 +979,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3820
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -886,6 +988,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/3836
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -894,6 +997,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4216
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -902,6 +1006,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4341
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -910,6 +1015,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4390
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -918,6 +1024,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4510
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -926,6 +1033,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4621
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -934,6 +1042,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4690
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -942,6 +1051,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4775
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -950,6 +1060,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4822
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -958,6 +1069,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4823
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -966,6 +1078,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4824
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -974,6 +1087,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4846
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -982,6 +1096,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/4924
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -990,6 +1105,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5018
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -998,6 +1114,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5084
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1006,6 +1123,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5147
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1014,6 +1132,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5280
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1022,6 +1141,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5357
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1030,6 +1150,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5408
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1038,6 +1159,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5447
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1046,6 +1168,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5509
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1054,6 +1177,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5747
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1062,6 +1186,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5759
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1070,6 +1195,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/5773
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1078,6 +1204,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6006
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1086,6 +1213,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6129
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1094,6 +1222,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6135
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1102,6 +1231,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6207
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1110,6 +1240,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6245
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1118,6 +1249,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6262
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1126,6 +1258,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6483
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1134,6 +1267,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6531
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1142,6 +1276,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6563
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1150,6 +1285,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6583
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1158,6 +1294,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/6886
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1166,6 +1303,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/7296
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1174,6 +1312,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/7320
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1182,6 +1321,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/7339
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1190,6 +1330,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/7576
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1198,6 +1339,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/7674
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1206,6 +1348,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/7688
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1214,6 +1357,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/7811
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1222,6 +1366,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8185
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1230,6 +1375,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8390
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1238,6 +1384,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8541
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1246,6 +1393,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8610
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1254,6 +1402,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8695
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1262,6 +1411,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8775
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1270,6 +1420,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8846
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1278,6 +1429,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/8868
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1286,6 +1438,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9006
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1294,6 +1447,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9068
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1302,6 +1456,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9228
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1310,6 +1465,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9231
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1318,6 +1474,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9245
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1326,6 +1483,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9268
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1334,6 +1492,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9488
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1342,6 +1501,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9531
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1350,6 +1510,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9553
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1358,6 +1519,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/9721
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1366,6 +1528,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10058
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1374,6 +1537,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10079
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1382,6 +1546,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10096
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1390,6 +1555,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10147
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1398,6 +1564,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10512
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1406,6 +1573,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10543
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1414,6 +1582,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10545
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1422,6 +1591,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10616
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1430,6 +1600,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10885
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1438,6 +1609,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10905
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1446,6 +1618,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10930
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1454,6 +1627,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/10997
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1462,6 +1636,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11182
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1470,6 +1645,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11334
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1478,6 +1654,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11431
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1486,6 +1663,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11440
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1494,6 +1672,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11443
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1502,6 +1681,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11626
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1510,6 +1690,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11653
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1518,6 +1699,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11734
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1526,6 +1708,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11736
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1534,6 +1717,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11780
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1542,22 +1726,25 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/11816
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
   Spawners:
-   description:
-   downloadLink: https://www.spigotmc.org/resources/11845
-   version:
-   sha256:
-   recommended: [ ]
-   dependencies: [ ]
+    description:
+    downloadLink: https://www.spigotmc.org/resources/11845
+    version:
+    sha256:
+    downloadCount:
+    recommended: [ ]
+    dependencies: [ ]
 
   MineSecureLite-AntiHackSystem[Aimbot,BowAimbot...]BungeeCordSupport:
     description:
     downloadLink: https://www.spigotmc.org/resources/11996
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1566,6 +1753,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12234
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1574,6 +1762,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12248
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1582,6 +1771,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12528
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1590,6 +1780,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12592
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1598,6 +1789,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12696
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1606,6 +1798,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12773
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1614,6 +1807,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12803
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1622,6 +1816,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12936
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1630,6 +1825,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12948
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1638,6 +1834,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/12965
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1646,6 +1843,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/13527
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1654,6 +1852,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/13571
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1662,6 +1861,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/13679
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1670,6 +1870,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/13730
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1678,6 +1879,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/13863
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1686,6 +1888,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/13885
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1694,6 +1897,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/14108
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1702,6 +1906,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/14153
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1710,6 +1915,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/14412
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1718,6 +1924,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/14706
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1726,6 +1933,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/14733
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1734,6 +1942,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/14828
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1742,6 +1951,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15057
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1750,6 +1960,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15151
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1758,6 +1969,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15160
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1766,6 +1978,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15165
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1774,6 +1987,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15230
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1782,6 +1996,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15358
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1790,6 +2005,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15596
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1798,6 +2014,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15803
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1806,6 +2023,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15841
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1814,6 +2032,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/15964
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1822,6 +2041,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/16220
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1830,6 +2050,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/16354
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1838,6 +2059,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/16525
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1846,6 +2068,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/16584
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1854,6 +2077,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/16637
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1862,6 +2086,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/16708
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1870,6 +2095,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/16863
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1878,6 +2104,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/17129
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1886,6 +2113,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/17192
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1894,6 +2122,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/17311
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1902,6 +2131,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/17659
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1910,6 +2140,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/17706
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1918,6 +2149,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/17933
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1926,6 +2158,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18083
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1934,6 +2167,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18410
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1942,6 +2176,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18413
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1950,6 +2185,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18431
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1958,6 +2194,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18461
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1966,6 +2203,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18498
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1974,6 +2212,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18540
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1982,6 +2221,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18614
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1990,6 +2230,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18705
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -1998,6 +2239,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/18998
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2006,6 +2248,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19064
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2014,6 +2257,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19133
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2022,6 +2266,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19273
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2030,6 +2275,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19286
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2038,6 +2284,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19287
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2046,6 +2293,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19303
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2054,6 +2302,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19362
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2062,6 +2311,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19451
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2070,6 +2320,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19510
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2078,6 +2329,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19630
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2086,6 +2338,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19653
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2094,6 +2347,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19655
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2102,6 +2356,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19669
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2110,6 +2365,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/19852
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2118,6 +2374,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20111
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2126,6 +2383,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20171
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2134,6 +2392,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20173
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2142,6 +2401,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20385
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2150,6 +2410,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20400
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2158,6 +2419,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20427
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2166,6 +2428,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20544
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2174,6 +2437,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20545
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2182,6 +2446,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20667
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2190,6 +2455,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20807
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2198,6 +2464,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20848
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2206,6 +2473,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/20924
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2214,6 +2482,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21039
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2222,6 +2491,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21330
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2230,6 +2500,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21348
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2238,6 +2509,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21469
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2246,6 +2518,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21532
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2254,6 +2527,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21628
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2262,6 +2536,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21681
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2270,6 +2545,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21692
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2278,6 +2554,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21750
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2286,6 +2563,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/21905
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2294,6 +2572,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22017
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2302,6 +2581,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22137
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2310,6 +2590,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22272
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2318,6 +2599,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22295
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2326,6 +2608,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22304
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2334,6 +2617,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22371
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2342,6 +2626,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22434
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2350,6 +2635,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22450
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2358,6 +2644,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22484
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2366,22 +2653,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22690
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  ChatColor:
-    description:
-    downloadLink: https://www.spigotmc.org/resources/22692
-    version:
-    sha256:
-    recommended: [ ]
-    dependencies: [ ]
-
-  NTAC-AdvancedNoCheatPluspatchwork[Spigot1.9]:
+  NTAC-AdvancedNoCheatPluspatchwork:
     description:
     downloadLink: https://www.spigotmc.org/resources/22746
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2390,14 +2671,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22779
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  RandomTeleport(wilderness)[1.17]-AMUSTFORFACTIONSANDSURVIVALSERVERS:
+  RandomTeleport(wilderness):
     description:
     downloadLink: https://www.spigotmc.org/resources/22835
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2406,14 +2689,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/22854
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  RealScoreboard(1.13to1.19.3):
+  RealScoreboard:
     description:
     downloadLink: https://www.spigotmc.org/resources/22928
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2422,6 +2707,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/23177
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2430,6 +2716,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/23243
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2438,14 +2725,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/23307
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  MobHeads(MobHunting)[Java8]:
+  MobHeads(MobHunting):
     description:
     downloadLink: https://www.spigotmc.org/resources/23423
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2454,14 +2743,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/23685
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  Quests[1.8-1.19]|Setupgoalsforplayers:
+  Quests[1.8-1.19]:
     description:
     downloadLink: https://www.spigotmc.org/resources/23696
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2470,6 +2761,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/23844
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2478,6 +2770,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/23852
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2486,6 +2779,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/24148
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2494,6 +2788,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/24419
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2502,6 +2797,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/25136
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2510,6 +2806,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/25310
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2518,6 +2815,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/25470
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2526,6 +2824,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/25524
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2534,6 +2833,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/25772
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2542,6 +2842,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/25773
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2550,14 +2851,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26009
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  NickAPI|AdvancedNickAPI|1.8-1.19:
+  NickAPI:
     description:
     downloadLink: https://www.spigotmc.org/resources/26013
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2566,14 +2869,16 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26016
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
-  MultiChat(FULLRGBCOLOURSUPPORT):
+  MultiChat:
     description:
     downloadLink: https://www.spigotmc.org/resources/26204
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2582,6 +2887,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26467
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2590,6 +2896,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26563
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2598,6 +2905,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26585
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2606,6 +2914,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26610
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2614,6 +2923,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26630
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2622,6 +2932,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/26905
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2630,6 +2941,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/27053
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2638,6 +2950,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/27156
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2646,6 +2959,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/27441
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2654,6 +2968,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/27454
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2662,6 +2977,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/27637
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2670,6 +2986,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/27903
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2678,6 +2995,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/28236
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2686,6 +3004,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/28285
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2694,6 +3013,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/28444
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2702,6 +3022,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/28683
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2710,6 +3031,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/28788
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2718,6 +3040,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/28830
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2726,6 +3049,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/28934
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2734,6 +3058,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/29057
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2742,6 +3067,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/29477
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2750,6 +3076,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/29552
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2758,6 +3085,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/29595
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2766,6 +3094,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/29805
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2774,6 +3103,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/29875
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2782,6 +3112,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/29999
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2790,6 +3121,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/30008
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2798,6 +3130,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/30167
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2806,6 +3139,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/30224
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2814,6 +3148,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/30348
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2822,6 +3157,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/30608
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2830,6 +3166,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/30624
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2838,6 +3175,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/31056
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2846,6 +3184,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/31549
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2854,6 +3193,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/31569
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2862,6 +3202,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/31585
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2870,6 +3211,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/31861
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2878,6 +3220,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/31966
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2886,6 +3229,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/32043
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2894,6 +3238,7 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/32129
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]
 
@@ -2902,5 +3247,6 @@ Plugins:
     downloadLink: https://www.spigotmc.org/resources/32206
     version:
     sha256:
+    downloadCount:
     recommended: [ ]
     dependencies: [ ]

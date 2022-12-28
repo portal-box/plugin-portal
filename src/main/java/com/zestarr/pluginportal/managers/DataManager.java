@@ -2,6 +2,7 @@ package com.zestarr.pluginportal.managers;
 
 import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
+import com.zestarr.pluginportal.utils.ConfigUtils;
 import com.zestarr.pluginportal.utils.JsonUtils;
 
 import java.io.*;
@@ -10,19 +11,10 @@ import java.util.Map;
 
 public class DataManager {
 
-    private static final HashMap<String, LocalPlugin> downloadedPlugins = new HashMap<>();
+    private static final Map<String, LocalPlugin> downloadedPlugins = new HashMap<>();
 
     public void setupData() throws IOException {
-        createPluginDataFile();
-        try {
-            for (LocalPlugin plugin : JsonUtils.readMapFromJson(createPluginDataFile()).values()) {
-                downloadedPlugins.put(plugin.getOnlinePlugin().getDisplayName(), plugin);
-                System.out.println(" - Loaded plugin: " + plugin.getOnlinePlugin().getDisplayName());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        JsonUtils.loadData(ConfigUtils.createPluginDataFile().getAbsolutePath());
     }
 
     public File createPluginDataFile() {
@@ -46,22 +38,4 @@ public class DataManager {
         return downloadedPlugins;
     }
 
-    public void savePluginToFile(OnlinePlugin plugin, Boolean wasThisInstalled) {
-        downloadedPlugins.put(plugin.getDisplayName(), new LocalPlugin(plugin));
-        downloadedPlugins.get(plugin.getDisplayName()).setIsInstalled(true);
-
-        try {
-            JsonUtils.writeMapToJson(downloadedPlugins, createPluginDataFile());
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-    }
-
-    public void saveData() {
-        try {
-            JsonUtils.writeMapToJson(downloadedPlugins, createPluginDataFile());
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-    }
 }
