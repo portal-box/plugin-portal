@@ -44,6 +44,7 @@ public class LocalPluginManager implements Listener {
 
     public boolean isInstalled(String spigotName) { return localPlugins.containsKey(spigotName); }
     public boolean isLatestVersion(String spigotName, String latestVersion) { return localPlugins.get(spigotName).matchesVersion(latestVersion); }
+    public HashMap<String, LocalPlugin> getPlugins() { return localPlugins; }
 
     public void add(LocalPlugin localPlugin) {
         localPlugins.put(localPlugin.getSpigotName(), localPlugin);
