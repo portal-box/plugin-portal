@@ -11,8 +11,10 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class PPMCommand implements CommandExecutor, TabCompleter {
@@ -59,6 +61,16 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 });
                 break;
             case "uninstall":
+
+                HashMap<String, LocalPlugin> plugins = portal.getLocalPluginManager().getPlugins();
+                if (plugins.containsKey(args[1])) {
+                    LocalPlugin plugin = plugins.get(args[1]);
+                    Bukkit.getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin(plugin.getServerName()));
+                    new File("plugins", plugin.getServerName() + ".jar").delete();
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " has been uninstalled."));
+                } else {
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " is not installed, or was installed using third-party means."));
+                }
 
                 break;
             case "update":
@@ -157,15 +169,15 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "search"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "search", "uninstall"), new ArrayList<>());
         } else if (args.length == 2) {
             switch (args[0].toLowerCase()) {
                 case "preview":
                 case "install":
                     return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
                 case "uninstall":
-
-                    break;
+                    ArrayList<String> plugins = new ArrayList<>();
+                    return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getPlugins().keySet(), new ArrayList<>());
                 case "update":
                     return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getAllNames(), new ArrayList<>());
             }
