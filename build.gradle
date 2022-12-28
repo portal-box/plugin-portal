@@ -26,7 +26,7 @@ compileJava {
 }
 
 dependencies {
-    compileOnly('org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT')
+    compileOnly('org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT')
 
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
@@ -34,9 +34,6 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-
-    compileOnly "org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT"
-    implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
 
     implementation 'com.squareup.moshi:moshi:1.14.0'
 
