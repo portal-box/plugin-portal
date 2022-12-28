@@ -2,6 +2,7 @@ package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.type.LocalPlugin;
+import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class PPMCommand implements CommandExecutor, TabCompleter {
 
-    private PluginPortal portal;
+    private final PluginPortal portal;
 
     public PPMCommand(PluginPortal portal) {
         this.portal = portal;
@@ -34,6 +35,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
         }
 
         String spigotName = args[1];
+        int id = portal.getMarketplaceManager().getId(spigotName);
         if (!portal.getMarketplaceManager().getAllNames().contains(spigotName)) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere is no plugin with this name. Use tab complete to find all usable plugins."));
             return false;
@@ -49,6 +51,11 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                     return false;
                 }
 
+                if (new PreviewingPlugin(id).isPremium()) {
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThis plugin is premium. Please purchase it on spigotmc.org to install it."));
+                    return false;
+                }
+
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cStarting to download " + spigotName + "..."));
 
                 Bukkit.getScheduler().runTaskAsynchronously(portal, () -> {
@@ -61,15 +68,18 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 });
                 break;
             case "uninstall":
-
-                HashMap<String, LocalPlugin> plugins = portal.getLocalPluginManager().getPlugins();
-                if (plugins.containsKey(args[1])) {
-                    LocalPlugin plugin = plugins.get(args[1]);
-                    Bukkit.getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin(plugin.getServerName()));
-                    new File("plugins", plugin.getServerName() + ".jar").delete();
-                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " has been uninstalled."));
-                } else {
-                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " is not installed, or was installed using third-party means."));
+                try {
+                    HashMap<String, LocalPlugin> plugins = portal.getLocalPluginManager().getPlugins();
+                    if (plugins.containsKey(args[1])) {
+                        LocalPlugin plugin = plugins.get(args[1]);
+                        Bukkit.getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin(plugin.getServerName()));
+                        new File("plugins", plugin.getServerName() + ".jar").delete();
+                        sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " has been uninstalled."));
+                    } else {
+                        sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " is not installed, or was installed using third-party means."));
+                    }
+                } catch (Exception exception) {
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error uninstalling " + args[1] + "."));
                 }
 
                 break;
@@ -181,7 +191,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 case "update":
                     return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getAllNames(), new ArrayList<>());
             }
-        } else if (args.length == 3 && args[0].equalsIgnoreCase("install"))  {
+        } else if (args.length == 3 && args[0].equalsIgnoreCase("install")) {
             return StringUtil.copyPartialMatches(args[2], Arrays.asList("-f", "--force"), new ArrayList<>());
         }
 
