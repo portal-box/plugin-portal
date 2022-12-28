@@ -2,12 +2,16 @@ package com.zestarr.pluginportal.managers;
 
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.type.LocalPlugin;
+import com.zestarr.pluginportal.utils.SpigetUtil;
 import org.bukkit.Bukkit;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
+import java.util.Map;
 
 public class DownloadManager {
 
@@ -31,11 +35,7 @@ public class DownloadManager {
         try {
 
             URLConnection connection = url.openConnection();
-
-            // Set the user agent to "Java" to identify the download as coming from a Java application
             connection.setRequestProperty("User-Agent", USER_AGENT);
-
-            // Get the "Content-Disposition" header field
             String contentDisposition = connection.getHeaderField("Content-Disposition");
 
             // Extract the default file name from the "Content-Disposition" header field
@@ -77,7 +77,7 @@ public class DownloadManager {
             inputStream.close();
             outputStream.close();
 
-            LocalPlugin localPlugin = new LocalPlugin(id, spigotName, "", THIS DOES NOT EXIST <--- NEED LATEEST VERSION STRING);
+            LocalPlugin localPlugin = new LocalPlugin(id, spigotName, "", SpigetUtil.getLatestVersion(id));
             portal.getLocalPluginManager().add(localPlugin);
             return localPlugin;
         } catch (IOException e) {

@@ -1,23 +1,22 @@
 package com.zestarr.pluginportal.commands;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.CharStreams;
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.utils.HttpUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
-import static com.zestarr.pluginportal.utils.ChatUtils.format;
+import static com.zestarr.pluginportal.utils.ChatUtil.format;
 
 public class DebugCommand implements CommandExecutor {
+
+    private final PluginPortal plugin;
+
+    public DebugCommand(PluginPortal plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
@@ -28,7 +27,7 @@ public class DebugCommand implements CommandExecutor {
 
         if (args.length >= 1) {
             if (args[0].equalsIgnoreCase("download")) {
-                if (args[1] == null || PluginPortal.getPluginManager().getPlugins().get(args[1]) == null) {
+                if (args[1] == null || plugin.getPluginManager().getPlugins().get(args[1]) == null) {
                     sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cPlease specify a plugin to download!"));
                     return true;
                 } else {
