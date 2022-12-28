@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.zestarr.pluginportal.utils.ChatUtils.format;
-
 public class PPMCommand implements CommandExecutor, TabCompleter {
 
     private PluginPortal portal;

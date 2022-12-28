@@ -1,7 +1,9 @@
 package com.zestarr.pluginportal.type;
 
+import lombok.Data;
 import org.bukkit.Bukkit;
 
+@Data
 public class LocalPlugin {
 
     private int id;
@@ -14,10 +16,6 @@ public class LocalPlugin {
         this.version = version;
     }
 
-    public int getId() { return id; }
-    public String getSpigotName() { return spigotName; }
-    public String getServerName() { return serverName; }
-    public String getVersion() { return version; }
     public boolean isInstalled() { return Bukkit.getPluginManager().isPluginEnabled(serverName); }
     public boolean matchesVersion(String latestVersion) { return version.equals(latestVersion); }
 
