@@ -1,7 +1,7 @@
 name: PluginPortal
 version: '${version}'
 main: com.zestarr.pluginportal.PluginPortal
-api-version: 1.19
+api-version: 1.8
 authors: [ Zestarr, Stephen ]
 description: Plugin Package Manager
 commands:

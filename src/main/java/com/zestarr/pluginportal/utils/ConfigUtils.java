@@ -3,6 +3,7 @@ package com.zestarr.pluginportal.utils;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class ConfigUtils {
@@ -24,6 +25,10 @@ public class ConfigUtils {
         try {
             if (!file.exists()) {
                 file.createNewFile();
+                FileWriter writer = new FileWriter(file);
+                writer.write("{}");
+                writer.flush();
+                writer.close();
             }
         } catch (IOException exception) {
             exception.printStackTrace();
