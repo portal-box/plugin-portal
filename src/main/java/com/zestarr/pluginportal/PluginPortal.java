@@ -1,5 +1,6 @@
 package com.zestarr.pluginportal;
 
+import com.zestarr.pluginportal.commands.DebugCommand;
 import com.zestarr.pluginportal.commands.PPMCommand;
 import com.zestarr.pluginportal.commands.PPMTab;
 import com.zestarr.pluginportal.managers.DataManager;
@@ -14,6 +15,7 @@ public final class PluginPortal extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         pluginManager = new PluginManager();
         pluginManager.setup();
 
@@ -22,6 +24,8 @@ public final class PluginPortal extends JavaPlugin {
 
         getCommand("ppm").setExecutor(new PPMCommand());
         getCommand("ppm").setTabCompleter(new PPMTab());
+
+        getCommand("debug").setExecutor(new DebugCommand());
     }
 
     @Override

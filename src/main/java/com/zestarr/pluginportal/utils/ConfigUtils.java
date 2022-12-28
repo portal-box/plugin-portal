@@ -1,5 +1,7 @@
 package com.zestarr.pluginportal.utils;
 
+import com.zestarr.pluginportal.PluginPortal;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
