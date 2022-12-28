@@ -13,10 +13,6 @@ public class DataManager {
 
     public static final Map<String, LocalPlugin> downloadedPlugins = new HashMap<>();
 
-    public void setupData() throws IOException {
-        JsonUtils.loadData();
-    }
-
     public File createPluginDataFile() {
         File file = new File("PluginData.json");
         try {
@@ -31,7 +27,11 @@ public class DataManager {
     }
 
     public Boolean isPluginInstalled(OnlinePlugin plugin) {
-        return downloadedPlugins.get(plugin.getDisplayName()) != null;
+        if (downloadedPlugins.get(plugin.getDisplayName()) != null) {
+            return downloadedPlugins.get(plugin.getDisplayName()).isInstalled();
+        }
+        return false;
+
     }
 
     public Map<String, LocalPlugin> getInstalledPlugins() {

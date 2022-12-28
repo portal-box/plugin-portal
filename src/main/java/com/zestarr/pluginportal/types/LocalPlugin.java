@@ -8,8 +8,8 @@ import java.io.File;
 public class LocalPlugin {
 
     private OnlinePlugin onlinePlugin;
-    private boolean isInstalled = false; // Not inside PluginList.yml
-    private String filePath; // Not inside PluginList.yml
+    private boolean isInstalled = false; // Useless until we get uninstall/delete working
+    private String filePath;
 
     public LocalPlugin(OnlinePlugin onlinePlugin) {
         this.onlinePlugin = onlinePlugin;

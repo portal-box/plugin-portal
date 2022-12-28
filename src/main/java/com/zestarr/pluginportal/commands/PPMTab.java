@@ -18,13 +18,7 @@ public class PPMTab implements TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 1) {
-            List<String> results = new ArrayList<>(List.of("install", "update", "list", "search", "debug"));
-
-            if (PluginPortal.getDeveloperMode()) {
-                results.add("listSaved");
-            }
-
-
+            List<String> results = new ArrayList<>(List.of("install", "update", "list", "search"));
             return StringUtil.copyPartialMatches(args[0], results, new ArrayList<>());
 
             // Removed Uninstall and Delete due to it being not very possible to do without doing a lot of magic.
@@ -40,10 +34,6 @@ public class PPMTab implements TabCompleter {
 
                         results.add(plugin.getDisplayName());
 
-                    }
-
-                    if (PluginPortal.getDeveloperMode()) {
-                        results.add("*");
                     }
 
                     return StringUtil.copyPartialMatches(args[1], results, new ArrayList<>());
@@ -66,7 +56,14 @@ public class PPMTab implements TabCompleter {
 
                     return StringUtil.copyPartialMatches(args[1], results, new ArrayList<>());
             }
+        } else if (args.length == 3) {
+            if (args[0].equalsIgnoreCase("install")) {
+                List<String> results = new ArrayList<>(List.of("-f", "--force"));
+                return StringUtil.copyPartialMatches(args[2], results, new ArrayList<>());
+            }
         }
+
+
 
         return new ArrayList<>();
     }

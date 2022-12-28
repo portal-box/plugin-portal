@@ -11,10 +11,6 @@ public class ConfigUtils {
         return new File("plugins");
     }
 
-    public static File getDebugPluginFolder() {
-        return new File("plugins" + File.separator + "DebugPlugins");
-    }
-
     public static File getPluginListFile() {
         return new File("PluginPortalPlugins.yml");
     }

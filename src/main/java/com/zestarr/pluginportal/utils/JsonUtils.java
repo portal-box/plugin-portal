@@ -18,11 +18,9 @@ public class JsonUtils {
 
     public static void saveData() {
         try {
-            Moshi moshi = new Moshi.Builder()
-                    .build();
+            Moshi moshi = new Moshi.Builder().build();
             JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
             String json = jsonAdapater.toJson(PluginPortal.getDataManager().getInstalledPlugins());
-            System.out.println(json);
             BufferedWriter writer = new BufferedWriter(new FileWriter(PluginPortal.getDataManager().createPluginDataFile()));
             writer.write(json);
             writer.flush();
@@ -38,12 +36,11 @@ public class JsonUtils {
             Moshi moshi = new Moshi.Builder().build();
             JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
             BufferedReader reader = new BufferedReader(new FileReader(ConfigUtils.createPluginDataFile()));
-            String json = reader.readLine();
-            Map<String, LocalPlugin> map = jsonAdapater.fromJson(json);
-            System.out.println(map);
+            Map<String, LocalPlugin> map = jsonAdapater.fromJson(reader.readLine());
             if (!(map == null)) {
                 PluginPortal.getDataManager().getInstalledPlugins().putAll(map);
             }
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

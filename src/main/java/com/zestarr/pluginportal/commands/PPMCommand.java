@@ -32,33 +32,26 @@ public class PPMCommand implements CommandExecutor {
                 }
                 Map<String, OnlinePlugin> plugins = getPluginManager().getPlugins();
 
-                if (PluginPortal.getDeveloperMode() && args[1].equals("*")) {
-
-                    for (OnlinePlugin plugin : getPluginManager().getPlugins().values()) {
-                        File folder = new File(getPluginFolder() + File.separator + "DebugPlugins");
-                        folder.mkdirs();
-                        HttpUtils.downloadUniversalPlugin(plugin, folder);
-                        sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &aDownloading &b" + plugin.getDisplayName()));
-                    }
-                    return true;
-                }
-
                 if (plugins.get(args[1]) == null) {
                     sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin Not Found! &7Plugin List: "));
 
                     for (OnlinePlugin plugin : plugins.values()) {
-                        sender.sendMessage(ChatColor.GREEN + " + " + ChatColor.GRAY + plugin.getDisplayName());
+                        sender.sendMessage(format("&a + &7" + plugin.getDisplayName()));
                     }
 
                     return true;
                 } else {
 
                     if (PluginPortal.getDataManager().isPluginInstalled(PluginPortal.getPluginManager().getPlugins().get(args[1]))) {
-                        sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin already downloaded"));
+                        if (args.length == 3 && args[2].equalsIgnoreCase("-f")) {
+                            sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin already downloaded, but forcing install..."));
+                            HttpUtils.downloadUniversalPlugin(getPluginManager().getPlugins().get(args[1]));
+                            sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Plugin has been downloaded!"));
+                        }
+                        sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin already installed! &7Use &c/ppm install " + args[1] + " -f &7to force install!"));
                         return true;
                     } else {
                         HttpUtils.downloadUniversalPlugin(getPluginManager().getPlugins().get(args[1]));
-
                         sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Plugin has been downloaded!"));
                     }
                 }
@@ -105,10 +98,6 @@ public class PPMCommand implements CommandExecutor {
                 } else {
                     sender.sendMessage("&7&l[&b&lPPM&7&l] &8&l> &cPlugin not found!");
                 }
-
-            } else if (args[0].equalsIgnoreCase("debug")) {
-                PluginPortal.setDeveloperMode(!PluginPortal.getDeveloperMode());
-                sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &7Debug Mode: " + (PluginPortal.getDeveloperMode() ? "&aEnabled" : "&cDisabled")));
 
             } else {
                 sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &l&cUsage: /ppm <arg> <plugin>"));

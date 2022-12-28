@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
+import org.bukkit.Bukkit;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
@@ -72,15 +73,8 @@ public class HttpUtils {
             inputStream.close();
             outputStream.close();
 
-            System.out.println("&7&l[&b&lPPM&7&l] &8&l> Downloaded " + fileName + " to " + folder.getName());
+            Bukkit.getConsoleSender().sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> Downloaded " + fileName + " to " + folder.getName()));
             LocalPlugin localPlugin = new LocalPlugin(onlinePlugin);
-
-            if (PluginPortal.getDeveloperMode()) {
-                if (folder.equals(ConfigUtils.getDebugPluginFolder())) {
-                    return;
-                }
-            }
-
             localPlugin.setInstalled(true);
             PluginPortal.getDataManager().getInstalledPlugins().put(localPlugin.getOnlinePlugin().getDisplayName(), localPlugin);
             JsonUtils.saveData();

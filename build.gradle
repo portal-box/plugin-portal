@@ -38,8 +38,6 @@ dependencies {
     compileOnly "org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT"
     implementation "co.aikar:acf-paper:0.5.1-SNAPSHOT"
 
-    implementation 'org.json:json:20090211'
-
     implementation 'com.squareup.moshi:moshi:1.14.0'
 
 }

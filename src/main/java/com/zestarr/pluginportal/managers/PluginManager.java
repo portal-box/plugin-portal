@@ -3,6 +3,7 @@ package com.zestarr.pluginportal.managers;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.types.LocalPlugin;
 import com.zestarr.pluginportal.types.OnlinePlugin;
+import com.zestarr.pluginportal.utils.ConfigUtils;
 import com.zestarr.pluginportal.utils.HttpUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -14,7 +15,16 @@ import java.util.Map;
 import static com.zestarr.pluginportal.utils.ConfigUtils.getPluginListFileConfig;
 
 public class PluginManager {
-    private HashMap<String, OnlinePlugin> plugins = new HashMap<>();
+    private final HashMap<String, OnlinePlugin> plugins = new HashMap<>();
+
+    public void setup() {
+        loadPluginList();
+        try {
+            loadPlugins();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void loadPlugins() throws IOException {
         FileConfiguration config = getPluginListFileConfig();
@@ -38,9 +48,12 @@ public class PluginManager {
     }
 
     public void loadPluginList() {
-
-        HttpUtils.downloadData("https://raw.githubusercontent.com/Zestarr/PluginPortal/master/PluginsList.yml", new File("PluginPortalPlugins.yml"));
-
+        try {
+            ConfigUtils.getPluginListFile().createNewFile();
+            HttpUtils.downloadData("https://raw.githubusercontent.com/Zestarr/PluginPortal/master/PluginsList.yml", new File("PluginPortalPlugins.yml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Boolean isPluginUpToDate(LocalPlugin plugin) {
