@@ -32,7 +32,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
         }
 
         String spigotName = args[1];
-        if (portal.getMarketplaceManager().getAllNames().contains(spigotName)) {
+        if (!portal.getMarketplaceManager().getAllNames().contains(spigotName)) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere is no plugin with this name. Use tab complete to find all usable plugins."));
             return false;
         }
@@ -50,7 +50,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cStarting to download " + spigotName + "..."));
 
                 Bukkit.getScheduler().runTaskAsynchronously(portal, () -> {
-                    LocalPlugin plugin = portal.getDownloadManager().downloadPlugin(portal.getMarketplaceManager().getId(spigotName));
+                    LocalPlugin plugin = portal.getDownloadManager().downloadPlugin(portal.getMarketplaceManager().getId(spigotName), spigotName);
                     if (plugin == null) {
                         sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error installing " + spigotName + "."));
                         return;
@@ -161,7 +161,6 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
         } else if (args.length == 2) {
             switch (args[0].toLowerCase()) {
                 case "preview":
-                    return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
                 case "install":
                     return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
                 case "uninstall":

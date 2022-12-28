@@ -17,9 +17,6 @@ public class PreviewingPlugin {
     private FileType fileType;
     private SizeUnit sizeUnit;
 
-
-
-
     public PreviewingPlugin(int id) {
         this.id = id;
         try {

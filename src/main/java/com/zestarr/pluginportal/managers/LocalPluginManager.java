@@ -27,22 +27,11 @@ public class LocalPluginManager implements Listener {
             dataFile.createNewFile();
         }
         dataConfig = YamlConfiguration.loadConfiguration(dataFile);
-    }
-
-    @EventHandler
-    public void onServerEnable(ServerLoadEvent e) {
-
-        PluginManager pluginManager = Bukkit.getPluginManager();
         for (String idString : dataConfig.getConfigurationSection("").getKeys(false)) {
             String serverName = dataConfig.getString(idString + ".server-name");
-            if (!pluginManager.isPluginEnabled(serverName)) {
-                dataConfig.set(idString, null);
-                continue;
-            }
             String spigotName = dataConfig.getString(idString + ".spigot-name");
             localPlugins.put(spigotName, new LocalPlugin(Integer.parseInt(idString), spigotName, serverName, dataConfig.getString(idString + ".version")));
         }
-
     }
 
     public List<String> getAllNames() {
@@ -56,7 +45,18 @@ public class LocalPluginManager implements Listener {
     public boolean isInstalled(String spigotName) { return localPlugins.containsKey(spigotName); }
     public boolean isLatestVersion(String spigotName, String latestVersion) { return localPlugins.get(spigotName).matchesVersion(latestVersion); }
 
-    public void add(LocalPlugin localPlugin) { localPlugins.put(localPlugin.getSpigotName(), localPlugin); }
+    public void add(LocalPlugin localPlugin) {
+        localPlugins.put(localPlugin.getSpigotName(), localPlugin);
+        dataConfig.createSection(localPlugin.getId() + "");
+        dataConfig.set(localPlugin.getId() + ".server-name", localPlugin.getSpigotName());
+        dataConfig.set(localPlugin.getId() + ".spigot-name", localPlugin.getServerName());
+        dataConfig.set(localPlugin.getId() + ".version-name", localPlugin.getVersion());
+        try {
+            dataConfig.save(dataFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void update(String spigotName) {
 

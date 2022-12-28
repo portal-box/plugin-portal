@@ -2,6 +2,7 @@ package com.zestarr.pluginportal.managers;
 
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.type.LocalPlugin;
+import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.SpigetUtil;
 import org.bukkit.Bukkit;
 
@@ -77,7 +78,7 @@ public class DownloadManager {
             inputStream.close();
             outputStream.close();
 
-            LocalPlugin localPlugin = new LocalPlugin(id, spigotName, "", SpigetUtil.getLatestVersion(id));
+            LocalPlugin localPlugin = new LocalPlugin(id, spigotName, "", new PreviewingPlugin(id).getVersion());
             portal.getLocalPluginManager().add(localPlugin);
             return localPlugin;
         } catch (IOException e) {

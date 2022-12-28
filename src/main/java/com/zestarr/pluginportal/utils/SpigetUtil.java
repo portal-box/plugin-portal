@@ -16,7 +16,6 @@ import okhttp3.Response;
 public class SpigetUtil {
 
     public static String getJsonData(int id) {
-
         Moshi moshi = new Moshi.Builder().build();
         Type type = Types.newParameterizedType(Map.class, String.class, Object.class);
         JsonAdapter<Map<String, Object>> jsonAdapter = moshi.adapter(type);

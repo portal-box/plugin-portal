@@ -15,12 +15,16 @@ public final class PluginPortal extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdir();
+        }
+
         try {
             marketplaceManager = new MarketplaceManager(this);
             Bukkit.getPluginManager().registerEvents(localPluginManager = new LocalPluginManager(this), this);
             downloadManager = new DownloadManager(this);
         } catch (Exception x) {
-
+            x.printStackTrace();
         }
 
         PPMCommand command = new PPMCommand(this);
