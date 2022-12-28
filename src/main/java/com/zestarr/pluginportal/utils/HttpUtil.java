@@ -1,29 +1,23 @@
 package com.zestarr.pluginportal.utils;
 
-import com.google.gson.JsonObject;
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.types.LocalPlugin;
-import com.zestarr.pluginportal.types.OnlinePlugin;
+import com.zestarr.pluginportal.type.LocalPlugin;
 import org.bukkit.Bukkit;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.file.Paths;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.zestarr.pluginportal.utils.ChatUtils.format;
 
-public class HttpUtils {
+public class HttpUtil {
 
     private static String userAgent = "github.com/Zestarr/PluginPortal";
 
-    public static void download(OnlinePlugin onlinePlugin, URL url, File folder) {
+    public static void download(onlinePlugin, URL url, File folder) {
         try {
 
             URLConnection connection = url.openConnection();
@@ -92,9 +86,6 @@ public class HttpUtils {
         }
     }
 
-    public static void download(OnlinePlugin onlinePlugin) {
-        download(onlinePlugin, ConfigUtils.getPluginFolder());
-    }
 
     public static void download(OnlinePlugin plugin, URL url) {
         download(plugin, url, ConfigUtils.getPluginFolder());
@@ -142,35 +133,27 @@ public class HttpUtils {
         }
     }
 
-    public static void downloadUniversalPlugin(OnlinePlugin plugin) {
-        downloadUniversalPlugin(plugin, ConfigUtils.getPluginFolder());
+    public static void downloadPlugin(int id) {
+        try {
+            download(new URL("https://api.spiget.org/v2/resources/" + id + "/download"));
+        } catch (MalformedURLException exception) {
+            exception.printStackTrace();
+        }
     }
 
-    public static void downloadUniversalPlugin(OnlinePlugin plugin, File folder) {
-        String url = plugin.getDownloadLink();
-        URL downloadURL = null;
+    private static String extractNumbers(String input) {
+        // Use a regular expression to find all digits in the input string
+        Pattern p = Pattern.compile("\\d+");
+        Matcher m = p.matcher(input);
 
-        try {
-            downloadURL = new URL(url);
-        } catch (MalformedURLException exception) {
-
+        // Append all the digits to a StringBuilder
+        StringBuilder sb = new StringBuilder();
+        while (m.find()) {
+            sb.append(m.group());
         }
 
-        if (downloadURL == null) { return; }
-
-        // Download from SpigotMC
-        if (url.contains("https://www.spigotmc.org/resources/")) {
-            try {
-                download(plugin, new URL("https://api.spiget.org/v2/resources/" + StringUtils.extractNumbers(url) + "/download"), folder);
-            } catch (MalformedURLException exception) {
-                exception.printStackTrace();
-            }
-
-        } else if (url.contains("https://github.com") && url.endsWith(".jar")) {
-            download(plugin, downloadURL, folder);
-        } else {
-            download(plugin, downloadURL, folder);
-        }
+        // Return the result as a string
+        return sb.toString();
     }
 
 }

@@ -1,40 +1,37 @@
 package com.zestarr.pluginportal;
 
 import com.zestarr.pluginportal.commands.PPMCommand;
-import com.zestarr.pluginportal.commands.PPMTab;
-import com.zestarr.pluginportal.managers.DataManager;
+import com.zestarr.pluginportal.managers.LocalPluginManager;
+import com.zestarr.pluginportal.managers.MarketplaceManager;
 import com.zestarr.pluginportal.managers.PluginManager;
-import com.zestarr.pluginportal.utils.JsonUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PluginPortal extends JavaPlugin {
 
-    public static PluginManager pluginManager;
-    public static DataManager dataManager;
+    private MarketplaceManager marketplaceManager;
+    private LocalPluginManager localPluginManager;
 
     @Override
     public void onEnable() {
-        pluginManager = new PluginManager();
-        pluginManager.setup();
+        try {
+            marketplaceManager = new MarketplaceManager(this);
+            Bukkit.getPluginManager().registerEvents(localPluginManager = new LocalPluginManager(this), this);
+        } catch (Exception x) {
 
-        dataManager = new DataManager();
-        JsonUtils.loadData();
+        }
 
-        getCommand("ppm").setExecutor(new PPMCommand());
-        getCommand("ppm").setTabCompleter(new PPMTab());
+        PPMCommand command = new PPMCommand(this);
+        getCommand("ppm").setExecutor(command);
+        getCommand("ppm").setTabCompleter(command);
     }
 
     @Override
     public void onDisable() {
-        JsonUtils.saveData(); // Just in case, not needed for sure though. Data should save on install.
+
     }
 
-    public static PluginManager getPluginManager() {
-        return pluginManager;
-    }
-
-    public static DataManager getDataManager() {
-        return dataManager;
-    }
+    public MarketplaceManager getMarketplaceManager() { return marketplaceManager; }
+    public LocalPluginManager getLocalPluginManager() { return localPluginManager; }
 
 }
