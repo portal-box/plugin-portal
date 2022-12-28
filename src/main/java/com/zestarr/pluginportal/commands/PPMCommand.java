@@ -1,6 +1,7 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
+import com.zestarr.pluginportal.listeners.PluginStatusListener;
 import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
@@ -9,6 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,6 +30,14 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
+        if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins..."));
+            for (LocalPlugin plugin : portal.getLocalPluginManager().getPlugins().values()) {
+                sender.sendMessage(ChatUtil.format(" &a+ " + plugin.getSpigotName()));
+            }
+            return true;
+        }
 
         if (args.length != 2) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cUsage: /ppm <arg> <plugin>"));
@@ -69,12 +79,11 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 break;
             case "uninstall":
                 try {
-                    HashMap<String, LocalPlugin> plugins = portal.getLocalPluginManager().getPlugins();
-                    if (plugins.containsKey(args[1])) {
-                        LocalPlugin plugin = plugins.get(args[1]);
-                        Bukkit.getPluginManager().disablePlugin(Bukkit.getPluginManager().getPlugin(plugin.getServerName()));
-                        new File("plugins", plugin.getServerName() + ".jar").delete();
-                        sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " has been uninstalled."));
+
+                    if (portal.getPluginStatusListener().getPluginMap().containsKey(spigotName)) {
+                        Bukkit.getPluginManager().disablePlugin(portal.getPluginStatusListener().getPluginMap().get(spigotName));
+                        portal.getPluginStatusListener().getCanDelete().put(portal.getPluginStatusListener().getPluginMap().get(spigotName), true);
+
                     } else {
                         sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " is not installed, or was installed using third-party means."));
                     }
@@ -186,8 +195,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 case "install":
                     return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
                 case "uninstall":
-                    ArrayList<String> plugins = new ArrayList<>();
-                    return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getPlugins().keySet(), new ArrayList<>());
+                    return StringUtil.copyPartialMatches(args[1], portal.getPluginStatusListener().getPluginMap().keySet(), new ArrayList<>());
                 case "update":
                     return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getAllNames(), new ArrayList<>());
             }

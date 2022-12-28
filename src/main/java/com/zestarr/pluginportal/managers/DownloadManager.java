@@ -54,12 +54,12 @@ public class DownloadManager {
                 }
             }
 
-            if (fileName == null) {
-                fileName = spigotName;
-                if (!fileName.endsWith(".jar")) {
-                    fileName = fileName + ".jar";
-                }
+
+            fileName = spigotName;
+            if (!fileName.endsWith(".jar")) {
+                fileName = fileName + ".jar";
             }
+
 
             // Get an input stream for reading the file
             InputStream inputStream = connection.getInputStream();
