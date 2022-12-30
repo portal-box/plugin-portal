@@ -48,10 +48,6 @@ public class PreviewingPlugin {
                 default -> this.fileType = FileType.EXTERNAL; // Includes "external"
             }
 
-
-
-
-
             // Change to specific Exceptions??
         } catch (Exception exception) {
             exception.printStackTrace();

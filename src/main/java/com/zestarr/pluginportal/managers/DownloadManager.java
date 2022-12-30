@@ -78,7 +78,7 @@ public class DownloadManager {
             inputStream.close();
             outputStream.close();
 
-            LocalPlugin localPlugin = new LocalPlugin(id, spigotName, "", new PreviewingPlugin(id).getVersion());
+            LocalPlugin localPlugin = new LocalPlugin(new PreviewingPlugin(id), fileName);
             portal.getLocalPluginManager().add(localPlugin);
             return localPlugin;
         } catch (IOException e) {

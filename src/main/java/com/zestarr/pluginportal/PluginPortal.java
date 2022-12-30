@@ -5,6 +5,7 @@ import com.zestarr.pluginportal.listeners.PluginStatusListener;
 import com.zestarr.pluginportal.managers.DownloadManager;
 import com.zestarr.pluginportal.managers.LocalPluginManager;
 import com.zestarr.pluginportal.managers.MarketplaceManager;
+import com.zestarr.pluginportal.utils.FileUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -33,11 +34,6 @@ public final class PluginPortal extends JavaPlugin {
         PPMCommand command = new PPMCommand(this);
         getCommand("ppm").setExecutor(command);
         getCommand("ppm").setTabCompleter(command);
-    }
-
-    @Override
-    public void onDisable() {
-
     }
 
     public MarketplaceManager getMarketplaceManager() { return marketplaceManager; }
