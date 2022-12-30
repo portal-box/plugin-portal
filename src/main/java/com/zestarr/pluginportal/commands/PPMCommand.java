@@ -132,8 +132,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is already up to date."));
                     return false;
                 } else {
-                    File file = new File("plugins", spigotName + ".jar");
-                    file.delete();
+                    portal.getDownloadManager().update(plugin);
                     // def will cause no issues/errors! we need a better detection system for deleting plugins btw
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been updated to version " + new PreviewingPlugin(id).getVersion() + "."));
                 }
@@ -149,7 +148,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "uninstall", "preview"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "preview"), new ArrayList<>());
         } else if (args.length == 2) {
             switch (args[0].toLowerCase()) {
                 case "preview":

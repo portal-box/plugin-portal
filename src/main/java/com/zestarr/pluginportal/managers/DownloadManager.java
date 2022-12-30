@@ -3,16 +3,10 @@ package com.zestarr.pluginportal.managers;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
-import com.zestarr.pluginportal.utils.SpigetUtil;
-import org.bukkit.Bukkit;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
-import java.util.Map;
 
 public class DownloadManager {
 
@@ -24,14 +18,13 @@ public class DownloadManager {
         this.portal = portal;
     }
 
-    public LocalPlugin download(PreviewingPlugin plugin) {
+    public LocalPlugin download(PreviewingPlugin plugin, String fileName) {
         try {
             URL url = new URL("https://api.spiget.org/v2/resources/" + plugin.getId() + "/download");
             URLConnection connection = url.openConnection();
             connection.setRequestProperty("User-Agent", USER_AGENT);
             String contentDisposition = connection.getHeaderField("Content-Disposition");
 
-            String fileName = plugin.getSpigotName();
             if (!fileName.endsWith(".jar")) {
                 fileName = fileName + ".jar";
             }
@@ -55,6 +48,14 @@ public class DownloadManager {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public LocalPlugin update(LocalPlugin plugin) {
+        return download(plugin.getPreviewingPlugin(), plugin.getFileName());
+    }
+
+    public LocalPlugin download(PreviewingPlugin plugin) {
+        return download(plugin, plugin.getSpigotName() + ".jar");
     }
 
 }
