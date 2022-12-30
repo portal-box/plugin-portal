@@ -27,12 +27,16 @@ public class LocalPluginManager implements Listener {
         if (!dataFile.exists()) {
             dataFile.createNewFile();
         }
+
+        /*
         dataConfig = YamlConfiguration.loadConfiguration(dataFile);
         for (String idString : dataConfig.getConfigurationSection("").getKeys(false)) {
             String serverName = dataConfig.getString(idString + ".server-name");
             String spigotName = dataConfig.getString(idString + ".spigot-name");
             localPlugins.put(new LocalPlugin(Integer.parseInt(idString), spigotName, serverName, dataConfig.getString(idString + ".version")));
         }
+
+         */
     }
 
     public List<String> getAllNames() {
