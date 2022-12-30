@@ -5,11 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zestarr.pluginportal.utils.SpigetUtil;
 import lombok.Data;
 
+import java.util.ArrayList;
+
 @Data
 public class PreviewingPlugin {
 
     private String spigotName, version, tag, iconUrl;
-    private String[] testedVersions;
+    private ArrayList<String> testedVersions = new ArrayList<>();
     private int id, downloads;
     private long releaseData, updateDate;
     private double price, rating, fileSize;
@@ -28,7 +30,7 @@ public class PreviewingPlugin {
             this.tag = root.get("tag").asText();
             this.version = root.get("version").asText();
             //this.authors = root.get("authors").findValuesAsText("name").toArray(new String[0]); Not sure about which value this is. There's contributors and auths
-            this.testedVersions = root.get("testedVersions").findValuesAsText("name").toArray(new String[0]);
+            //this.testedVersions = root.get("testedVersions").findValuesAsText("name").toArray(new String[0]);
             this.downloads = root.get("downloads").asInt();
             this.releaseData = root.get("releaseDate").asLong();
             this.updateDate = root.get("updateDate").asLong();

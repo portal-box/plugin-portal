@@ -5,17 +5,18 @@ import lombok.Getter;
 public enum FileType {
 
     JAR(".jar", true),
-    EXTERNAL("", false),
+    EXTERNAL("External", false),
     ZIP(".zip", false),
     SKRIPT(".sk", false);
 
     @Getter
-    private String extension;
+    private final String extension;
     @Getter
-    private boolean supported;
+    private final boolean supported;
 
     FileType(String extension, boolean supported) {
         this.extension = extension;
+        this.supported = supported;
     }
 
 }

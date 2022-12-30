@@ -32,9 +32,12 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
+            System.out.println(portal.getLocalPluginManager().getPlugins().values());
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins..."));
             for (LocalPlugin plugin : portal.getLocalPluginManager().getPlugins().values()) {
-                sender.sendMessage(ChatUtil.format(" &a+ " + plugin.getSpigotName()));
+                if (plugin.getSpigotName() != null && !plugin.getSpigotName().isEmpty()) {
+                    sender.sendMessage(ChatUtil.format(" &a+ &7" + plugin.getSpigotName()));
+                }
             }
             return true;
         }
@@ -53,8 +56,33 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
 
         switch (args[0]) {
             case "preview":
+                PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
+                ArrayList<String> information = new ArrayList<>();
+                try {
+                    information.add("Name: " + previewingPlugin.getSpigotName());
+                    information.add("Description: " + previewingPlugin.getTag());
+                    information.add("Downloads: " + previewingPlugin.getDownloads());
+                    information.add("Rating: " + previewingPlugin.getRating());
+                    information.add("File Size: " + previewingPlugin.getFileSize() + previewingPlugin.getSizeUnit().getUnit());
+                    information.add("File Type: " + previewingPlugin.getFileType().getExtension());
+                    information.add("Supported: " + previewingPlugin.getFileType().isSupported());
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                    information.add("Error, ID: " + id + ". Please report this to our discord.");
+                }
 
-                break;
+                sender.sendMessage(ChatUtil.format("&8------------------------&7[&b&lPPM&7]&8------------------------"));
+                for (String s : information) {
+                    try {
+                        sender.sendMessage(ChatUtil.format(" &8- &7" + s.replaceAll(":", ":&b")));
+                    } catch (NullPointerException exception) {
+                        sender.sendMessage(ChatUtil.format(" &8- &7" + s.replaceAll(":", ":&b") + "null/error"));
+                    }
+                }
+                sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
+
+
+                    break;
             case "install":
                 if (portal.getLocalPluginManager().isInstalled(spigotName)) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is already installed. Did you mean to run /ppm update " + spigotName + "?"));
@@ -80,6 +108,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
             case "uninstall":
                 try {
 
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &c&lWARNING: THIS DOES NOT WORK."));
                     if (portal.getPluginStatusListener().getPluginMap().containsKey(spigotName)) {
                         Bukkit.getPluginManager().disablePlugin(portal.getPluginStatusListener().getPluginMap().get(spigotName));
                         portal.getPluginStatusListener().getCanDelete().put(portal.getPluginStatusListener().getPluginMap().get(spigotName), true);
@@ -93,6 +122,22 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
 
                 break;
             case "update":
+
+                if (portal.getLocalPluginManager().getPlugins().get(spigotName) == null) {
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is not installed. Did you mean to run /ppm install " + spigotName + "?"));
+                    return false;
+                }
+
+                LocalPlugin plugin = portal.getLocalPluginManager().getPlugins().get(spigotName);
+                if (plugin.matchesVersion(new PreviewingPlugin(id).getVersion())) {
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is already up to date."));
+                    return false;
+                } else {
+                    File file = new File("plugins", spigotName + ".jar");
+                    file.delete();
+                    // def will cause no issues/errors! we need a better detection system for deleting plugins btw
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been updated to version " + new PreviewingPlugin(id).getVersion() + "."));
+                }
 
                 break;
         }
@@ -184,15 +229,18 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
 
     }
 
+
     @Override
+
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "search", "uninstall"), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "uninstall", "preview"), new ArrayList<>());
         } else if (args.length == 2) {
             switch (args[0].toLowerCase()) {
                 case "preview":
                 case "install":
+                    if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
                     return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
                 case "uninstall":
                     return StringUtil.copyPartialMatches(args[1], portal.getPluginStatusListener().getPluginMap().keySet(), new ArrayList<>());

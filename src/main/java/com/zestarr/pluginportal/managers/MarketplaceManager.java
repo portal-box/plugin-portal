@@ -62,6 +62,7 @@ public class MarketplaceManager {
     }
 
     public Collection<String> getAllNames() { return marketplaceCache.values(); }
+    public HashMap<Integer, String> getMarketplaceCache() { return marketplaceCache; }
 
     public int getId(String spigotName) {
         for (Integer number : marketplaceCache.keySet()) {

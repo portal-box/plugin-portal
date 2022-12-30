@@ -29,6 +29,7 @@ public class LocalPluginManager implements Listener {
         }
         dataConfig = YamlConfiguration.loadConfiguration(dataFile);
         for (String idString : dataConfig.getConfigurationSection("").getKeys(false)) {
+            System.out.println("Loading plugin with id " + idString);
             String serverName = dataConfig.getString(idString + ".server-name");
             String spigotName = dataConfig.getString(idString + ".spigot-name");
             localPlugins.put(spigotName, new LocalPlugin(Integer.parseInt(idString), spigotName, serverName, dataConfig.getString(idString + ".version")));
@@ -50,8 +51,8 @@ public class LocalPluginManager implements Listener {
     public void add(LocalPlugin localPlugin) {
         localPlugins.put(localPlugin.getSpigotName(), localPlugin);
         dataConfig.createSection(localPlugin.getId() + "");
-        dataConfig.set(localPlugin.getId() + ".server-name", localPlugin.getSpigotName());
-        dataConfig.set(localPlugin.getId() + ".spigot-name", localPlugin.getServerName());
+        dataConfig.set(localPlugin.getId() + ".server-name", localPlugin.getServerName()); // USE SHA256
+        dataConfig.set(localPlugin.getId() + ".spigot-name", localPlugin.getSpigotName());
         dataConfig.set(localPlugin.getId() + ".version-name", localPlugin.getVersion());
         try {
             dataConfig.save(dataFile);
