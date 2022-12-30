@@ -67,7 +67,7 @@ public class FileUtil {
             JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
             BufferedReader reader = new BufferedReader(new FileReader(dataFile));
             Map<String, LocalPlugin> map = jsonAdapater.fromJson(reader.readLine());
-            if (!(map == null)) {
+            if (map != null) {
                 plugin.getLocalPluginManager().getPlugins().putAll(map);
             }
             reader.close();

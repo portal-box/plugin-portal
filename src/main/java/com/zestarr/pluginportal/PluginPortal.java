@@ -25,7 +25,7 @@ public final class PluginPortal extends JavaPlugin {
         try {
             marketplaceManager = new MarketplaceManager(this);
             Bukkit.getPluginManager().registerEvents(localPluginManager = new LocalPluginManager(this), this);
-            Bukkit.getPluginManager().registerEvents(pluginStatusListener = new PluginStatusListener(this), this);
+            //Bukkit.getPluginManager().registerEvents(pluginStatusListener = new PluginStatusListener(this), this);
             downloadManager = new DownloadManager(this);
         } catch (Exception x) {
             x.printStackTrace();

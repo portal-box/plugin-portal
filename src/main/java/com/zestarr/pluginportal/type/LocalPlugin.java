@@ -25,7 +25,7 @@ public class LocalPlugin {
     public LocalPlugin(PreviewingPlugin previewingPlugin, String fileName) {
         this.previewingPlugin = previewingPlugin;
         this.fileName = fileName;
-        this.sha256 = FileUtil.getSHA256(new File("plugins", "fileName"));
+        this.sha256 = FileUtil.getSHA256(new File("plugins", fileName));
 
     }
 

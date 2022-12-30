@@ -31,7 +31,8 @@ public class LocalPluginManager implements Listener {
         if (!dataFile.exists()) {
             dataFile.createNewFile();
         }
-        FileUtil.loadData(plugin, dataFile);
+        Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () -> FileUtil.loadData(plugin, dataFile), 20L);
+
     }
 
     public void add(LocalPlugin localPlugin) {

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class PreviewingPlugin {
 
     private String spigotName, version, tag, iconUrl;
-    private ArrayList<String> testedVersions = new ArrayList<>();
+    private String[] testedVersions, authors;
     private int id, downloads;
     private long releaseData, updateDate;
     private double price, rating, fileSize;
