@@ -24,7 +24,7 @@ public class DownloadManager {
         this.portal = portal;
     }
 
-    private LocalPlugin download(PreviewingPlugin plugin) {
+    public LocalPlugin download(PreviewingPlugin plugin) {
         try {
             URL url = new URL("https://api.spiget.org/v2/resources/" + plugin.getId() + "/download");
             URLConnection connection = url.openConnection();
