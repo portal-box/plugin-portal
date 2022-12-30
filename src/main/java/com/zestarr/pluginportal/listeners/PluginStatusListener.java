@@ -1,29 +1,23 @@
 package com.zestarr.pluginportal.listeners;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.type.LocalPlugin;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class PluginStatusListener implements Listener {
 
-    public PluginPortal portal;
-    ArrayList<Plugin> plugins = new ArrayList<>(Arrays.asList(Bukkit.getPluginManager().getPlugins()));
     @Getter
     private final HashMap<String, Plugin> pluginMap = new HashMap<>();
     @Getter
     private final HashMap<Plugin, Boolean> canDelete = new HashMap<>();
+    public PluginPortal portal;
+    ArrayList<Plugin> plugins = new ArrayList<>(Arrays.asList(Bukkit.getPluginManager().getPlugins()));
 
     public PluginStatusListener(PluginPortal portal) {
         this.portal = portal;
@@ -34,6 +28,7 @@ public class PluginStatusListener implements Listener {
         }
     }
 
+    /*
     @EventHandler
     public void onPluginDeload(PluginDisableEvent event) {
         try {
@@ -45,13 +40,8 @@ public class PluginStatusListener implements Listener {
                     file.delete();
                     canDelete.remove(event.getPlugin());
 
-                    for (LocalPlugin localPlugin : portal.getLocalPluginManager().getPlugins().values()) {
-                        if (localPlugin.getSpigotName().equals(file.getName().replace(".jar", ""))) {
-                            portal.getLocalPluginManager().getPlugins().remove(localPlugin.getSpigotName());
-                            break;
-                        }
-                    }
-
+                    // This isnt gonna work
+                    new LocalPlugin(plugin, fileName); new LocalPlugin(plugin, fileName);
                 }
             }
 
@@ -60,6 +50,8 @@ public class PluginStatusListener implements Listener {
             e.printStackTrace();
         }
     }
+
+     */
 
 
 }

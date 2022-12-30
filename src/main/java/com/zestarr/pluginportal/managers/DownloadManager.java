@@ -24,61 +24,31 @@ public class DownloadManager {
         this.portal = portal;
     }
 
-    public LocalPlugin downloadPlugin(int id, String spigotName) {
+    private LocalPlugin download(PreviewingPlugin plugin) {
         try {
-            return download(id, spigotName, new URL("https://api.spiget.org/v2/resources/" + id + "/download"), new File("plugins"));
-        } catch (MalformedURLException exception) {
-            return null;
-        }
-    }
-
-    private LocalPlugin download(int id, String spigotName, URL url, File folder) {
-        try {
-
+            URL url = new URL("https://api.spiget.org/v2/resources/" + plugin.getId() + "/download");
             URLConnection connection = url.openConnection();
             connection.setRequestProperty("User-Agent", USER_AGENT);
             String contentDisposition = connection.getHeaderField("Content-Disposition");
 
-            // Extract the default file name from the "Content-Disposition" header field
-            String fileName = null;
-            if (contentDisposition != null) {
-                String[] parts = contentDisposition.split(";");
-                for (String part : parts) {
-                    if (part.trim().startsWith("filename=")) {
-                        fileName = part.substring(part.indexOf('=') + 1);
-                        if (fileName.startsWith("\"") && fileName.endsWith("\"")) {
-                            fileName = fileName.substring(1, fileName.length() - 1);
-                        }
-                        break;
-                    }
-                }
-            }
-
-
-            fileName = spigotName;
+            String fileName = plugin.getSpigotName();
             if (!fileName.endsWith(".jar")) {
                 fileName = fileName + ".jar";
             }
 
-
-            // Get an input stream for reading the file
             InputStream inputStream = connection.getInputStream();
+            FileOutputStream outputStream = new FileOutputStream(new File("plugins", fileName));
 
-            // Create a file output stream to save the file to disk
-            FileOutputStream outputStream = new FileOutputStream(new File(folder, fileName));
-
-            // Read the file and save it to disk
             byte[] buffer = new byte[4096];
             int bytesRead = 0;
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
 
-            // Close the input and output streams
             inputStream.close();
             outputStream.close();
 
-            LocalPlugin localPlugin = new LocalPlugin(new PreviewingPlugin(id), fileName);
+            LocalPlugin localPlugin = new LocalPlugin(plugin, fileName);
             portal.getLocalPluginManager().add(localPlugin);
             return localPlugin;
         } catch (IOException e) {

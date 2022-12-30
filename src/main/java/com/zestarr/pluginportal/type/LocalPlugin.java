@@ -39,7 +39,7 @@ public class LocalPlugin {
                 }
             }
         }
-
+        return null;
     }
 
     public boolean isInstalled() { return Bukkit.getPluginManager().isPluginEnabled(findFileName()); }

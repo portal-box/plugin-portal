@@ -102,7 +102,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                         sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error installing " + spigotName + "."));
                         return;
                     }
-                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " (version " + plugin.getVersion() + ") has been installed."));
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been installed."));
                 });
                 break;
             case "uninstall":
