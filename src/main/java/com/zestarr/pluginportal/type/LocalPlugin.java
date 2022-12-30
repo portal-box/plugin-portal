@@ -1,22 +1,48 @@
 package com.zestarr.pluginportal.type;
 
+import com.zestarr.pluginportal.utils.FileUtil;
 import lombok.Data;
 import org.bukkit.Bukkit;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
 
 @Data
 public class LocalPlugin {
 
-    private int id;
-    private String spigotName, serverName, version;
+    private PreviewingPlugin previewingPlugin;
+    private String sha256, fileName;
 
+    /*
     public LocalPlugin(int id, String spigotName, String serverName, String version) {
         this.id = id;
-        this.spigotName = spigotName;
+        this.previewingPlugin = previewingPlugin;
         this.serverName = serverName;
-        this.version = version;
     }
 
-    public boolean isInstalled() { return Bukkit.getPluginManager().isPluginEnabled(serverName); }
-    public boolean matchesVersion(String latestVersion) { return version.equals(latestVersion); }
+     */
+
+    public LocalPlugin(PreviewingPlugin previewingPlugin, String fileName) {
+        this.previewingPlugin = previewingPlugin;
+        this.fileName = fileName;
+        this.sha256 = FileUtil.getSHA256(new File("plugins", "fileName"));
+
+    }
+
+    public String findFileName() {
+
+        for (File file : new File("plugins").listFiles()) {
+            if (file.getName().endsWith(".jar")) {
+                if (FileUtil.getSHA256(file).equals(sha256)) {
+                    this.fileName = file.getName();
+                    return file.getName();
+                }
+            }
+        }
+
+    }
+
+    public boolean isInstalled() { return Bukkit.getPluginManager().isPluginEnabled(findFileName()); }
+    public boolean matchesVersion(String latestVersion) { return previewingPlugin.getVersion().equals(latestVersion); }
 
 }

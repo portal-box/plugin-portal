@@ -29,17 +29,16 @@ public class LocalPluginManager implements Listener {
         }
         dataConfig = YamlConfiguration.loadConfiguration(dataFile);
         for (String idString : dataConfig.getConfigurationSection("").getKeys(false)) {
-            System.out.println("Loading plugin with id " + idString);
             String serverName = dataConfig.getString(idString + ".server-name");
             String spigotName = dataConfig.getString(idString + ".spigot-name");
-            localPlugins.put(spigotName, new LocalPlugin(Integer.parseInt(idString), spigotName, serverName, dataConfig.getString(idString + ".version")));
+            localPlugins.put(new LocalPlugin(Integer.parseInt(idString), spigotName, serverName, dataConfig.getString(idString + ".version")));
         }
     }
 
     public List<String> getAllNames() {
         List<String> names = new ArrayList<>();
         for (LocalPlugin plugin : localPlugins.values()) {
-            names.add(plugin.getSpigotName());
+            names.add(plugin.getPreviewingPlugin().getSpigotName());
         }
         return names;
     }
