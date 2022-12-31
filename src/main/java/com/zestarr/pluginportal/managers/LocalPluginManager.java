@@ -12,6 +12,7 @@ import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.plugin.PluginManager;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,13 +31,17 @@ public class LocalPluginManager implements Listener {
         dataFile = new File(plugin.getDataFolder(), "plugins.yml");
         if (!dataFile.exists()) {
             dataFile.createNewFile();
+            FileWriter writer = new FileWriter(dataFile);
+            writer.write("{}");
+            writer.flush();
+            writer.close();
         }
         Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () -> FileUtil.loadData(plugin, dataFile), 20L);
 
     }
 
     public void add(LocalPlugin localPlugin) {
-        localPlugins.put(localPlugin.getFileName(), localPlugin);
+        localPlugins.put(localPlugin.getPreviewingPlugin().getSpigotName(), localPlugin);
         FileUtil.saveData(plugin, dataFile);
     }
 

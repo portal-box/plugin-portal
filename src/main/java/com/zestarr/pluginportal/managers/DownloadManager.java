@@ -51,7 +51,7 @@ public class DownloadManager {
     }
 
     public LocalPlugin update(LocalPlugin plugin) {
-        return download(plugin.getPreviewingPlugin(), plugin.getFileName());
+        return download(plugin.getPreviewingPlugin(), plugin.findFileName());
     }
 
     public LocalPlugin download(PreviewingPlugin plugin) {
