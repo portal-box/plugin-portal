@@ -68,10 +68,26 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
             case "preview":
                 PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
 
+                ArrayList<String> information = new ArrayList<>();
                 try {
+                    information.add("Name: " + previewingPlugin.getSpigotName());
+                    //information.add("Description: " + previewingPlugin.getTag());
+                    information.add("Downloads: " + previewingPlugin.getDownloads());
+                    information.add("Rating: " + previewingPlugin.getRating());
+                    information.add("File Size: " + previewingPlugin.getFileSize() + previewingPlugin.getSizeUnit().getUnit());
+                    information.add("File Type: " + previewingPlugin.getFileType().getExtension());
+                    information.add("Supported: " + previewingPlugin.getFileType().isSupported());
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                    information.add("Error, ID: " + id + ". Please report this to our discord.");
+                }
+
+                try {
+                    sender.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
                     String url = previewingPlugin.getIconUrl();
                     if (url.length() == 0) {
-                        url = "https://i.imgur.com/V9jfjSJ.png";
+                        //url = "https://i.imgur.com/V9jfjSJ.png"; // White
+                        url = "https://i.imgur.com/bbxn0Zy.png"; // Gray
                     }
                     URL imageUrl = new URL(url);
                     HttpURLConnection connection = (HttpURLConnection) imageUrl.openConnection();
@@ -121,20 +137,24 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                     for (BufferedImage bound : imgs) {
                         if (i == 16) {
                             i = 0;
-                            Player player = (Player) sender;
                             String message = "";
-                            switch (row) {
-                                case 0:
-                                    message = "first";
-                                    // FIRST ROW TEXT
-                                    break;
-                                case 1:
-                                    message = "second";
-                                    // SECOND ROW TEXT
-                                    break;
-                                // etc
+
+                            if (information.size() > row && information.get(row) != null) {
+                                message = information.get(row);
                             }
-                            player.sendMessage(builder.toString() + " " + message);
+
+                            switch (row) {
+                                case 9:
+                                    message = "        &7&lInstall Plugin?           ";
+
+                                    break;
+                                case 12:
+                                    message = "        &a&lYes        &c&lNo        ";
+                                    break;
+                                }
+
+
+                            sender.sendMessage(ChatUtil.format(builder.toString() + " &7" + message.replaceAll(":", ":&b")));
                             builder = "";
                             row++;
                         }
@@ -153,36 +173,12 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                         }
                     }
 
+                    sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
                     connection.getInputStream().close();
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
+                    //throw new RuntimeException(e);
                 }
-
-
-                ArrayList<String> information = new ArrayList<>();
-                try {
-                    information.add("Name: " + previewingPlugin.getSpigotName());
-                    information.add("Description: " + previewingPlugin.getTag());
-                    information.add("Downloads: " + previewingPlugin.getDownloads());
-                    information.add("Rating: " + previewingPlugin.getRating());
-                    information.add("File Size: " + previewingPlugin.getFileSize() + previewingPlugin.getSizeUnit().getUnit());
-                    information.add("File Type: " + previewingPlugin.getFileType().getExtension());
-                    information.add("Supported: " + previewingPlugin.getFileType().isSupported());
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                    information.add("Error, ID: " + id + ". Please report this to our discord.");
-                }
-
-                sender.sendMessage(ChatUtil.format("&8------------------------&7[&b&lPPM&7]&8------------------------"));
-                for (String s : information) {
-                    try {
-                        sender.sendMessage(ChatUtil.format(" &8- &7" + s.replaceAll(":", ":&b")));
-                    } catch (NullPointerException exception) {
-                        sender.sendMessage(ChatUtil.format(" &8- &7" + s.replaceAll(":", ":&b") + "null/error"));
-                    }
-                }
-                sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
-
 
                     break;
             case "install":
