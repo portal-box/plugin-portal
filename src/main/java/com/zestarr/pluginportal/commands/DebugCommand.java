@@ -5,6 +5,7 @@ import com.zestarr.pluginportal.type.PreviewingPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -21,6 +22,9 @@ public class DebugCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+
+        Player player = (Player) sender;
+        player.sendMessage("▉");
 
         if (args.length == 0) {
             sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cPlease specify a debug command!"));

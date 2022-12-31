@@ -5,16 +5,27 @@ import com.zestarr.pluginportal.listeners.PluginStatusListener;
 import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
+import com.zestarr.pluginportal.utils.UtilPictureBuilder;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -56,6 +67,98 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
         switch (args[0]) {
             case "preview":
                 PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
+
+                try {
+                    String url = previewingPlugin.getIconUrl();
+                    if (url.length() == 0) {
+                        url = "https://i.imgur.com/V9jfjSJ.png";
+                    }
+                    URL imageUrl = new URL(url);
+                    HttpURLConnection connection = (HttpURLConnection) imageUrl.openConnection();
+                    connection.setRequestProperty(
+                            "User-Agent",
+                            "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0");
+                    BufferedImage image = ImageIO.read(connection.getInputStream());
+
+                    // initalizing rows and columns
+                    int rows = 16;
+                    int columns = 16;
+
+                    // initializing array to hold subimages
+                    BufferedImage imgs[] = new BufferedImage[256];
+
+                    // Equally dividing original image into subimages
+                    int subimage_Width = image.getWidth() / columns;
+                    int subimage_Height = image.getHeight() / rows;
+
+                    int current_img = 0;
+
+                    // iterating over rows and columns for each sub-image
+                    for (int i = 0; i < rows; i++)
+                    {
+                        for (int j = 0; j < columns; j++)
+                        {
+                            // Creating sub image
+                            imgs[current_img] = new BufferedImage(subimage_Width, subimage_Height, image.getType());
+                            Graphics2D img_creator = imgs[current_img].createGraphics();
+
+                            // coordinates of source image
+                            int src_first_x = subimage_Width * j;
+                            int src_first_y = subimage_Height * i;
+
+                            // coordinates of sub-image
+                            int dst_corner_x = subimage_Width * j + subimage_Width;
+                            int dst_corner_y = subimage_Height * i + subimage_Height;
+
+                            img_creator.drawImage(image, 0, 0, subimage_Width, subimage_Height, src_first_x, src_first_y, dst_corner_x, dst_corner_y, null);
+                            current_img++;
+                        }
+                    }
+
+                    int i = 0;
+                    int row = 0;
+                    String builder = "";
+                    for (BufferedImage bound : imgs) {
+                        if (i == 16) {
+                            i = 0;
+                            Player player = (Player) sender;
+                            String message = "";
+                            switch (row) {
+                                case 0:
+                                    message = "first";
+                                    // FIRST ROW TEXT
+                                    break;
+                                case 1:
+                                    message = "second";
+                                    // SECOND ROW TEXT
+                                    break;
+                                // etc
+                            }
+                            player.sendMessage(builder.toString() + " " + message);
+                            builder = "";
+                            row++;
+                        }
+                        i++;
+                        Color color = getAverageColor(bound);
+                        builder += ChatColor.of(color) + "\u2589";
+
+                        switch (i) {
+                            case 0:
+
+                                break;
+                            case 1:
+
+                                break;
+                                // etc
+                        }
+                    }
+
+                    connection.getInputStream().close();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+
                 ArrayList<String> information = new ArrayList<>();
                 try {
                     information.add("Name: " + previewingPlugin.getSpigotName());
@@ -165,5 +268,26 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
         }
 
         return new ArrayList<>();
+    }
+
+    public static Color getAverageColor(BufferedImage bi) {
+        int step = 5;
+
+        int sampled = 0;
+        long sumr = 0, sumg = 0, sumb = 0;
+        for (int x = 0; x < bi.getWidth(); x++) {
+            for (int y = 0; y < bi.getHeight(); y++) {
+                if (x % step == 0 && y % step == 0) {
+                    Color pixel = new Color(bi.getRGB(x, y));
+                    sumr += pixel.getRed();
+                    sumg += pixel.getGreen();
+                    sumb += pixel.getBlue();
+                    sampled++;
+                }
+            }
+        }
+        int dim = bi.getWidth()*bi.getHeight();
+        // Log.info("step=" + step + " sampled " + sampled + " out of " + dim + " pixels (" + String.format("%.1f", (float)(100*sampled/dim)) + " %)");
+        return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
     }
 }

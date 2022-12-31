@@ -36,10 +36,16 @@ public class PreviewingPlugin {
             this.updateDate = root.get("updateDate").asLong();
             this.price = root.get("price").asDouble();
             this.rating = root.get("rating").asDouble();
-            this.premium = root.get("premium").asBoolean();
+            this.premium = false;
             this.fileSize = root.get("file").get("size").asDouble();
             this.sizeUnit = SizeUnit.valueOf(root.get("file").get("sizeUnit").asText());
-            this.iconUrl = root.get("icon").asText();
+            String url = root.get("icon").get("url").asText();
+            if (url.isEmpty()) {
+                this.iconUrl = "https://i.imgur.com/V9jfjSJ.png";
+            } else {
+                this.iconUrl = "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
+            }
+
 
             switch (root.get("file").get("type").asText().toLowerCase()) {
                 case ".jar" -> this.fileType = FileType.JAR;
