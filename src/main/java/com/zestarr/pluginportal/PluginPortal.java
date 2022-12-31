@@ -1,10 +1,14 @@
 package com.zestarr.pluginportal;
 
+import com.zestarr.pluginportal.commands.DebugCommand;
 import com.zestarr.pluginportal.commands.PPMCommand;
 import com.zestarr.pluginportal.listeners.PluginStatusListener;
 import com.zestarr.pluginportal.managers.DownloadManager;
 import com.zestarr.pluginportal.managers.LocalPluginManager;
 import com.zestarr.pluginportal.managers.MarketplaceManager;
+import com.zestarr.pluginportal.type.LocalPlugin;
+import com.zestarr.pluginportal.type.PreviewingPlugin;
+import com.zestarr.pluginportal.utils.ChatUtil;
 import com.zestarr.pluginportal.utils.FileUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,6 +38,12 @@ public final class PluginPortal extends JavaPlugin {
         PPMCommand command = new PPMCommand(this);
         getCommand("ppm").setExecutor(command);
         getCommand("ppm").setTabCompleter(command);
+
+        getCommand("debug").setExecutor(new DebugCommand(this));
+
+        Bukkit.getScheduler().runTaskLaterAsynchronously(this, () -> {
+            localPluginManager.updateAllPlugins();
+        }, 20);
     }
 
     public MarketplaceManager getMarketplaceManager() { return marketplaceManager; }

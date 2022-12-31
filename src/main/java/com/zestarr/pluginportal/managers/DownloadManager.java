@@ -51,6 +51,7 @@ public class DownloadManager {
     }
 
     public LocalPlugin update(LocalPlugin plugin) {
+        portal.getLocalPluginManager().getPlugins().remove(plugin.getPreviewingPlugin().getSpigotName());
         return download(plugin.getPreviewingPlugin(), plugin.findFileName());
     }
 

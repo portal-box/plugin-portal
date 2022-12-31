@@ -45,6 +45,14 @@ public class LocalPluginManager implements Listener {
         FileUtil.saveData(plugin, dataFile);
     }
 
+    public void updateAllPlugins() {
+        for (LocalPlugin localPlugin : localPlugins.values()) {
+            plugin.getDownloadManager().update(localPlugin);
+        }
+
+        FileUtil.saveData(plugin, dataFile);
+    }
+
     public List<String> getAllNames() {
         List<String> names = new ArrayList<>();
         for (LocalPlugin plugin : localPlugins.values()) {

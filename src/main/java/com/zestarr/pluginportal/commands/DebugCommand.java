@@ -1,11 +1,13 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
-import org.bukkit.Bukkit;
+import com.zestarr.pluginportal.type.PreviewingPlugin;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.Plugin;
+
+import java.util.HashMap;
+import java.util.Random;
 
 import static com.zestarr.pluginportal.utils.ChatUtil.format;
 
@@ -23,6 +25,23 @@ public class DebugCommand implements CommandExecutor {
         if (args.length == 0) {
             sender.sendMessage(format("&7&l[&b&lPPM&7&l] &8&l> &cPlease specify a debug command!"));
             return true;
+        }
+
+        if (args[0].equalsIgnoreCase("testdownload")) {
+            Random random = new Random();
+            for (int i = 0; i < 100; i++) {
+                try {
+                    HashMap<Integer, String> marketplaceCache = plugin.getMarketplaceManager().getMarketplaceCache();
+                    int randomKey = (int) marketplaceCache.keySet().toArray()[random.nextInt(marketplaceCache.size())];
+                    sender.sendMessage(format("Attempting to download ID: " + randomKey));
+                    plugin.getDownloadManager().download(new PreviewingPlugin(randomKey));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
         }
 
 //        if (args.length >= 1) {
