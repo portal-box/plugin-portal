@@ -5,26 +5,19 @@ import com.zestarr.pluginportal.listeners.PluginStatusListener;
 import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
-import com.zestarr.pluginportal.utils.UtilPictureBuilder;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.io.File;
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +36,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins..."));
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all installed plugins..."));
             for (LocalPlugin plugin : portal.getLocalPluginManager().getPlugins().values()) {
                 if (plugin.getPreviewingPlugin().getSpigotName() != null && !plugin.getPreviewingPlugin().getSpigotName().isEmpty()) {
                     sender.sendMessage(ChatUtil.format(" &a+ &7" + plugin.getPreviewingPlugin().getSpigotName()));
@@ -52,7 +45,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (args.length != 2) {
+        if (args.length < 2) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cUsage: /ppm <arg> <plugin>"));
             return false;
         }
@@ -64,14 +57,14 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
             return false;
         }
 
-        switch (args[0]) {
+        switch (args[0].toLowerCase()) {
             case "preview":
                 PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
 
                 ArrayList<String> information = new ArrayList<>();
                 try {
                     information.add("Name: " + previewingPlugin.getSpigotName());
-                    //information.add("Description: " + previewingPlugin.getTag());
+                    //information.add("De    scription: " + previewingPlugin.getTag());
                     information.add("Downloads: " + previewingPlugin.getDownloads());
                     information.add("Rating: " + previewingPlugin.getRating());
                     information.add("File Size: " + previewingPlugin.getFileSize() + previewingPlugin.getSizeUnit().getUnit());
@@ -138,23 +131,26 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                         if (i == 16) {
                             i = 0;
                             String message = "";
-
                             if (information.size() > row && information.get(row) != null) {
                                 message = information.get(row);
                             }
-
+/*
                             switch (row) {
                                 case 9:
                                     message = "        &7&lInstall Plugin?           ";
 
                                     break;
                                 case 12:
-                                    message = "        &a&lYes        &c&lNo        ";
+
+
+                                    message = "        [\"\",{\"text\":\"Yes\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/ppm forceinstall LuckPerms\"}}]        &c&lNo        ";
+
                                     break;
                                 }
 
+ */
 
-                            sender.sendMessage(ChatUtil.format(builder.toString() + " &7" + message.replaceAll(":", ":&b")));
+                            sender.sendMessage(ChatUtil.format(builder + " &7" + message.replaceAll(":", ":&b")));
                             builder = "";
                             row++;
                         }
@@ -182,7 +178,7 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
 
                     break;
             case "install":
-                if (portal.getLocalPluginManager().isInstalled(spigotName)) {
+                if (portal.getLocalPluginManager().isInstalled(spigotName) && (args.length == 3 && (args[2].equalsIgnoreCase("-f") || args[2].equalsIgnoreCase("--force")))) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is already installed. Did you mean to run /ppm update " + spigotName + "?"));
                     return false;
                 }
@@ -193,32 +189,10 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 }
 
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cStarting to download " + spigotName + "..."));
-
-                Bukkit.getScheduler().runTaskAsynchronously(portal, () -> {
-                    LocalPlugin plugin = portal.getDownloadManager().download(new PreviewingPlugin(id));
-                    if (plugin == null) {
-                        sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error installing " + spigotName + "."));
-                        return;
-                    }
-                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been installed."));
-                });
-                break;
-            case "uninstall":
-                try {
-
-                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &c&lWARNING: THIS DOES NOT WORK."));
-                    if (portal.getPluginStatusListener().getPluginMap().containsKey(spigotName)) {
-                        Bukkit.getPluginManager().disablePlugin(portal.getPluginStatusListener().getPluginMap().get(spigotName));
-                        portal.getPluginStatusListener().getCanDelete().put(portal.getPluginStatusListener().getPluginMap().get(spigotName), true);
-
-                    } else {
-                        sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + args[1] + " is not installed, or was installed using third-party means."));
-                    }
-                } catch (Exception exception) {
-                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error uninstalling " + args[1] + "."));
-                }
+                asyncInstall(sender, spigotName, id);
 
                 break;
+
             case "update":
 
                 if (portal.getLocalPluginManager().getPlugins().get(spigotName) == null) {
@@ -254,8 +228,10 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
                 case "install":
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
                     return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
-                case "uninstall":
+                /*
+                    case "uninstall":
                     return StringUtil.copyPartialMatches(args[1], portal.getPluginStatusListener().getPluginMap().keySet(), new ArrayList<>());
+                                 */
                 case "update":
                     return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getAllNames(), new ArrayList<>());
             }
@@ -285,5 +261,16 @@ public class PPMCommand implements CommandExecutor, TabCompleter {
         int dim = bi.getWidth()*bi.getHeight();
         // Log.info("step=" + step + " sampled " + sampled + " out of " + dim + " pixels (" + String.format("%.1f", (float)(100*sampled/dim)) + " %)");
         return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
+    }
+
+    private void asyncInstall(CommandSender sender, String spigotName, int id) {
+        Bukkit.getScheduler().runTaskAsynchronously(portal, () -> {
+            LocalPlugin plugin = portal.getDownloadManager().download(new PreviewingPlugin(id));
+            if (plugin == null) {
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error installing " + spigotName + "."));
+                return;
+            }
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been installed."));
+        });
     }
 }

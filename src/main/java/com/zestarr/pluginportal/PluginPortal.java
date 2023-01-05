@@ -1,15 +1,10 @@
 package com.zestarr.pluginportal;
 
-import com.zestarr.pluginportal.commands.DebugCommand;
 import com.zestarr.pluginportal.commands.PPMCommand;
-import com.zestarr.pluginportal.listeners.PluginStatusListener;
 import com.zestarr.pluginportal.managers.DownloadManager;
 import com.zestarr.pluginportal.managers.LocalPluginManager;
 import com.zestarr.pluginportal.managers.MarketplaceManager;
-import com.zestarr.pluginportal.type.LocalPlugin;
-import com.zestarr.pluginportal.type.PreviewingPlugin;
-import com.zestarr.pluginportal.utils.ChatUtil;
-import com.zestarr.pluginportal.utils.FileUtil;
+import com.zestarr.pluginportal.utils.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,7 +13,6 @@ public final class PluginPortal extends JavaPlugin {
     private MarketplaceManager marketplaceManager;
     private LocalPluginManager localPluginManager;
     private DownloadManager downloadManager;
-    private PluginStatusListener pluginStatusListener;
 
     @Override
     public void onEnable() {
@@ -39,16 +33,23 @@ public final class PluginPortal extends JavaPlugin {
         getCommand("ppm").setExecutor(command);
         getCommand("ppm").setTabCompleter(command);
 
-        getCommand("debug").setExecutor(new DebugCommand(this));
+        Metrics metrics = new Metrics(this, 17273);
 
-        Bukkit.getScheduler().runTaskLaterAsynchronously(this, () -> {
+        Bukkit.getScheduler().runTaskLaterAsynchronously( this, () -> {
             localPluginManager.updateAllPlugins();
         }, 20);
     }
 
-    public MarketplaceManager getMarketplaceManager() { return marketplaceManager; }
-    public LocalPluginManager getLocalPluginManager() { return localPluginManager; }
-    public DownloadManager getDownloadManager() { return downloadManager; }
-    public PluginStatusListener getPluginStatusListener() { return pluginStatusListener; }
+    public MarketplaceManager getMarketplaceManager() {
+        return marketplaceManager;
+    }
+
+    public LocalPluginManager getLocalPluginManager() {
+        return localPluginManager;
+    }
+
+    public DownloadManager getDownloadManager() {
+        return downloadManager;
+    }
 
 }

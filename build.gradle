@@ -19,12 +19,6 @@ repositories {
     maven { url = "https://repo.aikar.co/content/groups/aikar/" }
 }
 
-compileJava {
-    options.compilerArgs += ["-parameters"]
-    options.fork = true
-    options.forkOptions.executable = 'javac'
-}
-
 dependencies {
     compileOnly('org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT')
 
@@ -41,6 +35,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor")
 
     implementation("com.fasterxml.jackson.core:jackson-databind:2.0.1")
+
+    //implementation("org.bstats:bstats-bukkit:3.0.0")
 
 }
 
