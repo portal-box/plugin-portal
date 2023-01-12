@@ -30,11 +30,7 @@ public final class PluginPortal extends JavaPlugin {
             x.printStackTrace();
         }
 
-        PPMCommand2 command = new PPMCommand2(this);
-        //getCommand("ppm").setExecutor(command);
-        //getCommand("ppm").setTabCompleter(command);
-
-        PPMCommand ppmCommand = new PPMCommand();
+        PPMCommand ppmCommand = new PPMCommand(this);
 
         Metrics metrics = new Metrics(this, 17273);
 

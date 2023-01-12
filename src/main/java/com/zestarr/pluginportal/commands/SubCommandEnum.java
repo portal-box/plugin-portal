@@ -2,12 +2,12 @@ package com.zestarr.pluginportal.commands;
 
 public enum SubCommandEnum {
 
-    HELP("help", "/ppm help", "pluginportal.ppm.help", new String[]{}),
-    INSTALL("install", "/ppm install (Plugin Name) <Optional Flags>", "pluginportal.ppm.install", new String[]{"-f", "-force"}),
-    LIST("list", "/ppm list", "pluginportal.ppm.list", new String[]{}),
-    PREVIEW("preview", "/ppm preview (Plugin Name)", "pluginportal.ppm.preview", new String[]{}),
-    SETTINGS("settings", "/ppm settings", "pluginportal.ppm.settings", new String[]{}),
-    UPDATE("update", "/ppm update (Plugin Name) <Optional Flags>", "pluginportal.ppm.update", new String[]{"-f", "-force"});
+    HELP("Help", "/ppm help", "pluginportal.ppm.help", new String[]{}),
+    INSTALL("Install", "/ppm install (Plugin Name) <Optional Flags>", "pluginportal.ppm.install", new String[]{"-f", "-force"}),
+    LIST("List", "/ppm list", "pluginportal.ppm.list", new String[]{}),
+    PREVIEW("Preview", "/ppm preview (Plugin Name)", "pluginportal.ppm.preview", new String[]{}),
+    SETTINGS("Settings", "/ppm settings", "pluginportal.ppm.settings", new String[]{}),
+    UPDATE("Update", "/ppm update (Plugin Name) <Optional Flags>", "pluginportal.ppm.update", new String[]{"-f", "-force"});
 
 
     SubCommandEnum(String command, String commandUsage, String permission, String[] flags) {

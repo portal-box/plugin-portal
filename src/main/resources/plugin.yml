@@ -4,7 +4,3 @@ main: com.zestarr.pluginportal.PluginPortal
 api-version: 1.13
 authors: [ Zestarr, Stephen ]
 description: Plugin Package Manager
-commands:
-  ppm:
-    permission: ppm.admin
-    description: Plugin Package Manager primary command

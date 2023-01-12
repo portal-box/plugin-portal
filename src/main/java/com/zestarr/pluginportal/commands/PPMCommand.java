@@ -1,8 +1,13 @@
 package com.zestarr.pluginportal.commands;
 
+import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.commands.ppmSubCommands.*;
+import com.zestarr.pluginportal.managers.CommandManager;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
+import org.bukkit.util.StringUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PPMCommand extends CommandManager {
@@ -12,21 +17,25 @@ public class PPMCommand extends CommandManager {
     ListSubCommand listSubCommand = new ListSubCommand();
     PreviewSubCommand previewSubCommand = new PreviewSubCommand();
     SettingsSubCommand settingsSubCommand = new SettingsSubCommand();
-    UpdateSubCommand updateSubCommand = new UpdateSubCommand();
+    UpdateArchivedSubCommand updateSubCommand = new UpdateArchivedSubCommand();
+
+    private PluginPortal plugin;
 
 
-    public PPMCommand() {
+    public PPMCommand(PluginPortal plugin) {
         super(
                 "ppm",
                 new String[]{"PluginPackagemanager"},
                 "Primary command to handle the Plugin Portal Package Manager",
                 "ppm.primarycommand"
         );
+
+        this.plugin = plugin;
     }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-
+        Bukkit.broadcastMessage("Command");
         if (args.length < 1) {
             helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
         } else {
@@ -60,6 +69,31 @@ public class PPMCommand extends CommandManager {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, String[] args) {
+
+
+
+        if (args.length == 1) {
+            ArrayList<String> tabComplete = new ArrayList<>();
+            for (SubCommandEnum subCommandEnum : SubCommandEnum.values()) {
+                tabComplete.add(subCommandEnum.getCommand());
+            }
+            return StringUtil.copyPartialMatches(args[0], tabComplete, new ArrayList<>());
+        } else if (args.length == 2) {
+            switch (args[0].toLowerCase()) {
+                case "install":
+                case "preview":
+                    if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
+                    return StringUtil.copyPartialMatches(args[1], plugin.getMarketplaceManager().getAllNames(), new ArrayList<>());
+
+                case "settings":
+
+                case "update":
+                    return StringUtil.copyPartialMatches(args[1], plugin.getLocalPluginManager().getAllNames(), new ArrayList<>());
+                default:
+                    return null;
+            }
+        }
+
         return null;
     }
 }

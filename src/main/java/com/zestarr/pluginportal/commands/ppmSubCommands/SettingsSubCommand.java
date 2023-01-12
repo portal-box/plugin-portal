@@ -1,7 +1,7 @@
 package com.zestarr.pluginportal.commands.ppmSubCommands;
 
 import com.zestarr.pluginportal.commands.SubCommandEnum;
-import com.zestarr.pluginportal.commands.SubCommandManager;
+import com.zestarr.pluginportal.managers.SubCommandManager;
 import org.bukkit.command.CommandSender;
 
 public class SettingsSubCommand extends SubCommandManager {

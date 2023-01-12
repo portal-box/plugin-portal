@@ -165,7 +165,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                         }
                     }
 
-                    sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
+
                     connection.getInputStream().close();
                 } catch (Exception e) {
                     e.printStackTrace();
