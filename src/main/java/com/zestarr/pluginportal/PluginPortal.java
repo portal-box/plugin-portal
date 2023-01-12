@@ -14,9 +14,12 @@ public final class PluginPortal extends JavaPlugin {
     private MarketplaceManager marketplaceManager;
     private LocalPluginManager localPluginManager;
     private DownloadManager downloadManager;
+    private static PluginPortal mainInstance;
 
     @Override
     public void onEnable() {
+        this.mainInstance = this;
+
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
         }
@@ -54,4 +57,5 @@ public final class PluginPortal extends JavaPlugin {
         return downloadManager;
     }
 
+    public static PluginPortal getMainInstance() { return mainInstance; }
 }

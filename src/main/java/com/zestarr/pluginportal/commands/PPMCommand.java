@@ -3,11 +3,11 @@ package com.zestarr.pluginportal.commands;
 import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.commands.ppmSubCommands.*;
 import com.zestarr.pluginportal.managers.CommandManager;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PPMCommand extends CommandManager {
@@ -17,7 +17,7 @@ public class PPMCommand extends CommandManager {
     ListSubCommand listSubCommand = new ListSubCommand();
     PreviewSubCommand previewSubCommand = new PreviewSubCommand();
     SettingsSubCommand settingsSubCommand = new SettingsSubCommand();
-    UpdateArchivedSubCommand updateSubCommand = new UpdateArchivedSubCommand();
+    UpdateSubCommand updateSubCommand = new UpdateSubCommand();
 
     private PluginPortal plugin;
 
@@ -35,7 +35,6 @@ public class PPMCommand extends CommandManager {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        Bukkit.broadcastMessage("Command");
         if (args.length < 1) {
             helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
         } else {
@@ -92,6 +91,8 @@ public class PPMCommand extends CommandManager {
                 default:
                     return null;
             }
+        } else if (args.length == 3) {
+            return StringUtil.copyPartialMatches(args[2], Arrays.asList(SubCommandEnum.valueOf(args[0].toUpperCase()).getFlags()), new ArrayList<>());
         }
 
         return null;

@@ -4,7 +4,7 @@ import com.zestarr.pluginportal.commands.SubCommandEnum;
 import com.zestarr.pluginportal.managers.SubCommandManager;
 import org.bukkit.command.CommandSender;
 
-public class UpdateArchivedSubCommand extends SubCommandManager {
+public class UpdateSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
 
