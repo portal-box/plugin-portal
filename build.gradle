@@ -65,6 +65,12 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
+task buildToFolder(type: Copy) {
+    from 'build/libs/PluginPortal-1.0-all.jar'
+    into 'C:\\Users\\Zesta\\Documents\\Projects\\Servers\\1.19.3\\Purpur\\plugins'
+    //include '*.jar'
+}
+
 processResources {
     def props = [version: version]
     inputs.properties props
@@ -74,4 +80,5 @@ processResources {
     }
 }
 
+buildToFolder.dependsOn build
 build.dependsOn shadowJar

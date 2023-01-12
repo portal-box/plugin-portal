@@ -1,6 +1,7 @@
 package com.zestarr.pluginportal;
 
 import com.zestarr.pluginportal.commands.PPMCommand;
+import com.zestarr.pluginportal.commands.PPMCommand2;
 import com.zestarr.pluginportal.managers.DownloadManager;
 import com.zestarr.pluginportal.managers.LocalPluginManager;
 import com.zestarr.pluginportal.managers.MarketplaceManager;
@@ -29,15 +30,20 @@ public final class PluginPortal extends JavaPlugin {
             x.printStackTrace();
         }
 
-        PPMCommand command = new PPMCommand(this);
-        getCommand("ppm").setExecutor(command);
-        getCommand("ppm").setTabCompleter(command);
+        PPMCommand2 command = new PPMCommand2(this);
+        //getCommand("ppm").setExecutor(command);
+        //getCommand("ppm").setTabCompleter(command);
+
+        PPMCommand ppmCommand = new PPMCommand();
 
         Metrics metrics = new Metrics(this, 17273);
 
+        /*
         Bukkit.getScheduler().runTaskLaterAsynchronously( this, () -> {
             localPluginManager.updateAllPlugins();
         }, 20);
+
+         */
     }
 
     public MarketplaceManager getMarketplaceManager() {

@@ -56,7 +56,7 @@ public class DownloadManager {
     }
 
     public LocalPlugin download(PreviewingPlugin plugin) {
-        return download(plugin, plugin.getSpigotName() + ".jar");
+        return download(plugin, portal.getMarketplaceManager().getMarketplaceCache().get(plugin.getId()) + ".jar");
     }
 
 }

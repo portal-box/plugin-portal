@@ -1,5 +1,6 @@
 package com.zestarr.pluginportal.type;
 
+import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.utils.FileUtil;
 import lombok.Data;
 import org.bukkit.Bukkit;
@@ -44,5 +45,8 @@ public class LocalPlugin {
 
     public boolean isInstalled() { return Bukkit.getPluginManager().isPluginEnabled(findFileName()); }
     public boolean matchesVersion(String latestVersion) { return previewingPlugin.getVersion().equals(latestVersion); }
+    public boolean updateNeeded(PluginPortal plugin) {
+        return matchesVersion(plugin.getMarketplaceManager().getMarketplaceCache().get(previewingPlugin.getId()));
+    }
 
 }
