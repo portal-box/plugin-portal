@@ -236,16 +236,17 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
             return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "preview"), new ArrayList<>());
         } else if (args.length == 2) {
             switch (args[0].toLowerCase()) {
-                case "preview":
-                case "install":
+                case "preview", "install" -> {
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
                     return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
+                }
                 /*
                     case "uninstall":
                     return StringUtil.copyPartialMatches(args[1], portal.getPluginStatusListener().getPluginMap().keySet(), new ArrayList<>());
                                  */
-                case "update":
+                case "update" -> {
                     return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getAllNames(), new ArrayList<>());
+                }
             }
         } else if (args.length == 3 && args[0].equalsIgnoreCase("install")) {
             return StringUtil.copyPartialMatches(args[2], Arrays.asList("-f", "--force"), new ArrayList<>());
