@@ -1,5 +1,6 @@
 package com.zestarr.pluginportal.type;
 
+import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zestarr.pluginportal.utils.SpigetUtil;
@@ -53,7 +54,7 @@ public class PreviewingPlugin {
             }
 
             // Change to specific Exceptions??
-        } catch (Exception exception) {
+        } catch (JacksonException exception) {
             exception.printStackTrace();
         }
 
