@@ -19,7 +19,7 @@ public class PreviewSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
         PreviewingPlugin previewingPlugin = new PreviewingPlugin(PluginPortal.getMainInstance().getMarketplaceManager().getId(args[1]));
-        if (previewingPlugin.equals(-1)) {
+        if (previewingPlugin.equals(-1)) { // TODO: comparison of PreviewingPlugin with -1 is always false
             sender.sendMessage(ChatUtil.format("&7[&b&lPPM&7] &cThat plugin does not exist!"));
             return;
         }
