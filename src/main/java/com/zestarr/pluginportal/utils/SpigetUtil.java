@@ -37,13 +37,14 @@ public class SpigetUtil {
                     .build();
 
             // Send the request and get the response
-            Response response = client.newCall(request).execute();
+            try (Response response = client.newCall(request).execute()) {
 
-            // Check the status code
-            int status = response.code();
-            if (status == 200) {
-                // Read the response body
-                return response.body().string();
+                // Check the status code
+                int status = response.code();
+                if (status == 200) {
+                    // Read the response body
+                    return response.body().string();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
