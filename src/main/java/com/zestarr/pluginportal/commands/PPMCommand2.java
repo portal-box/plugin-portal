@@ -274,6 +274,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
         int dim = bi.getWidth() * bi.getHeight();
         // Log.info("step=" + step + " sampled " + sampled + " out of " + dim + " pixels (" + String.format("%.1f", (float)(100*sampled/dim)) + " %)");
         return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
+        // TODO sumr / sampled: Integer division in floating-point context
     }
 
     private void asyncInstall(CommandSender sender, String spigotName, int id) {
