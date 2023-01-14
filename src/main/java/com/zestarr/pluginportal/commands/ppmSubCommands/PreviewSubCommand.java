@@ -18,12 +18,9 @@ import java.util.ArrayList;
 public class PreviewSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
-        PreviewingPlugin previewingPlugin = new PreviewingPlugin(PluginPortal.getMainInstance().getMarketplaceManager().getId(args[1]));
-        if (previewingPlugin.equals(-1)) { // TODO: comparison of PreviewingPlugin with -1 is always false
-            sender.sendMessage(ChatUtil.format("&7[&b&lPPM&7] &cThat plugin does not exist!"));
-            return;
-        }
-
+        String spigotName = args[1];
+        int id = PluginPortal.getMainInstance().getMarketplaceManager().getId(spigotName);
+        PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
         ArrayList<String> information = new ArrayList<>();
         try {
             information.add("Name: " + previewingPlugin.getSpigotName());
@@ -35,9 +32,8 @@ public class PreviewSubCommand extends SubCommandManager {
             information.add("Supported: " + previewingPlugin.getFileType().isSupported());
         } catch (Exception exception) {
             exception.printStackTrace();
-            information.add("Error, Name: " + args[1] +  ". Please report this to our discord.");
+            information.add("Error, ID: " + id + ". Please report this to our discord.");
         }
-
         try {
             sender.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
             String url = previewingPlugin.getIconUrl();
@@ -159,7 +155,5 @@ public class PreviewSubCommand extends SubCommandManager {
         return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
         // TODO sumr / sampled: Integer division in floating-point context
     }
-
-
 
 }

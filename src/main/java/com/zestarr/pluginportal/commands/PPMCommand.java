@@ -4,6 +4,7 @@ import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
 import com.zestarr.pluginportal.commands.ppmSubCommands.*;
 import com.zestarr.pluginportal.commands.commandUtility.CommandManager;
+import com.zestarr.pluginportal.utils.FlagUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
@@ -37,7 +38,7 @@ public class PPMCommand extends CommandManager {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (args.length < 2) {
+        if (args.length < 1) {
             helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
         } else {
             switch (args[0].toLowerCase()) {
@@ -76,7 +77,7 @@ public class PPMCommand extends CommandManager {
                 }
             }
         } else if (args.length == 3) {
-            return StringUtil.copyPartialMatches(args[2], Collections.singletonList(SubCommandEnum.valueOf(args[0].toUpperCase()).getFlags()), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[2], FlagUtil.getFlagStrings(SubCommandEnum.valueOf(args[0].toUpperCase())), new ArrayList<>());
         }
 
         return null;

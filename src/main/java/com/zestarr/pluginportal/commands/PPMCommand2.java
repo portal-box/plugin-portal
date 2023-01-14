@@ -180,12 +180,6 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                         return false;
                     }
                 }
-                if (new PreviewingPlugin(id).isPremium()) {
-                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThis plugin is premium. Please purchase it on spigotmc.org to install it."));
-                    return false;
-                }
-                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cStarting to download " + spigotName + "..."));
-                asyncInstall(sender, spigotName, id);
             }
             case "update" -> {
                 if (args.length == 2) {
@@ -266,13 +260,6 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
     }
 
     private void asyncInstall(CommandSender sender, String spigotName, int id) {
-        Bukkit.getScheduler().runTaskAsynchronously(portal, () -> {
-            LocalPlugin plugin = portal.getDownloadManager().download(new PreviewingPlugin(id));
-            if (plugin == null) {
-                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThere was an error installing " + spigotName + "."));
-                return;
-            }
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been installed."));
-        });
+
     }
 }
