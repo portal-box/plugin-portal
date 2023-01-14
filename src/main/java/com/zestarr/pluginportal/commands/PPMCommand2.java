@@ -56,9 +56,8 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
         }
 
         switch (args[0].toLowerCase()) {
-            case "preview":
+            case "preview" -> {
                 PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
-
                 ArrayList<String> information = new ArrayList<>();
                 try {
                     information.add("Name: " + previewingPlugin.getSpigotName());
@@ -72,7 +71,6 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     exception.printStackTrace();
                     information.add("Error, ID: " + id + ". Please report this to our discord.");
                 }
-
                 try {
                     sender.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
                     String url = previewingPlugin.getIconUrl();
@@ -171,10 +169,8 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     e.printStackTrace();
                     //throw new RuntimeException(e);
                 }
-
-                break;
-            case "install":
-
+            }
+            case "install" -> {
                 if (portal.getLocalPluginManager().isInstalled(spigotName)) {
                     if (args.length == 3 && !(args[2].equalsIgnoreCase("-f") || args[2].equalsIgnoreCase("--force"))) {
                         break;
@@ -184,19 +180,14 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                         return false;
                     }
                 }
-
                 if (new PreviewingPlugin(id).isPremium()) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThis plugin is premium. Please purchase it on spigotmc.org to install it."));
                     return false;
                 }
-
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cStarting to download " + spigotName + "..."));
                 asyncInstall(sender, spigotName, id);
-
-                break;
-
-            case "update":
-
+            }
+            case "update" -> {
                 if (args.length == 2) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins that can be updated: "));
                     for (LocalPlugin plugin : portal.getLocalPluginManager().getPlugins().values()) {
@@ -206,12 +197,10 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     }
                     sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
                 }
-
                 if (portal.getLocalPluginManager().getPlugins().get(spigotName) == null) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is not installed. Did you mean to run /ppm install " + spigotName + "?"));
                     return false;
                 }
-
                 LocalPlugin plugin = portal.getLocalPluginManager().getPlugins().get(spigotName);
                 if (plugin.matchesVersion(new PreviewingPlugin(id).getVersion())) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is already up to date."));
@@ -221,8 +210,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     // def will cause no issues/errors! we need a better detection system for deleting plugins btw
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been updated to version " + new PreviewingPlugin(id).getVersion() + "."));
                 }
-
-                break;
+            }
         }
 
         return false;
