@@ -19,10 +19,10 @@ public enum SubCommandEnum {
         this.flags = flags;
     }
 
-    private String command;
-    private String commandUsage;
-    private String permission;
-    private List<Flags> flags;
+    private final String command;
+    private final String commandUsage;
+    private final String permission;
+    private final List<Flags> flags;
 
     public String getCommand() {
         return command;
