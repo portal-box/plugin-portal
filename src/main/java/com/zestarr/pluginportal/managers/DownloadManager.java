@@ -10,9 +10,9 @@ import java.net.URLConnection;
 
 public class DownloadManager {
 
-    private String USER_AGENT = "github.com/Zestarr/PluginPortal";
+    private final String USER_AGENT = "github.com/Zestarr/PluginPortal";
 
-    private PluginPortal portal;
+    private final PluginPortal portal;
 
     public DownloadManager(PluginPortal portal) {
         this.portal = portal;

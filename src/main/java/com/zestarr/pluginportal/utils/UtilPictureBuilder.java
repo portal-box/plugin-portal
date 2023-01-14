@@ -35,7 +35,7 @@ public class UtilPictureBuilder {
 	//        upb.sendToPlayer();
 
 	private Player player;
-	private LinkedList<Pair> data = new LinkedList<>();
+	private final LinkedList<Pair> data = new LinkedList<>();
 
 	public UtilPictureBuilder(Player player) {
 		this.player = player;

@@ -9,6 +9,7 @@ import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PPMCommand extends CommandManager {
@@ -20,7 +21,7 @@ public class PPMCommand extends CommandManager {
     SettingsSubCommand settingsSubCommand = new SettingsSubCommand();
     UpdateSubCommand updateSubCommand = new UpdateSubCommand();
 
-    private PluginPortal plugin;
+    private final PluginPortal plugin;
 
 
     public PPMCommand(PluginPortal plugin) {
@@ -75,7 +76,7 @@ public class PPMCommand extends CommandManager {
                 }
             }
         } else if (args.length == 3) {
-            return StringUtil.copyPartialMatches(args[2], Arrays.asList(SubCommandEnum.valueOf(args[0].toUpperCase()).getFlags()), new ArrayList<>());
+            return StringUtil.copyPartialMatches(args[2], Collections.singletonList(SubCommandEnum.valueOf(args[0].toUpperCase()).getFlags()), new ArrayList<>());
         }
 
         return null;

@@ -9,7 +9,7 @@ public enum SizeUnit {
     GB("GB");
 
     @Getter
-    private String unit;
+    private final String unit;
 
     SizeUnit(String unit) {
         this.unit = unit;

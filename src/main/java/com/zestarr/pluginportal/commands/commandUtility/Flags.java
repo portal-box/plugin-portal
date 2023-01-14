@@ -7,7 +7,7 @@ public enum Flags {
     FORCE(new String[]{"-f", "-force"});
 
     @Getter
-    private String[] flagsString;
+    private final String[] flagsString;
 
     Flags(String[] flagsString) {
         this.flagsString = flagsString;

@@ -16,11 +16,11 @@ import java.util.List;
 
 public class LocalPluginManager implements Listener {
 
-    private HashMap<String, LocalPlugin> localPlugins = new HashMap<>();
-    private PluginPortal plugin;
+    private final HashMap<String, LocalPlugin> localPlugins = new HashMap<>();
+    private final PluginPortal plugin;
 
     @Getter
-    private File dataFile;
+    private final File dataFile;
 
     public LocalPluginManager(PluginPortal plugin) throws IOException {
         this.plugin = plugin;
