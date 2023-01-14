@@ -33,7 +33,7 @@ public class InstallSubCommand extends SubCommandManager {
         String spigotName = args[1];
         int id = PluginPortal.getMainInstance().getMarketplaceManager().getId(spigotName);
 
-        if (PluginPortal.getMainInstance().getMarketplaceManager().getAllNames().contains(spigotName)) {
+        if (!PluginPortal.getMainInstance().getMarketplaceManager().getAllNames().contains(spigotName)) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin does not exist."));
             return;
         }
