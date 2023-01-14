@@ -34,7 +34,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
 
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.0.1")
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.14.0')
 
     //implementation("org.bstats:bstats-bukkit:3.0.0")
 
