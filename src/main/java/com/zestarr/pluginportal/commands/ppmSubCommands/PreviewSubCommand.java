@@ -87,7 +87,7 @@ public class PreviewSubCommand extends SubCommandManager {
 
             int i = 0;
             int row = 0;
-            String builder = "";
+            StringBuilder builder = new StringBuilder();
             for (BufferedImage bound : imgs) {
                 if (i == 16) {
                     i = 0;
@@ -112,12 +112,12 @@ public class PreviewSubCommand extends SubCommandManager {
  */
 
                     sender.sendMessage(ChatUtil.format(builder + " &7" + message.replaceAll(":", ":&b")));
-                    builder = "";
+                    builder = new StringBuilder();
                     row++;
                 }
                 i++;
                 Color color = getAverageColor(bound);
-                builder += ChatColor.of(color) + "\u2589";
+                builder.ppend(ChatColor.of(color)).append("\u2589");
 
                 switch (i) {
                     case 0:

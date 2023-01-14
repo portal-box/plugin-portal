@@ -122,7 +122,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
 
                     int i = 0;
                     int row = 0;
-                    String builder = "";
+                    StringBuilder builder = new StringBuilder();
                     for (BufferedImage bound : imgs) {
                         if (i == 16) {
                             i = 0;
@@ -147,12 +147,12 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
  */
 
                             sender.sendMessage(ChatUtil.format(builder + " &7" + message.replaceAll(":", ":&b")));
-                            builder = "";
+                            builder = new StringBuilder();
                             row++;
                         }
                         i++;
                         Color color = getAverageColor(bound);
-                        builder += ChatColor.of(color) + "\u2589";
+                        builder.append(ChatColor.of(color)).append("\u2589");
 
                         switch (i) {
                             case 0:
