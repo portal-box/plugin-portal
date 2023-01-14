@@ -1,8 +1,8 @@
 package com.zestarr.pluginportal.commands.ppmSubCommands;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.commands.SubCommandEnum;
-import com.zestarr.pluginportal.managers.SubCommandManager;
+import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
+import com.zestarr.pluginportal.commands.commandUtility.SubCommandManager;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
 import net.md_5.bungee.api.ChatColor;
@@ -159,5 +159,7 @@ public class PreviewSubCommand extends SubCommandManager {
         return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
         // TODO sumr / sampled: Integer division in floating-point context
     }
+
+
 
 }

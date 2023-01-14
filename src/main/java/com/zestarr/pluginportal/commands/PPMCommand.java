@@ -1,8 +1,9 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
+import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
 import com.zestarr.pluginportal.commands.ppmSubCommands.*;
-import com.zestarr.pluginportal.managers.CommandManager;
+import com.zestarr.pluginportal.commands.commandUtility.CommandManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
@@ -35,7 +36,7 @@ public class PPMCommand extends CommandManager {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (args.length < 1) {
+        if (args.length < 2) {
             helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
         } else {
             switch (args[0].toLowerCase()) {
