@@ -4,7 +4,6 @@ import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.utils.FileUtil;
 import lombok.Data;
 import org.bukkit.Bukkit;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 

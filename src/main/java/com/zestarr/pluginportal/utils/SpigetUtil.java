@@ -5,7 +5,6 @@ import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 
 import java.lang.reflect.Type;
-import java.util.List;
 import java.util.Map;
 
 import okhttp3.HttpUrl;

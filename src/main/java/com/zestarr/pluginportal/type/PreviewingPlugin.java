@@ -5,8 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zestarr.pluginportal.utils.SpigetUtil;
 import lombok.Data;
 
-import java.util.ArrayList;
-
 @Data
 public class PreviewingPlugin {
 

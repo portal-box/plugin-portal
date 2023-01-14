@@ -5,11 +5,7 @@ import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.utils.FileUtil;
 import lombok.Getter;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.server.PluginDisableEvent;
-import org.bukkit.plugin.PluginManager;
 
 import java.io.File;
 import java.io.FileWriter;
