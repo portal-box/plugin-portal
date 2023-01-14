@@ -31,7 +31,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
 
         if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all installed plugins..."));
@@ -56,9 +56,8 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
         }
 
         switch (args[0].toLowerCase()) {
-            case "preview":
+            case "preview" -> {
                 PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
-
                 ArrayList<String> information = new ArrayList<>();
                 try {
                     information.add("Name: " + previewingPlugin.getSpigotName());
@@ -72,7 +71,6 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     exception.printStackTrace();
                     information.add("Error, ID: " + id + ". Please report this to our discord.");
                 }
-
                 try {
                     sender.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
                     String url = previewingPlugin.getIconUrl();
@@ -92,7 +90,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     int columns = 16;
 
                     // initializing array to hold subimages
-                    BufferedImage imgs[] = new BufferedImage[256];
+                    BufferedImage[] imgs = new BufferedImage[256];
 
                     // Equally dividing original image into subimages
                     int subimage_Width = image.getWidth() / columns;
@@ -122,7 +120,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
 
                     int i = 0;
                     int row = 0;
-                    String builder = "";
+                    StringBuilder builder = new StringBuilder();
                     for (BufferedImage bound : imgs) {
                         if (i == 16) {
                             i = 0;
@@ -147,12 +145,12 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
  */
 
                             sender.sendMessage(ChatUtil.format(builder + " &7" + message.replaceAll(":", ":&b")));
-                            builder = "";
+                            builder = new StringBuilder();
                             row++;
                         }
                         i++;
                         Color color = getAverageColor(bound);
-                        builder += ChatColor.of(color) + "\u2589";
+                        builder.append(ChatColor.of(color)).append("\u2589");
 
                         switch (i) {
                             case 0:
@@ -171,12 +169,10 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     e.printStackTrace();
                     //throw new RuntimeException(e);
                 }
-
-                break;
-            case "install":
-
+            }
+            case "install" -> {
                 if (portal.getLocalPluginManager().isInstalled(spigotName)) {
-                    if (args.length == 3 && !(args[2].toLowerCase().equals("-f") || args[2].toLowerCase().equals("--force"))) {
+                    if (args.length == 3 && !(args[2].equalsIgnoreCase("-f") || args[2].equalsIgnoreCase("--force"))) {
                         break;
 
                     } else {
@@ -184,19 +180,14 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                         return false;
                     }
                 }
-
                 if (new PreviewingPlugin(id).isPremium()) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cThis plugin is premium. Please purchase it on spigotmc.org to install it."));
                     return false;
                 }
-
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cStarting to download " + spigotName + "..."));
                 asyncInstall(sender, spigotName, id);
-
-                break;
-
-            case "update":
-
+            }
+            case "update" -> {
                 if (args.length == 2) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins that can be updated: "));
                     for (LocalPlugin plugin : portal.getLocalPluginManager().getPlugins().values()) {
@@ -206,12 +197,10 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     }
                     sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
                 }
-
                 if (portal.getLocalPluginManager().getPlugins().get(spigotName) == null) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is not installed. Did you mean to run /ppm install " + spigotName + "?"));
                     return false;
                 }
-
                 LocalPlugin plugin = portal.getLocalPluginManager().getPlugins().get(spigotName);
                 if (plugin.matchesVersion(new PreviewingPlugin(id).getVersion())) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is already up to date."));
@@ -221,8 +210,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     // def will cause no issues/errors! we need a better detection system for deleting plugins btw
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " has been updated to version " + new PreviewingPlugin(id).getVersion() + "."));
                 }
-
-                break;
+            }
         }
 
         return false;
@@ -236,16 +224,17 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
             return StringUtil.copyPartialMatches(args[0], Arrays.asList("install", "update", "list", "preview"), new ArrayList<>());
         } else if (args.length == 2) {
             switch (args[0].toLowerCase()) {
-                case "preview":
-                case "install":
+                case "preview", "install" -> {
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
                     return StringUtil.copyPartialMatches(args[1], portal.getMarketplaceManager().getAllNames(), new ArrayList<>());
+                }
                 /*
                     case "uninstall":
                     return StringUtil.copyPartialMatches(args[1], portal.getPluginStatusListener().getPluginMap().keySet(), new ArrayList<>());
                                  */
-                case "update":
+                case "update" -> {
                     return StringUtil.copyPartialMatches(args[1], portal.getLocalPluginManager().getAllNames(), new ArrayList<>());
+                }
             }
         } else if (args.length == 3 && args[0].equalsIgnoreCase("install")) {
             return StringUtil.copyPartialMatches(args[2], Arrays.asList("-f", "--force"), new ArrayList<>());
@@ -273,6 +262,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
         int dim = bi.getWidth() * bi.getHeight();
         // Log.info("step=" + step + " sampled " + sampled + " out of " + dim + " pixels (" + String.format("%.1f", (float)(100*sampled/dim)) + " %)");
         return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
+        // TODO sumr / sampled: Integer division in floating-point context
     }
 
     private void asyncInstall(CommandSender sender, String spigotName, int id) {

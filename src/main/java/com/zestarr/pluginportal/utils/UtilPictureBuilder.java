@@ -82,10 +82,10 @@ public class UtilPictureBuilder {
 		for (Pair pair : this.data) {
 			StringBuilder sb = new StringBuilder();
 			for (char c : pair.getLeft().toString().toCharArray()) {
-				sb.append(ChatColor.getByChar(c).toString() + ChatColor.BOLD + "▉");
+				sb.append(ChatColor.getByChar(c).toString()).append(ChatColor.BOLD).append("▉");
 			}
 			if (!pair.getRight().equals("")) {
-				sb.append(" " + ChatColor.translateAlternateColorCodes('&', pair.getRight().toString()));
+				sb.append(" ").append(ChatColor.translateAlternateColorCodes('&', pair.getRight().toString()));
 			}
 //			Message.playerBlank(player, sb.toString());
 		}

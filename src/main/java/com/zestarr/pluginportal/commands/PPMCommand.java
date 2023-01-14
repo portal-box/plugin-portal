@@ -39,29 +39,12 @@ public class PPMCommand extends CommandManager {
             helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
         } else {
             switch (args[0].toLowerCase()) {
-                case "install":
-                    installSubCommand.execute(sender, args, SubCommandEnum.INSTALL);
-                    break;
-
-                case "list":
-                    listSubCommand.execute(sender, args, SubCommandEnum.LIST);
-                    break;
-
-                case "preview":
-                    previewSubCommand.execute(sender, args, SubCommandEnum.PREVIEW);
-                    break;
-
-                case "settings":
-                    settingsSubCommand.execute(sender, args, SubCommandEnum.SETTINGS);
-                    break;
-
-                case "update":
-                    updateSubCommand.execute(sender, args, SubCommandEnum.UPDATE);
-                    break;
-
-                default:
-                    helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
-                    break;
+                case "install" -> installSubCommand.execute(sender, args, SubCommandEnum.INSTALL);
+                case "list" -> listSubCommand.execute(sender, args, SubCommandEnum.LIST);
+                case "preview" -> previewSubCommand.execute(sender, args, SubCommandEnum.PREVIEW);
+                case "settings" -> settingsSubCommand.execute(sender, args, SubCommandEnum.SETTINGS);
+                case "update" -> updateSubCommand.execute(sender, args, SubCommandEnum.UPDATE);
+                default -> helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
             }
         }
     }
@@ -79,17 +62,16 @@ public class PPMCommand extends CommandManager {
             return StringUtil.copyPartialMatches(args[0], tabComplete, new ArrayList<>());
         } else if (args.length == 2) {
             switch (args[0].toLowerCase()) {
-                case "install":
-                case "preview":
+                case "install", "preview" -> {
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
                     return StringUtil.copyPartialMatches(args[1], plugin.getMarketplaceManager().getAllNames(), new ArrayList<>());
-
-                case "settings":
-
-                case "update":
+                }
+                case "settings", "update" -> {
                     return StringUtil.copyPartialMatches(args[1], plugin.getLocalPluginManager().getAllNames(), new ArrayList<>());
-                default:
+                }
+                default -> {
                     return null;
+                }
             }
         } else if (args.length == 3) {
             return StringUtil.copyPartialMatches(args[2], Arrays.asList(SubCommandEnum.valueOf(args[0].toUpperCase()).getFlags()), new ArrayList<>());

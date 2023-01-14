@@ -19,7 +19,7 @@ public class PreviewSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
         PreviewingPlugin previewingPlugin = new PreviewingPlugin(PluginPortal.getMainInstance().getMarketplaceManager().getId(args[1]));
-        if (previewingPlugin.equals(-1)) {
+        if (previewingPlugin.equals(-1)) { // TODO: comparison of PreviewingPlugin with -1 is always false
             sender.sendMessage(ChatUtil.format("&7[&b&lPPM&7] &cThat plugin does not exist!"));
             return;
         }
@@ -57,7 +57,7 @@ public class PreviewSubCommand extends SubCommandManager {
             int columns = 16;
 
             // initializing array to hold subimages
-            BufferedImage imgs[] = new BufferedImage[256];
+            BufferedImage[] imgs = new BufferedImage[256];
 
             // Equally dividing original image into subimages
             int subimage_Width = image.getWidth() / columns;
@@ -87,7 +87,7 @@ public class PreviewSubCommand extends SubCommandManager {
 
             int i = 0;
             int row = 0;
-            String builder = "";
+            StringBuilder builder = new StringBuilder();
             for (BufferedImage bound : imgs) {
                 if (i == 16) {
                     i = 0;
@@ -112,12 +112,12 @@ public class PreviewSubCommand extends SubCommandManager {
  */
 
                     sender.sendMessage(ChatUtil.format(builder + " &7" + message.replaceAll(":", ":&b")));
-                    builder = "";
+                    builder = new StringBuilder();
                     row++;
                 }
                 i++;
                 Color color = getAverageColor(bound);
-                builder += ChatColor.of(color) + "\u2589";
+                builder.append(ChatColor.of(color)).append("\u2589");
 
                 switch (i) {
                     case 0:
@@ -157,6 +157,7 @@ public class PreviewSubCommand extends SubCommandManager {
         int dim = bi.getWidth() * bi.getHeight();
         // Log.info("step=" + step + " sampled " + sampled + " out of " + dim + " pixels (" + String.format("%.1f", (float)(100*sampled/dim)) + " %)");
         return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
+        // TODO sumr / sampled: Integer division in floating-point context
     }
 
 }
