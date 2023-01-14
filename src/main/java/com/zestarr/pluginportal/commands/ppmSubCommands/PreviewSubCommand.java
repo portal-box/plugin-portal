@@ -117,7 +117,7 @@ public class PreviewSubCommand extends SubCommandManager {
                 }
                 i++;
                 Color color = getAverageColor(bound);
-                builder.ppend(ChatColor.of(color)).append("\u2589");
+                builder.append(ChatColor.of(color)).append("\u2589");
 
                 switch (i) {
                     case 0:
