@@ -92,7 +92,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                     int columns = 16;
 
                     // initializing array to hold subimages
-                    BufferedImage imgs[] = new BufferedImage[256];
+                    BufferedImage[] imgs = new BufferedImage[256];
 
                     // Equally dividing original image into subimages
                     int subimage_Width = image.getWidth() / columns;
