@@ -176,7 +176,7 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
             case "install":
 
                 if (portal.getLocalPluginManager().isInstalled(spigotName)) {
-                    if (args.length == 3 && !(args[2].toLowerCase().equals("-f") || args[2].toLowerCase().equals("--force"))) {
+                    if (args.length == 3 && !(args[2].equalsIgnoreCase("-f") || args[2].equalsIgnoreCase("--force"))) {
                         break;
 
                     } else {
