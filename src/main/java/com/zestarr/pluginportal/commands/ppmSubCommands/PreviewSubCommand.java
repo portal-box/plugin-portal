@@ -126,7 +126,7 @@ public class PreviewSubCommand extends SubCommandManager {
                 }
             }
 
-
+            sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
             connection.getInputStream().close();
         } catch (Exception e) {
             e.printStackTrace();

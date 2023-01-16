@@ -1,15 +1,20 @@
 package com.zestarr.pluginportal.commands.ppmSubCommands;
 
 import com.zestarr.pluginportal.PluginPortal;
+import com.zestarr.pluginportal.commands.commandUtility.Flags;
 import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
 import com.zestarr.pluginportal.commands.commandUtility.SubCommandManager;
 import com.zestarr.pluginportal.type.FileType;
 import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
+import com.zestarr.pluginportal.utils.FlagUtil;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
+import net.md_5.bungee.api.chat.TextComponent;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -17,12 +22,14 @@ import java.awt.image.BufferedImage;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class InstallSubCommand extends SubCommandManager {
 
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
 
+        HashSet<Flags> flags = FlagUtil.getFlags(SubCommandEnum.INSTALL, args);
 
 
         if (args.length <= 1) {
@@ -45,7 +52,7 @@ public class InstallSubCommand extends SubCommandManager {
             return;
         }
 
-        if (previewingPlugin.getFileType() == FileType.EXTERNAL) {
+        if (previewingPlugin.getFileType() == FileType.EXTERNAL && !flags.contains(Flags.FORCE)) {
 
             ArrayList<String> information = new ArrayList<>();
             try {
@@ -53,8 +60,6 @@ public class InstallSubCommand extends SubCommandManager {
                 //information.add("De    scription: " + previewingPlugin.getTag());
                 information.add("Downloads: " + previewingPlugin.getDownloads());
                 information.add("Rating: " + previewingPlugin.getRating());
-                information.add("File Size: " + previewingPlugin.getFileSize() + previewingPlugin.getSizeUnit().getUnit());
-                information.add("File Type: " + previewingPlugin.getFileType().getExtension());
                 information.add("Supported: " + previewingPlugin.getFileType().isSupported());
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -118,11 +123,11 @@ public class InstallSubCommand extends SubCommandManager {
                             message = information.get(row);
                         }
 
-                            switch (row) {
-                                case 16:
-                                    message = "&7Want to still install? Do /ppm install &bPluginName &a-f";
-                                    break;
-                                }
+                        if (row == 12) {
+                            message = "&7Want to still attempt install? &7Do:";
+                        } else if (row == 13) {
+                            message = "&b/ppm install PluginName &a-f";
+                        }
 
                         sender.sendMessage(ChatUtil.format(builder + " &7" + message.replaceAll(":", ":&b")));
                         builder = new StringBuilder();
@@ -143,7 +148,9 @@ public class InstallSubCommand extends SubCommandManager {
                     }
                 }
 
-
+                TextComponent clickable = new TextComponent("§8---------------- §bClick to open URL §8----------------");
+                clickable.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org/resources/" + id));
+                sender.spigot().sendMessage(new BaseComponent[]{clickable});
                 connection.getInputStream().close();
             } catch (Exception e) {
                 e.printStackTrace();

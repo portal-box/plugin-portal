@@ -9,6 +9,7 @@ import com.zestarr.pluginportal.type.LocalPlugin;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class FileUtil {
@@ -73,6 +74,29 @@ public class FileUtil {
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        scanDeletedPlugins(plugin);
+    }
+
+    public static void scanDeletedPlugins(PluginPortal plugin) {
+        ArrayList<LocalPlugin> deletedPlugins = new ArrayList<>();
+        for (LocalPlugin localPlugin : plugin.getLocalPluginManager().getPlugins().values()) {
+            boolean exists = false;
+            for (File file : plugin.getDataFolder().listFiles()) {
+                if (FileUtil.getSHA256(file).equals(localPlugin.getSha256())) {
+                    System.out.println("Found plugin " + file.getName() + " in the data folder!");
+                    exists = true;
+                }
+            }
+            if (!exists) {
+                deletedPlugins.add(localPlugin);
+                System.out.println("Deleted plugin: " + localPlugin.getPreviewingPlugin().getSpigotName());
+            }
+
+        }
+        for (LocalPlugin localPlugin : deletedPlugins) {
+            plugin.getLocalPluginManager().getPlugins().remove(localPlugin.getPreviewingPlugin().getSpigotName());
         }
     }
 

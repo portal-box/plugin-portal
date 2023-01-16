@@ -9,14 +9,14 @@ import lombok.Data;
 @Data
 public class PreviewingPlugin {
 
-    private String spigotName, version, tag, iconUrl;
-    private String[] testedVersions, authors;
-    private int id, downloads;
-    private long releaseData, updateDate;
-    private double price, rating, fileSize;
-    private boolean premium;
-    private FileType fileType;
-    private SizeUnit sizeUnit;
+    private String spigotName, version, tag, iconUrl = null;
+    private String[] testedVersions, authors = null;
+    private int id, downloads = 0;
+    private long releaseData, updateDate = 0;
+    private double price, rating, fileSize = 0;
+    private boolean premium = false;
+    private FileType fileType = null;
+    private SizeUnit sizeUnit = null;
 
     public PreviewingPlugin(int id) {
         this.id = id;
@@ -37,13 +37,19 @@ public class PreviewingPlugin {
             this.rating = root.get("rating").asDouble();
             this.premium = false;
             this.fileSize = root.get("file").get("size").asDouble();
-            this.sizeUnit = SizeUnit.valueOf(root.get("file").get("sizeUnit").asText());
             String url = root.get("icon").get("url").asText();
             if (url.isEmpty()) {
                 this.iconUrl = "https://i.imgur.com/V9jfjSJ.png";
             } else {
                 this.iconUrl = "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
             }
+            String sizeUnit = root.get("file").get("sizeUnit").asText();
+            if (sizeUnit.isEmpty()) {
+                this.sizeUnit = SizeUnit.NONE;
+            } else {
+                this.sizeUnit = SizeUnit.valueOf(sizeUnit);
+            }
+
 
 
             switch (root.get("file").get("type").asText().toLowerCase()) {
@@ -93,8 +99,8 @@ public class PreviewingPlugin {
       "uuid": "00000003-c001-1bd1-0000-0179a7bfe2df"
     },
     {
-      "id": 130477,
-      "uuid": "00000003-c001-1bd0-0000-0179a7b1dbda"
+      "iokijhufgc d": 130477,
+      "zuuid": "00000003-c001-1bd0-0000-0179a7b1dbda"
     },
     {
       "id": 86761,
