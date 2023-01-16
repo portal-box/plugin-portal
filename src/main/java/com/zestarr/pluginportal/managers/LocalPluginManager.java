@@ -24,7 +24,7 @@ public class LocalPluginManager implements Listener {
 
     public LocalPluginManager(PluginPortal plugin) throws IOException {
         this.plugin = plugin;
-        dataFile = new File(plugin.getDataFolder(), "plugins.yml");
+        dataFile = new File(plugin.getDataFolder(), "plugins.json");
         if (!dataFile.exists()) {
             dataFile.createNewFile();
             FileWriter writer = new FileWriter(dataFile);
@@ -38,7 +38,7 @@ public class LocalPluginManager implements Listener {
 
     public void add(LocalPlugin localPlugin) {
         localPlugins.put(localPlugin.getPreviewingPlugin().getSpigotName(), localPlugin);
-        FileUtil.saveData(plugin, dataFile);
+        FileUtil.saveData(plugin);
     }
 
     public void updateAllPlugins() {
@@ -46,7 +46,7 @@ public class LocalPluginManager implements Listener {
             plugin.getDownloadManager().update(localPlugin);
         }
 
-        FileUtil.saveData(plugin, dataFile);
+        FileUtil.saveData(plugin);
     }
 
     public List<String> getAllNames() {

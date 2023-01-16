@@ -47,12 +47,12 @@ public class FileUtil {
         return sb.toString();
     }
 
-    public static void saveData(PluginPortal plugin, File dataFile) {
+    public static void saveData(PluginPortal plugin) {
         try {
             Moshi moshi = new Moshi.Builder().build();
             JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
             String json = jsonAdapater.toJson(plugin.getLocalPluginManager().getPlugins());
-            BufferedWriter writer = new BufferedWriter(new FileWriter(dataFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(plugin.getLocalPluginManager().getDataFile()));
             writer.write(json);
             writer.flush();
             writer.close();
@@ -83,10 +83,12 @@ public class FileUtil {
         ArrayList<LocalPlugin> deletedPlugins = new ArrayList<>();
         for (LocalPlugin localPlugin : plugin.getLocalPluginManager().getPlugins().values()) {
             boolean exists = false;
-            for (File file : plugin.getDataFolder().listFiles()) {
-                if (FileUtil.getSHA256(file).equals(localPlugin.getSha256())) {
-                    System.out.println("Found plugin " + file.getName() + " in the data folder!");
-                    exists = true;
+            for (File file : plugin.getDataFolder().getParentFile().listFiles()) {
+                if (file.getPath().endsWith(".jar")) {
+                    if (FileUtil.getSHA256(file).equals(localPlugin.getSha256())) {
+                        localPlugin.setFileName(file.getName());
+                        exists = true;
+                    }
                 }
             }
             if (!exists) {
@@ -98,6 +100,8 @@ public class FileUtil {
         for (LocalPlugin localPlugin : deletedPlugins) {
             plugin.getLocalPluginManager().getPlugins().remove(localPlugin.getPreviewingPlugin().getSpigotName());
         }
+
+        saveData(plugin);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.zestarr.pluginportal.managers;
 
 import com.zestarr.pluginportal.PluginPortal;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.*;
@@ -23,6 +24,7 @@ public class MarketplaceManager {
             marketplaceCache.put(Integer.parseInt(id), data.getString(id));
         }
         file.delete();
+
     }
 
     private void downloadFile(URL url, File file) {
