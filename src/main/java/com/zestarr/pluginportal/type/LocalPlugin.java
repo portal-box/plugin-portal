@@ -13,15 +13,6 @@ public class LocalPlugin {
     private PreviewingPlugin previewingPlugin;
     private String sha256, fileName;
 
-    /*
-    public LocalPlugin(int id, String spigotName, String serverName, String version) {
-        this.id = id;
-        this.previewingPlugin = previewingPlugin;
-        this.serverName = serverName;
-    }
-
-     */
-
     public LocalPlugin(PreviewingPlugin previewingPlugin, String fileName) {
         this.previewingPlugin = previewingPlugin;
         this.fileName = fileName;
@@ -29,23 +20,16 @@ public class LocalPlugin {
 
     }
 
-    public String findFileName() {
-
-        for (File file : new File("plugins").listFiles()) {
-            if (file.getName().endsWith(".jar")) {
-                if (FileUtil.getSHA256(file).equals(sha256)) {
-                    this.fileName = file.getName();
-                    return file.getName();
-                }
-            }
-        }
-        return null;
+    public boolean isInstalled() {
+        return PluginPortal.getMainInstance().getDataFolder().getParentFile().listFiles().toString().contains(fileName);
     }
 
-    public boolean isInstalled() { return Bukkit.getPluginManager().isPluginEnabled(findFileName()); }
     public boolean matchesVersion(String latestVersion) { return previewingPlugin.getVersion().equals(latestVersion); }
-    public boolean updateNeeded(PluginPortal plugin) {
-        return matchesVersion(plugin.getMarketplaceManager().getMarketplaceCache().get(previewingPlugin.getId()));
+
+    public boolean updateNeeded() {
+        return matchesVersion(PluginPortal.getMainInstance().getMarketplaceManager().getMarketplaceCache().get(previewingPlugin.getId()));
     }
+
+    public File getFile() { return new File("plugins", (fileName + (fileName.endsWith(".jar") ? "" : ".jar"))); }
 
 }

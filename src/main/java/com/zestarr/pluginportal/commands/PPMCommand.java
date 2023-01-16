@@ -69,7 +69,7 @@ public class PPMCommand extends CommandManager {
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
                     return StringUtil.copyPartialMatches(args[1], plugin.getMarketplaceManager().getAllNames(), new ArrayList<>());
                 }
-                case "settings", "update" -> {
+                case "update" -> {
                     return StringUtil.copyPartialMatches(args[1], plugin.getLocalPluginManager().getAllNames(), new ArrayList<>());
                 }
                 default -> {
@@ -77,7 +77,11 @@ public class PPMCommand extends CommandManager {
                 }
             }
         } else if (args.length == 3) {
-            return StringUtil.copyPartialMatches(args[2], FlagUtil.getFlagStrings(SubCommandEnum.valueOf(args[0].toUpperCase())), new ArrayList<>());
+            try {
+                return StringUtil.copyPartialMatches(args[2], FlagUtil.getFlagStrings(SubCommandEnum.valueOf(args[0].toUpperCase())), new ArrayList<>());
+            } catch (NullPointerException exception) {
+                return null;
+            }
         }
 
         return null;

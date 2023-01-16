@@ -36,8 +36,8 @@ public class LocalPluginManager implements Listener {
 
     }
 
-    public void add(LocalPlugin localPlugin) {
-        localPlugins.put(localPlugin.getPreviewingPlugin().getSpigotName(), localPlugin);
+    public void add(String fileName, LocalPlugin localPlugin) {
+        localPlugins.put(fileName, localPlugin);
         FileUtil.saveData(plugin);
     }
 
@@ -52,7 +52,7 @@ public class LocalPluginManager implements Listener {
     public List<String> getAllNames() {
         List<String> names = new ArrayList<>();
         for (LocalPlugin plugin : localPlugins.values()) {
-            names.add(plugin.getPreviewingPlugin().getSpigotName());
+            names.add(plugin.getFileName().replace(".jar", ""));
         }
         return names;
     }

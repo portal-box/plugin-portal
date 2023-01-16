@@ -11,13 +11,9 @@ import okhttp3.Response;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-public class SpigetUtil {
+public class JsonUtil {
 
     public static String getJsonData(int id) {
-        Moshi moshi = new Moshi.Builder().build();
-        Type type = Types.newParameterizedType(Map.class, String.class, Object.class);
-        JsonAdapter<Map<String, Object>> jsonAdapter = moshi.adapter(type);
-
         try {
             OkHttpClient client = new OkHttpClient();
 
@@ -53,21 +49,18 @@ public class SpigetUtil {
         return null;
     }
 
-    public static String getJsonData(String URL) {
-        Moshi moshi = new Moshi.Builder().build();
-        Type type = Types.newParameterizedType(Map.class, String.class, Object.class);
-        JsonAdapter<Map<String, Object>> jsonAdapter = moshi.adapter(type);
-
+    public static String getPluginJson() {
         try {
             OkHttpClient client = new OkHttpClient();
 
             // Build the URL for the API request
             HttpUrl url = new HttpUrl.Builder()
                     .scheme("https")
-                    .host("api.spiget.org")
-                    .addPathSegment("v2")
-                    .addPathSegment("resources")
-                    .addPathSegment(String.valueOf(id))
+                    .host("raw.githubusercontent.com")
+                    .addPathSegment("Zestarr")
+                    .addPathSegment("PluginPortal")
+                    .addPathSegment("master")
+                    .addPathSegment("PluginList.json")
                     .build();
 
             // Create the request

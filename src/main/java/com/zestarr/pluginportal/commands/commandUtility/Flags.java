@@ -4,7 +4,7 @@ import lombok.Getter;
 
 public enum Flags {
 
-    FORCE(new String[]{"-f", "-force"});
+    FORCE(new String[]{"-f", "--force"});
 
     @Getter
     private final String[] flagsString;

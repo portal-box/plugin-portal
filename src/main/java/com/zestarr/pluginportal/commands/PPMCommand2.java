@@ -185,11 +185,10 @@ public class PPMCommand2 implements CommandExecutor, TabCompleter {
                 if (args.length == 2) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins that can be updated: "));
                     for (LocalPlugin plugin : portal.getLocalPluginManager().getPlugins().values()) {
-                        if (plugin.updateNeeded(portal)) {
+                        if (plugin.updateNeeded()) {
                             sender.sendMessage(ChatUtil.format(" &a+ &7" + plugin.getPreviewingPlugin().getSpigotName()));
                         }
                     }
-                    sender.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
                 }
                 if (portal.getLocalPluginManager().getPlugins().get(spigotName) == null) {
                     sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + spigotName + " is not installed. Did you mean to run /ppm install " + spigotName + "?"));
