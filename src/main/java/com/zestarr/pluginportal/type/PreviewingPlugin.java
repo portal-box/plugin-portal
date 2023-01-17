@@ -23,14 +23,14 @@ import java.util.ArrayList;
 @Data
 public class PreviewingPlugin {
 
-    private String spigotName, version, tag, iconUrl;
-    private String[] testedVersions, authors;
-    private int id, downloads;
-    private long releaseData, updateDate;
-    private double price, rating, fileSize;
-    private boolean premium;
-    private FileType fileType;
-    private SizeUnit sizeUnit;
+    private String spigotName, version, tag, iconUrl = null;
+    private String[] testedVersions, authors = null;
+    private int id, downloads = 0;
+    private long releaseData, updateDate = 0;
+    private double price, rating, fileSize = 0;
+    private boolean premium = false;
+    private FileType fileType = null;
+    private SizeUnit sizeUnit = null;
 
     public PreviewingPlugin(int id) {
         this.id = id;
@@ -51,14 +51,12 @@ public class PreviewingPlugin {
             this.rating = root.get("rating").asDouble();
             this.premium = false;
             this.fileSize = root.get("file").get("size").asDouble();
-            this.sizeUnit = SizeUnit.valueOf(root.get("file").get("sizeUnit").asText());
-            String url = root.get("icon").get("url").asText();
-            if (url.isEmpty()) {
-                this.iconUrl = "https://i.imgur.com/V9jfjSJ.png";
-            } else {
-                this.iconUrl = "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
-            }
 
+            String url = root.get("icon").get("url").asText();
+            this.iconUrl = url.isEmpty() ? "https://i.imgur.com/V9jfjSJ.png" : "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
+
+            String sizeUnit = root.get("file").get("sizeUnit").asText();
+            this.sizeUnit = sizeUnit.isEmpty() ? SizeUnit.NONE : SizeUnit.valueOf(sizeUnit);
 
             switch (root.get("file").get("type").asText().toLowerCase()) {
                 case ".jar" -> this.fileType = FileType.JAR;
@@ -67,42 +65,41 @@ public class PreviewingPlugin {
                 default -> this.fileType = FileType.EXTERNAL; // Includes "external"
             }
 
-            // Change to specific Exceptions??
         } catch (JacksonException exception) {
             exception.printStackTrace();
         }
 
     }
 
-    public void sendPreview(Player player) {
+    public void sendPreview(Player player, boolean containDownloadPrompt) {
         player.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
 
         ArrayList<TextComponent> informationAsComponents = new ArrayList<>();
         try {
-            TextComponent component = new TextComponent("Name: " + this.getSpigotName());
+            TextComponent component = new TextComponent(ChatUtil.format("Name: &b" + this.getSpigotName()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Description: [Hover Here]");
-            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(this.getTag())));
+            component = new TextComponent(ChatUtil.format("Description: &b&l[Hover Here]"));
+            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatUtil.format("&b" + this.getTag()))));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Downloads: " + this.getDownloads());
+            component = new TextComponent(ChatUtil.format("Downloads: &b" + this.getDownloads()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Rating: " + this.getRating());
+            component = new TextComponent(ChatUtil.format("Rating: &b" + this.getRating()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("File Size: " + this.getFileSize() + this.getSizeUnit().getUnit());
+            component = new TextComponent(ChatUtil.format("File Size: &b" + (this.getSizeUnit() != SizeUnit.NONE ? this.getFileSize() + this.getSizeUnit().getUnit() : SizeUnit.NONE.getUnit())));
             informationAsComponents.add(component);
 
-            component = new TextComponent("File Type: " + this.getFileType().getExtension());
+            component = new TextComponent(ChatUtil.format("File Type: &b" + this.getFileType().getExtension()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Supported: " + this.getFileType().isSupported());
+            component = new TextComponent(ChatUtil.format("Directly Downloadable: &b" + (this.getFileType().isSupported() ? "Yes" : "No")));
             informationAsComponents.add(component);
         } catch (Exception exception) {
             exception.printStackTrace();
-            informationAsComponents.add(new TextComponent("Error ID: " + this.getId() + ". Please report this to our discord."));
+            informationAsComponents.add(new TextComponent(ChatUtil.format("&cError ID: " + this.getId() + ". Please report this to our discord.")));
         }
 
         try {
@@ -115,11 +112,12 @@ public class PreviewingPlugin {
             BufferedImage image = ImageIO.read(connection.getInputStream());
 
             // rows and columns
-            int rows = 16;
-            int columns = 16;
+            int squareSize = 12;
+            int rows = squareSize;
+            int columns = squareSize;
 
             // array to hold sub-images
-            BufferedImage[] imgs = new BufferedImage[256];
+            BufferedImage[] imgs = new BufferedImage[rows * columns];
 
             // Equally dividing original image into images
             int subimage_Width = image.getWidth() / columns;
@@ -151,7 +149,7 @@ public class PreviewingPlugin {
             int row = 0;
             StringBuilder builder = new StringBuilder();
             for (BufferedImage bound : imgs) {
-                if (i == 16) {
+                if (i == squareSize) {
                     i = 0;
                     ComponentBuilder componentBuilder = new ComponentBuilder();
 
@@ -159,6 +157,14 @@ public class PreviewingPlugin {
 
                     if (informationAsComponents.size() > row && informationAsComponents.get(row) != null) {
                         componentBuilder.append(informationAsComponents.get(row));
+                    }
+
+                    if (containDownloadPrompt) {
+                        if (row == rows - 4) {
+                            componentBuilder.append(ChatUtil.format("&7Would you still like to download this plugin?"));
+                        } else if (row == rows - 3) {
+                            componentBuilder.append(ChatUtil.format("&7Please run /ppm install " + this.spigotName + " &a-f"));
+                        }
                     }
 /*
                             switch (row) {
@@ -196,6 +202,7 @@ public class PreviewingPlugin {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        player.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
     }
 
     public Color getAverageColor(BufferedImage bi) {

@@ -1,31 +1,29 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
-import com.zestarr.pluginportal.commands.ppmSubCommands.*;
-import com.zestarr.pluginportal.commands.commandUtility.CommandManager;
+import com.zestarr.pluginportal.commands.commandutil.SubCommandEnum;
+import com.zestarr.pluginportal.commands.subcommands.*;
+import com.zestarr.pluginportal.commands.commandutil.CommandManager;
 import com.zestarr.pluginportal.utils.FlagUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-public class PPMCommand extends CommandManager {
-
-    HelpSubCommand helpSubCommand = new HelpSubCommand();
-    InstallSubCommand installSubCommand = new InstallSubCommand();
-    ListSubCommand listSubCommand = new ListSubCommand();
-    PreviewSubCommand previewSubCommand = new PreviewSubCommand();
-    SettingsSubCommand settingsSubCommand = new SettingsSubCommand();
-    UpdateSubCommand updateSubCommand = new UpdateSubCommand();
+public class PluginPortalBaseCommand extends CommandManager {
 
     private final PluginPortal plugin;
 
+    private final HelpSubCommand helpSubCommand = new HelpSubCommand();
+    private final InstallSubCommand installSubCommand = new InstallSubCommand();
+    private final ListSubCommand listSubCommand = new ListSubCommand();
+    private final PreviewSubCommand previewSubCommand = new PreviewSubCommand();
+    private final SettingsSubCommand settingsSubCommand = new SettingsSubCommand();
+    private final UpdateSubCommand updateSubCommand = new UpdateSubCommand();
 
-    public PPMCommand(PluginPortal plugin) {
+    public PluginPortalBaseCommand(PluginPortal plugin) {
         super(
                 "ppm",
                 new String[]{"PluginPackagemanager"},
@@ -55,15 +53,12 @@ public class PPMCommand extends CommandManager {
     @Override
     public List<String> onTabComplete(CommandSender sender, String[] args) {
 
-
-
         if (args.length == 1) {
-            ArrayList<String> tabComplete = new ArrayList<>();
-            for (SubCommandEnum subCommandEnum : SubCommandEnum.values()) {
-                tabComplete.add(subCommandEnum.getCommand());
-            }
-            return StringUtil.copyPartialMatches(args[0], tabComplete, new ArrayList<>());
-        } else if (args.length == 2) {
+            List<String> completions = new ArrayList<>(Arrays.stream(SubCommandEnum.values()).map(subCommandEnum -> subCommandEnum.getCommand().toLowerCase()).toList());
+            return StringUtil.copyPartialMatches(args[0], completions, new ArrayList<>());
+        }
+
+        if (args.length == 2) {
             switch (args[0].toLowerCase()) {
                 case "install", "preview" -> {
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
@@ -76,14 +71,15 @@ public class PPMCommand extends CommandManager {
                     return null;
                 }
             }
-        } else if (args.length == 3) {
+        }
+
+        if (args.length == 3) {
             try {
                 return StringUtil.copyPartialMatches(args[2], FlagUtil.getFlagStrings(SubCommandEnum.valueOf(args[0].toUpperCase())), new ArrayList<>());
             } catch (NullPointerException exception) {
                 return null;
             }
         }
-
         return null;
     }
 }

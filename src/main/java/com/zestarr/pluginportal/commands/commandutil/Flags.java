@@ -1,4 +1,4 @@
-package com.zestarr.pluginportal.commands.commandUtility;
+package com.zestarr.pluginportal.commands.commandutil;
 
 import lombok.Getter;
 

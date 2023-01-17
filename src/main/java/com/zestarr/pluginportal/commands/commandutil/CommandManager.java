@@ -1,4 +1,4 @@
-package com.zestarr.pluginportal.commands.commandUtility;
+package com.zestarr.pluginportal.commands.commandutil;
 
 import com.zestarr.pluginportal.utils.ChatUtil;
 import org.bukkit.Bukkit;

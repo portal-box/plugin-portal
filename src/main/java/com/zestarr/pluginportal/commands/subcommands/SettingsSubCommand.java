@@ -1,7 +1,7 @@
-package com.zestarr.pluginportal.commands.ppmSubCommands;
+package com.zestarr.pluginportal.commands.subcommands;
 
-import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
-import com.zestarr.pluginportal.commands.commandUtility.SubCommandManager;
+import com.zestarr.pluginportal.commands.commandutil.SubCommandEnum;
+import com.zestarr.pluginportal.commands.commandutil.SubCommandManager;
 import com.zestarr.pluginportal.utils.ChatUtil;
 import org.bukkit.command.CommandSender;
 
