@@ -10,8 +10,6 @@ import java.net.URLConnection;
 
 public class DownloadManager {
 
-    private final String USER_AGENT = "github.com/Zestarr/PluginPortal";
-
     private final PluginPortal portal;
 
     public DownloadManager(PluginPortal portal) {
@@ -22,7 +20,7 @@ public class DownloadManager {
         try {
             URL url = new URL("https://api.spiget.org/v2/resources/" + plugin.getId() + "/download");
             URLConnection connection = url.openConnection();
-            connection.setRequestProperty("User-Agent", USER_AGENT);
+            connection.setRequestProperty("User-Agent", "github.com/Zestarr/PluginPortal");
 
             String fileName = PluginPortal.getMainInstance().getMarketplaceManager().getMarketplaceCache().get(plugin.getId());
             InputStream inputStream = connection.getInputStream();
@@ -44,11 +42,6 @@ public class DownloadManager {
             e.printStackTrace();
             return null;
         }
-    }
-
-    public LocalPlugin update(LocalPlugin plugin) {
-        portal.getLocalPluginManager().getPlugins().remove(plugin.getFileName());
-        return download(plugin.getPreviewingPlugin());
     }
 
 }

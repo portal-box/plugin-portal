@@ -20,16 +20,12 @@ public class LocalPlugin {
 
     }
 
-    public boolean isInstalled() {
-        return PluginPortal.getMainInstance().getDataFolder().getParentFile().listFiles().toString().contains(fileName);
-    }
-
-    public boolean matchesVersion(long releaseDate) {
-        return previewingPlugin.getReleaseData() == releaseDate;
+    public boolean matchesVersion(long updateDate) {
+        return previewingPlugin.getUpdateDate() == updateDate;
     }
 
     public boolean updateNeeded() {
-        return !matchesVersion(new PreviewingPlugin(previewingPlugin.getId()).getReleaseData());
+        return !matchesVersion(new PreviewingPlugin(previewingPlugin.getId()).getUpdateDate());
     }
 
     public File getFile() { return new File("plugins", (fileName + (fileName.endsWith(".jar") ? "" : ".jar"))); }
