@@ -87,30 +87,30 @@ public class PreviewingPlugin {
 
         ArrayList<TextComponent> informationAsComponents = new ArrayList<>();
         try {
-            TextComponent component = new TextComponent("Name: " + this.getSpigotName());
+            TextComponent component = new TextComponent(ChatUtil.format("Name: &b" + this.getSpigotName()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Description: [Hover Here]");
-            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(this.getTag())));
+            component = new TextComponent(ChatUtil.format("Description: &b&l[Hover Here]"));
+            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatUtil.format("&b" + this.getTag()))));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Downloads: " + this.getDownloads());
+            component = new TextComponent(ChatUtil.format("Downloads: &b" + this.getDownloads()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Rating: " + this.getRating());
+            component = new TextComponent(ChatUtil.format("Rating: &b" + this.getRating()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("File Size: " + this.getFileSize() + this.getSizeUnit().getUnit());
+            component = new TextComponent(ChatUtil.format("File Size: &b" + this.getFileSize() + this.getSizeUnit().getUnit()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("File Type: " + this.getFileType().getExtension());
+            component = new TextComponent(ChatUtil.format("File Type: &b" + this.getFileType().getExtension()));
             informationAsComponents.add(component);
 
-            component = new TextComponent("Supported: " + this.getFileType().isSupported());
+            component = new TextComponent(ChatUtil.format("Supported: &b" + this.getFileType().isSupported()));
             informationAsComponents.add(component);
         } catch (Exception exception) {
             exception.printStackTrace();
-            informationAsComponents.add(new TextComponent("Error ID: " + this.getId() + ". Please report this to our discord."));
+            informationAsComponents.add(new TextComponent(ChatUtil.format("&cError ID: " + this.getId() + ". Please report this to our discord.")));
         }
 
         try {
@@ -206,7 +206,6 @@ public class PreviewingPlugin {
             e.printStackTrace();
         }
         player.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
-
     }
 
     public Color getAverageColor(BufferedImage bi) {

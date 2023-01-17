@@ -5,6 +5,7 @@ import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
 import com.zestarr.pluginportal.commands.commandUtility.SubCommandManager;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -14,16 +15,19 @@ import java.awt.image.BufferedImage;
 public class PreviewSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
-        String spigotName = args[1];
-        int id = PluginPortal.getMainInstance().getMarketplaceManager().getId(spigotName);
-        PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
+        Bukkit.getScheduler().runTaskAsynchronously(PluginPortal.getMainInstance(), () -> {
 
-        if (!PluginPortal.getMainInstance().getMarketplaceManager().getAllNames().contains(spigotName)) {
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin does not exist."));
-            return;
-        }
+            String spigotName = args[1];
+            int id = PluginPortal.getMainInstance().getMarketplaceManager().getId(spigotName);
+            PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
 
-        previewingPlugin.sendPreview((Player) sender);
+            if (!PluginPortal.getMainInstance().getMarketplaceManager().getAllNames().contains(spigotName)) {
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin does not exist."));
+                return;
+            }
+
+            previewingPlugin.sendPreview((Player) sender);
+        });
     }
 
     public static Color getAverageColor(BufferedImage bi) {
