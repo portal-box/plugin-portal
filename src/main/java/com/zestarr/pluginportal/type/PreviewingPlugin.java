@@ -23,14 +23,14 @@ import java.util.ArrayList;
 @Data
 public class PreviewingPlugin {
 
-    private String spigotName, version, tag, iconUrl;
-    private String[] testedVersions, authors;
-    private int id, downloads;
-    private long releaseData, updateDate;
-    private double price, rating, fileSize;
-    private boolean premium;
-    private FileType fileType;
-    private SizeUnit sizeUnit;
+    private String spigotName, version, tag, iconUrl = null;
+    private String[] testedVersions, authors = null;
+    private int id, downloads = 0;
+    private long releaseData, updateDate = 0;
+    private double price, rating, fileSize = 0;
+    private boolean premium = false;
+    private FileType fileType = null;
+    private SizeUnit sizeUnit = null;
 
     public PreviewingPlugin(int id) {
         this.id = id;
@@ -53,10 +53,18 @@ public class PreviewingPlugin {
             this.fileSize = root.get("file").get("size").asDouble();
             this.sizeUnit = SizeUnit.valueOf(root.get("file").get("sizeUnit").asText());
             String url = root.get("icon").get("url").asText();
+
             if (url.isEmpty()) {
                 this.iconUrl = "https://i.imgur.com/V9jfjSJ.png";
             } else {
                 this.iconUrl = "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
+            }
+
+            String sizeUnit = root.get("file").get("sizeUnit").asText();
+            if (sizeUnit.isEmpty()) {
+                this.sizeUnit = SizeUnit.NONE;
+            } else {
+                this.sizeUnit = SizeUnit.valueOf(sizeUnit);
             }
 
 
@@ -115,11 +123,12 @@ public class PreviewingPlugin {
             BufferedImage image = ImageIO.read(connection.getInputStream());
 
             // rows and columns
-            int rows = 16;
-            int columns = 16;
+            int squareSize = 12;
+            int rows = squareSize;
+            int columns = squareSize;
 
             // array to hold sub-images
-            BufferedImage[] imgs = new BufferedImage[256];
+            BufferedImage[] imgs = new BufferedImage[rows * columns];
 
             // Equally dividing original image into images
             int subimage_Width = image.getWidth() / columns;
@@ -151,7 +160,7 @@ public class PreviewingPlugin {
             int row = 0;
             StringBuilder builder = new StringBuilder();
             for (BufferedImage bound : imgs) {
-                if (i == 16) {
+                if (i == squareSize) {
                     i = 0;
                     ComponentBuilder componentBuilder = new ComponentBuilder();
 
@@ -196,6 +205,8 @@ public class PreviewingPlugin {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        player.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
+
     }
 
     public Color getAverageColor(BufferedImage bi) {

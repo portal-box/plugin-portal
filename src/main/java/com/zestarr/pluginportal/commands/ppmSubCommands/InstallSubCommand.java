@@ -24,6 +24,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+// TODO: This needs to implement PreviewingPlugin#sendPreview
 public class InstallSubCommand extends SubCommandManager {
 
     @Override
