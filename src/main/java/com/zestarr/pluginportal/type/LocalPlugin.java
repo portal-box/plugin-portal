@@ -16,7 +16,7 @@ public class LocalPlugin {
     public LocalPlugin(PreviewingPlugin previewingPlugin, String fileName) {
         this.previewingPlugin = previewingPlugin;
         this.fileName = fileName;
-        this.sha256 = FileUtil.getSHA256(new File("plugins", fileName));
+        this.sha256 = FileUtil.getSHA256(new File("plugins", fileName + (fileName.endsWith(".jar") ? "" : ".jar")));
 
     }
 
@@ -24,10 +24,10 @@ public class LocalPlugin {
         return PluginPortal.getMainInstance().getDataFolder().getParentFile().listFiles().toString().contains(fileName);
     }
 
-    public boolean matchesVersion(String latestVersion) { return previewingPlugin.getVersion().equals(latestVersion); }
+    public boolean matchesVersion(long releaseDate) { return previewingPlugin.getReleaseData() == releaseDate; }
 
     public boolean updateNeeded() {
-        return matchesVersion(PluginPortal.getMainInstance().getMarketplaceManager().getMarketplaceCache().get(previewingPlugin.getId()));
+        return !matchesVersion(new PreviewingPlugin(previewingPlugin.getId()).getReleaseData());
     }
 
     public File getFile() { return new File("plugins", (fileName + (fileName.endsWith(".jar") ? "" : ".jar"))); }

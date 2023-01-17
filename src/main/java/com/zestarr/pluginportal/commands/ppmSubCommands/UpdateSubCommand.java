@@ -23,12 +23,12 @@ public class UpdateSubCommand extends SubCommandManager {
         if (args.length != 2) return;
         String name = args[1];
         if (PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().get(name) == null) {
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + name + " is not installed. Did you mean to run /ppm install " + name + "?"));
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + name + " &7is not installed. Did you mean to run &b/ppm install " + name + "?"));
             return;
         }
         LocalPlugin plugin = PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().get(name);
-        if (plugin.matchesVersion(new PreviewingPlugin(plugin.getPreviewingPlugin().getId()).getVersion())) {
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + name + " is already up to date."));
+        if (plugin.updateNeeded()) {
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7" + name + " is already up to date."));
             return;
         } else {
             PluginPortal.getMainInstance().getDownloadManager().update(plugin);

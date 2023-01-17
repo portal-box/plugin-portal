@@ -38,6 +38,7 @@ public class LocalPluginManager implements Listener {
 
     public void add(String fileName, LocalPlugin localPlugin) {
         localPlugins.put(fileName, localPlugin);
+        localPlugin.setSha256(FileUtil.getSHA256(localPlugin.getFile()));
         FileUtil.saveData(plugin);
     }
 
@@ -58,7 +59,6 @@ public class LocalPluginManager implements Listener {
     }
 
     public boolean isInstalled(String spigotName) { return localPlugins.containsKey(spigotName); }
-    public boolean isLatestVersion(String spigotName, String latestVersion) { return localPlugins.get(spigotName).matchesVersion(latestVersion); }
     public HashMap<String, LocalPlugin> getPlugins() { return localPlugins; }
 
 }
