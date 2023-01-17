@@ -11,7 +11,7 @@ import org.bukkit.util.StringUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PPMCommand extends CommandManager {
+public class PluginPortalBaseCommand extends CommandManager {
 
     HelpSubCommand helpSubCommand = new HelpSubCommand();
     InstallSubCommand installSubCommand = new InstallSubCommand();
@@ -23,7 +23,7 @@ public class PPMCommand extends CommandManager {
     private final PluginPortal plugin;
 
 
-    public PPMCommand(PluginPortal plugin) {
+    public PluginPortalBaseCommand(PluginPortal plugin) {
         super(
                 "ppm",
                 new String[]{"PluginPackagemanager"},

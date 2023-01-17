@@ -1,6 +1,6 @@
 package com.zestarr.pluginportal;
 
-import com.zestarr.pluginportal.commands.PPMCommand;
+import com.zestarr.pluginportal.commands.PluginPortalBaseCommand;
 import com.zestarr.pluginportal.managers.DownloadManager;
 import com.zestarr.pluginportal.managers.LocalPluginManager;
 import com.zestarr.pluginportal.managers.MarketplaceManager;
@@ -30,7 +30,7 @@ public final class PluginPortal extends JavaPlugin {
             x.printStackTrace();
         }
 
-        new PPMCommand(this);
+        new PluginPortalBaseCommand(this);
 
         Metrics metrics = new Metrics(this, 17273);
 
