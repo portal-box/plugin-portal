@@ -26,7 +26,7 @@ public class PreviewSubCommand extends SubCommandManager {
                 return;
             }
 
-            previewingPlugin.sendPreview((Player) sender);
+            previewingPlugin.sendPreview((Player) sender, true);
         });
     }
 

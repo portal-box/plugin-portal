@@ -51,22 +51,12 @@ public class PreviewingPlugin {
             this.rating = root.get("rating").asDouble();
             this.premium = false;
             this.fileSize = root.get("file").get("size").asDouble();
-            this.sizeUnit = SizeUnit.valueOf(root.get("file").get("sizeUnit").asText());
-            String url = root.get("icon").get("url").asText();
 
-            if (url.isEmpty()) {
-                this.iconUrl = "https://i.imgur.com/V9jfjSJ.png";
-            } else {
-                this.iconUrl = "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
-            }
+            String url = root.get("icon").get("url").asText();
+            this.iconUrl = url.isEmpty() ? "https://i.imgur.com/V9jfjSJ.png" : "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
 
             String sizeUnit = root.get("file").get("sizeUnit").asText();
-            if (sizeUnit.isEmpty()) {
-                this.sizeUnit = SizeUnit.NONE;
-            } else {
-                this.sizeUnit = SizeUnit.valueOf(sizeUnit);
-            }
-
+            this.sizeUnit = sizeUnit.isEmpty() ? SizeUnit.NONE : SizeUnit.valueOf(sizeUnit);
 
             switch (root.get("file").get("type").asText().toLowerCase()) {
                 case ".jar" -> this.fileType = FileType.JAR;
@@ -75,14 +65,13 @@ public class PreviewingPlugin {
                 default -> this.fileType = FileType.EXTERNAL; // Includes "external"
             }
 
-            // Change to specific Exceptions??
         } catch (JacksonException exception) {
             exception.printStackTrace();
         }
 
     }
 
-    public void sendPreview(Player player) {
+    public void sendPreview(Player player, boolean containDownloadPrompt) {
         player.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
 
         ArrayList<TextComponent> informationAsComponents = new ArrayList<>();
@@ -100,13 +89,13 @@ public class PreviewingPlugin {
             component = new TextComponent(ChatUtil.format("Rating: &b" + this.getRating()));
             informationAsComponents.add(component);
 
-            component = new TextComponent(ChatUtil.format("File Size: &b" + this.getFileSize() + this.getSizeUnit().getUnit()));
+            component = new TextComponent(ChatUtil.format("File Size: &b" + (this.getSizeUnit() != SizeUnit.NONE ? this.getFileSize() + this.getSizeUnit().getUnit() : SizeUnit.NONE.getUnit())));
             informationAsComponents.add(component);
 
             component = new TextComponent(ChatUtil.format("File Type: &b" + this.getFileType().getExtension()));
             informationAsComponents.add(component);
 
-            component = new TextComponent(ChatUtil.format("Supported: &b" + this.getFileType().isSupported()));
+            component = new TextComponent(ChatUtil.format("Directly Downloadable: &b" + (this.getFileType().isSupported() ? "Yes" : "No")));
             informationAsComponents.add(component);
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -168,6 +157,14 @@ public class PreviewingPlugin {
 
                     if (informationAsComponents.size() > row && informationAsComponents.get(row) != null) {
                         componentBuilder.append(informationAsComponents.get(row));
+                    }
+
+                    if (containDownloadPrompt) {
+                        if (row == rows - 4) {
+                            componentBuilder.append(ChatUtil.format("&7Would you still like to download this plugin?"));
+                        } else if (row == rows - 3) {
+                            componentBuilder.append(ChatUtil.format("&7Please run /ppm install " + this.spigotName + " &a-f"));
+                        }
                     }
 /*
                             switch (row) {
