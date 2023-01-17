@@ -220,7 +220,6 @@ public class PreviewingPlugin {
         // TODO sumr / sampled: Integer division in floating-point context
     }
 }
-
 /* JSON EXAMPLE
 
 {
