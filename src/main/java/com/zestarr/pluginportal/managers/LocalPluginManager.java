@@ -37,6 +37,7 @@ public class LocalPluginManager implements Listener {
     }
 
     public void add(String fileName, LocalPlugin localPlugin) {
+        localPlugins.remove(fileName);
         localPlugins.put(fileName, localPlugin);
         localPlugin.setSha256(FileUtil.getSHA256(localPlugin.getFile()));
         FileUtil.saveData(plugin);

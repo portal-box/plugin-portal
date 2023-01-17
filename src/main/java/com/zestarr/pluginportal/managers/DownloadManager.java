@@ -23,7 +23,6 @@ public class DownloadManager {
             URL url = new URL("https://api.spiget.org/v2/resources/" + plugin.getId() + "/download");
             URLConnection connection = url.openConnection();
             connection.setRequestProperty("User-Agent", USER_AGENT);
-            String contentDisposition = connection.getHeaderField("Content-Disposition");
 
             String fileName = PluginPortal.getMainInstance().getMarketplaceManager().getMarketplaceCache().get(plugin.getId());
             InputStream inputStream = connection.getInputStream();
@@ -48,7 +47,7 @@ public class DownloadManager {
     }
 
     public LocalPlugin update(LocalPlugin plugin) {
-        portal.getLocalPluginManager().getPlugins().remove(plugin.getPreviewingPlugin().getSpigotName());
+        portal.getLocalPluginManager().getPlugins().remove(plugin.getFileName());
         return download(plugin.getPreviewingPlugin());
     }
 

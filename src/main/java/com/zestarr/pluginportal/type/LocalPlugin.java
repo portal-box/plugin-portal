@@ -24,7 +24,9 @@ public class LocalPlugin {
         return PluginPortal.getMainInstance().getDataFolder().getParentFile().listFiles().toString().contains(fileName);
     }
 
-    public boolean matchesVersion(long releaseDate) { return previewingPlugin.getReleaseData() == releaseDate; }
+    public boolean matchesVersion(long releaseDate) {
+        return previewingPlugin.getReleaseData() == releaseDate;
+    }
 
     public boolean updateNeeded() {
         return !matchesVersion(new PreviewingPlugin(previewingPlugin.getId()).getReleaseData());

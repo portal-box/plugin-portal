@@ -1,11 +1,14 @@
 package com.zestarr.pluginportal.commands.ppmSubCommands;
 
 import com.zestarr.pluginportal.PluginPortal;
+import com.zestarr.pluginportal.commands.commandUtility.Flags;
 import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
 import com.zestarr.pluginportal.commands.commandUtility.SubCommandManager;
 import com.zestarr.pluginportal.type.LocalPlugin;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
 import com.zestarr.pluginportal.utils.ChatUtil;
+import com.zestarr.pluginportal.utils.FlagUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 public class UpdateSubCommand extends SubCommandManager {
@@ -27,13 +30,16 @@ public class UpdateSubCommand extends SubCommandManager {
             return;
         }
         LocalPlugin plugin = PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().get(name);
-        if (plugin.updateNeeded()) {
+        if (!plugin.updateNeeded() && !FlagUtil.getFlags(SubCommandEnum.UPDATE, args).contains(Flags.FORCE)) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7" + name + " is already up to date."));
             return;
         } else {
-            PluginPortal.getMainInstance().getDownloadManager().update(plugin);
-            // def will cause no issues/errors! we need a better detection system for deleting plugins btw
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &c" + name + " has been updated to version " + new PreviewingPlugin(plugin.getPreviewingPlugin().getId()).getVersion() + "."));
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Updating &b" + name));
+            Bukkit.getScheduler().runTaskAsynchronously(PluginPortal.getMainInstance(), () -> {
+                PluginPortal.getMainInstance().getDownloadManager().download(new PreviewingPlugin(plugin.getPreviewingPlugin().getId()));
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &b" + name + " &7has been updated."));
+            });
+
         }
 
 
