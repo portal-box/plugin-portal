@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PluginPortalBaseCommand extends CommandManager {
@@ -53,12 +54,11 @@ public class PluginPortalBaseCommand extends CommandManager {
     public List<String> onTabComplete(CommandSender sender, String[] args) {
 
         if (args.length == 1) {
-            ArrayList<String> tabComplete = new ArrayList<>();
-            for (SubCommandEnum subCommandEnum : SubCommandEnum.values()) {
-                tabComplete.add(subCommandEnum.getCommand());
-            }
-            return StringUtil.copyPartialMatches(args[0], tabComplete, new ArrayList<>());
-        } else if (args.length == 2) {
+            List<String> completions = new ArrayList<>(Arrays.stream(SubCommandEnum.values()).map(subCommandEnum -> subCommandEnum.getCommand().toLowerCase()).toList());
+            return StringUtil.copyPartialMatches(args[0], completions, new ArrayList<>());
+        }
+
+        if (args.length == 2) {
             switch (args[0].toLowerCase()) {
                 case "install", "preview" -> {
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
@@ -71,14 +71,15 @@ public class PluginPortalBaseCommand extends CommandManager {
                     return null;
                 }
             }
-        } else if (args.length == 3) {
+        }
+
+        if (args.length == 3) {
             try {
                 return StringUtil.copyPartialMatches(args[2], FlagUtil.getFlagStrings(SubCommandEnum.valueOf(args[0].toUpperCase())), new ArrayList<>());
             } catch (NullPointerException exception) {
                 return null;
             }
         }
-
         return null;
     }
 }
