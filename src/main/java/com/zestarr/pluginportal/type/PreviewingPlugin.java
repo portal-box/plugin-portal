@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zestarr.pluginportal.utils.ChatUtil;
-import com.zestarr.pluginportal.utils.SpigetUtil;
+import com.zestarr.pluginportal.utils.JsonUtil;
 import lombok.Data;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -35,7 +35,7 @@ public class PreviewingPlugin {
     public PreviewingPlugin(int id) {
         this.id = id;
         try {
-            String responseBody = SpigetUtil.getJsonData(id);
+            String responseBody = JsonUtil.getJsonData(id);
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readValue(responseBody, JsonNode.class);
 
