@@ -51,7 +51,6 @@ public class LocalPluginManager implements Listener {
         return names;
     }
 
-    public boolean isInstalled(String spigotName) { return localPlugins.containsKey(spigotName); }
     public HashMap<String, LocalPlugin> getPlugins() { return localPlugins; }
 
 }
