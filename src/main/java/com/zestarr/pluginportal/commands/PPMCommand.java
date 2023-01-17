@@ -1,16 +1,14 @@
 package com.zestarr.pluginportal.commands;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
-import com.zestarr.pluginportal.commands.ppmSubCommands.*;
-import com.zestarr.pluginportal.commands.commandUtility.CommandManager;
+import com.zestarr.pluginportal.commands.commandutil.SubCommandEnum;
+import com.zestarr.pluginportal.commands.subcommands.*;
+import com.zestarr.pluginportal.commands.commandutil.CommandManager;
 import com.zestarr.pluginportal.utils.FlagUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class PPMCommand extends CommandManager {

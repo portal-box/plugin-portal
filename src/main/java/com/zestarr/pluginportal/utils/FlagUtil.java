@@ -1,7 +1,7 @@
 package com.zestarr.pluginportal.utils;
 
-import com.zestarr.pluginportal.commands.commandUtility.Flags;
-import com.zestarr.pluginportal.commands.commandUtility.SubCommandEnum;
+import com.zestarr.pluginportal.commands.commandutil.Flags;
+import com.zestarr.pluginportal.commands.commandutil.SubCommandEnum;
 
 import java.util.ArrayList;
 import java.util.HashSet;
