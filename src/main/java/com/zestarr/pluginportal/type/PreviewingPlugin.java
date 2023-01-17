@@ -7,6 +7,7 @@ import com.zestarr.pluginportal.utils.ChatUtil;
 import com.zestarr.pluginportal.utils.JsonUtil;
 import lombok.Data;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -89,11 +90,22 @@ public class PreviewingPlugin {
             component = new TextComponent(ChatUtil.format("Rating: &b" + this.getRating()));
             informationAsComponents.add(component);
 
-            component = new TextComponent(ChatUtil.format("File Size: &b" + (this.getSizeUnit() != SizeUnit.NONE ? this.getFileSize() + this.getSizeUnit().getUnit() : SizeUnit.NONE.getUnit())));
-            informationAsComponents.add(component);
+            if (this.getFileType().equals(FileType.EXTERNAL)) {
+                component = new TextComponent(ChatUtil.format("Spigot Link: &b" + this.getFileType().getExtension()));
 
-            component = new TextComponent(ChatUtil.format("File Type: &b" + this.getFileType().getExtension()));
-            informationAsComponents.add(component);
+                TextComponent link = new TextComponent(ChatUtil.format("&b&l[Click Here]"));
+                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org/resources/" + this.getId()));
+                link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatUtil.format("&bClick to open the Spigot page"))));
+
+                component.addExtra(link);
+                informationAsComponents.add(component);
+            } else {
+                component = new TextComponent(ChatUtil.format("File Size: &b" + (this.getSizeUnit() != SizeUnit.NONE ? this.getFileSize() + this.getSizeUnit().getUnit() : SizeUnit.NONE.getUnit())));
+                informationAsComponents.add(component);
+
+                component = new TextComponent(ChatUtil.format("File Type: &b" + this.getFileType().getExtension()));
+                informationAsComponents.add(component);
+            }
 
             component = new TextComponent(ChatUtil.format("Directly Downloadable: &b" + (this.getFileType().isSupported() ? "Yes" : "No")));
             informationAsComponents.add(component);
