@@ -10,27 +10,21 @@ import java.net.URLConnection;
 
 public class DownloadManager {
 
-    private final String USER_AGENT = "github.com/Zestarr/PluginPortal";
-
     private final PluginPortal portal;
 
     public DownloadManager(PluginPortal portal) {
         this.portal = portal;
     }
 
-    public LocalPlugin download(PreviewingPlugin plugin, String fileName) {
+    public LocalPlugin download(PreviewingPlugin plugin) {
         try {
             URL url = new URL("https://api.spiget.org/v2/resources/" + plugin.getId() + "/download");
             URLConnection connection = url.openConnection();
-            connection.setRequestProperty("User-Agent", USER_AGENT);
-            String contentDisposition = connection.getHeaderField("Content-Disposition");
+            connection.setRequestProperty("User-Agent", "github.com/Zestarr/PluginPortal");
 
-            if (!fileName.endsWith(".jar")) {
-                fileName = fileName + ".jar";
-            }
-
+            String fileName = PluginPortal.getMainInstance().getMarketplaceManager().getMarketplaceCache().get(plugin.getId());
             InputStream inputStream = connection.getInputStream();
-            FileOutputStream outputStream = new FileOutputStream(new File("plugins", fileName));
+            FileOutputStream outputStream = new FileOutputStream(new File("plugins", fileName + (fileName.endsWith(".jar") ? "" : ".jar")));
 
             byte[] buffer = new byte[4096];
             int bytesRead = 0;
@@ -42,21 +36,12 @@ public class DownloadManager {
             outputStream.close();
 
             LocalPlugin localPlugin = new LocalPlugin(plugin, fileName);
-            portal.getLocalPluginManager().add(localPlugin);
+            portal.getLocalPluginManager().add(fileName, localPlugin);
             return localPlugin;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-    }
-
-    public LocalPlugin update(LocalPlugin plugin) {
-        portal.getLocalPluginManager().getPlugins().remove(plugin.getPreviewingPlugin().getSpigotName());
-        return download(plugin.getPreviewingPlugin(), plugin.findFileName());
-    }
-
-    public LocalPlugin download(PreviewingPlugin plugin) {
-        return download(plugin, portal.getMarketplaceManager().getMarketplaceCache().get(plugin.getId()) + ".jar");
     }
 
 }

@@ -9,6 +9,7 @@ import com.zestarr.pluginportal.type.LocalPlugin;
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class FileUtil {
@@ -46,12 +47,12 @@ public class FileUtil {
         return sb.toString();
     }
 
-    public static void saveData(PluginPortal plugin, File dataFile) {
+    public static void saveData(PluginPortal plugin) {
         try {
             Moshi moshi = new Moshi.Builder().build();
             JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
             String json = jsonAdapater.toJson(plugin.getLocalPluginManager().getPlugins());
-            BufferedWriter writer = new BufferedWriter(new FileWriter(dataFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(plugin.getLocalPluginManager().getDataFile()));
             writer.write(json);
             writer.flush();
             writer.close();
@@ -74,6 +75,33 @@ public class FileUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        scanDeletedPlugins(plugin);
+    }
+
+    public static void scanDeletedPlugins(PluginPortal plugin) {
+        ArrayList<LocalPlugin> deletedPlugins = new ArrayList<>();
+        for (LocalPlugin localPlugin : plugin.getLocalPluginManager().getPlugins().values()) {
+            boolean exists = false;
+            for (File file : plugin.getDataFolder().getParentFile().listFiles()) {
+                if (file.getPath().endsWith(".jar")) {
+                    if (FileUtil.getSHA256(file).equals(localPlugin.getSha256())) {
+                        localPlugin.setFileName(file.getName());
+                        exists = true;
+                    }
+                }
+            }
+            if (!exists) {
+                deletedPlugins.add(localPlugin);
+                System.out.println("Deleted plugin: " + localPlugin.getPreviewingPlugin().getSpigotName());
+            }
+
+        }
+        for (LocalPlugin localPlugin : deletedPlugins) {
+            plugin.getLocalPluginManager().getPlugins().remove(localPlugin.getPreviewingPlugin().getSpigotName());
+        }
+
+        saveData(plugin);
     }
 
 }

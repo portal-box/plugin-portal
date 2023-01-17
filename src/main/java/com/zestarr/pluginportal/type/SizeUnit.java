@@ -4,6 +4,7 @@ import lombok.Getter;
 
 public enum SizeUnit {
 
+    NONE("NONE"),
     KB("KB"),
     MB("MB"),
     GB("GB");
