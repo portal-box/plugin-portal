@@ -3,20 +3,34 @@ package com.zestarr.pluginportal.type;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.zestarr.pluginportal.utils.ChatUtil;
 import com.zestarr.pluginportal.utils.JsonUtil;
 import lombok.Data;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
+import org.bukkit.entity.Player;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 @Data
 public class PreviewingPlugin {
 
-    private String spigotName, version, tag, iconUrl = null;
-    private String[] testedVersions, authors = null;
-    private int id, downloads = 0;
-    private long releaseData, updateDate = 0;
-    private double price, rating, fileSize = 0;
-    private boolean premium = false;
-    private FileType fileType = null;
-    private SizeUnit sizeUnit = null;
+    private String spigotName, version, tag, iconUrl;
+    private String[] testedVersions, authors;
+    private int id, downloads;
+    private long releaseData, updateDate;
+    private double price, rating, fileSize;
+    private boolean premium;
+    private FileType fileType;
+    private SizeUnit sizeUnit;
 
     public PreviewingPlugin(int id) {
         this.id = id;
@@ -37,19 +51,13 @@ public class PreviewingPlugin {
             this.rating = root.get("rating").asDouble();
             this.premium = false;
             this.fileSize = root.get("file").get("size").asDouble();
+            this.sizeUnit = SizeUnit.valueOf(root.get("file").get("sizeUnit").asText());
             String url = root.get("icon").get("url").asText();
             if (url.isEmpty()) {
                 this.iconUrl = "https://i.imgur.com/V9jfjSJ.png";
             } else {
                 this.iconUrl = "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
             }
-            String sizeUnit = root.get("file").get("sizeUnit").asText();
-            if (sizeUnit.isEmpty()) {
-                this.sizeUnit = SizeUnit.NONE;
-            } else {
-                this.sizeUnit = SizeUnit.valueOf(sizeUnit);
-            }
-
 
 
             switch (root.get("file").get("type").asText().toLowerCase()) {
@@ -66,8 +74,152 @@ public class PreviewingPlugin {
 
     }
 
-}
+    public void sendPreview(Player player) {
+        player.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
 
+        ArrayList<TextComponent> informationAsComponents = new ArrayList<>();
+        try {
+            TextComponent component = new TextComponent("Name: " + this.getSpigotName());
+            informationAsComponents.add(component);
+
+            component = new TextComponent("Description: [Hover Here]");
+            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(this.getTag())));
+            informationAsComponents.add(component);
+
+            component = new TextComponent("Downloads: " + this.getDownloads());
+            informationAsComponents.add(component);
+
+            component = new TextComponent("Rating: " + this.getRating());
+            informationAsComponents.add(component);
+
+            component = new TextComponent("File Size: " + this.getFileSize() + this.getSizeUnit().getUnit());
+            informationAsComponents.add(component);
+
+            component = new TextComponent("File Type: " + this.getFileType().getExtension());
+            informationAsComponents.add(component);
+
+            component = new TextComponent("Supported: " + this.getFileType().isSupported());
+            informationAsComponents.add(component);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            informationAsComponents.add(new TextComponent("Error ID: " + this.getId() + ". Please report this to our discord."));
+        }
+
+        try {
+            // "https://i.imgur.com/V9jfjSJ.png"; // White
+            String url = this.getIconUrl().length() == 0 ? "https://i.imgur.com/bbxn0Zy.png" : this.getIconUrl();
+
+            URL imageUrl = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) imageUrl.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0");
+            BufferedImage image = ImageIO.read(connection.getInputStream());
+
+            // rows and columns
+            int rows = 16;
+            int columns = 16;
+
+            // array to hold sub-images
+            BufferedImage[] imgs = new BufferedImage[256];
+
+            // Equally dividing original image into images
+            int subimage_Width = image.getWidth() / columns;
+            int subimage_Height = image.getHeight() / rows;
+
+            int current_img = 0;
+
+            // iterating over rows and columns for each sub-image
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columns; j++) {
+                    // Creating sub image
+                    imgs[current_img] = new BufferedImage(subimage_Width, subimage_Height, image.getType());
+                    Graphics2D img_creator = imgs[current_img].createGraphics();
+
+                    // coordinates of source image
+                    int src_first_x = subimage_Width * j;
+                    int src_first_y = subimage_Height * i;
+
+                    // coordinates of sub-image
+                    int dst_corner_x = subimage_Width * j + subimage_Width;
+                    int dst_corner_y = subimage_Height * i + subimage_Height;
+
+                    img_creator.drawImage(image, 0, 0, subimage_Width, subimage_Height, src_first_x, src_first_y, dst_corner_x, dst_corner_y, null);
+                    current_img++;
+                }
+            }
+
+            int i = 0;
+            int row = 0;
+            StringBuilder builder = new StringBuilder();
+            for (BufferedImage bound : imgs) {
+                if (i == 16) {
+                    i = 0;
+                    ComponentBuilder componentBuilder = new ComponentBuilder();
+
+                    componentBuilder.appendLegacy(ChatUtil.format(builder + " &7"));
+
+                    if (informationAsComponents.size() > row && informationAsComponents.get(row) != null) {
+                        componentBuilder.append(informationAsComponents.get(row));
+                    }
+/*
+                            switch (row) {
+                                case 9:
+                                    message = "        &7&lInstall Plugin?           ";
+
+                                    break;
+                                case 12:
+
+
+                                    message = "        [\"\",{\"text\":\"Yes\",\"color\":\"green\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/ppm forceinstall LuckPerms\"}}]        &c&lNo        ";
+
+                                    break;
+                                }
+
+ */
+                    player.spigot().sendMessage(componentBuilder.create());
+                    builder = new StringBuilder();
+                    row++;
+                }
+                i++;
+                Color color = getAverageColor(bound);
+                builder.append(ChatColor.of(color)).append("▉");
+
+                switch (i) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    // etc
+                } // TODO
+            }
+
+            connection.getInputStream().close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Color getAverageColor(BufferedImage bi) {
+        int step = 5;
+
+        int sampled = 0;
+        long sumr = 0, sumg = 0, sumb = 0;
+        for (int x = 0; x < bi.getWidth(); x++) {
+            for (int y = 0; y < bi.getHeight(); y++) {
+                if (x % step == 0 && y % step == 0) {
+                    Color pixel = new Color(bi.getRGB(x, y));
+                    sumr += pixel.getRed();
+                    sumg += pixel.getGreen();
+                    sumb += pixel.getBlue();
+                    sampled++;
+                }
+            }
+        }
+        int dim = bi.getWidth() * bi.getHeight();
+        // Log.info("step=" + step + " sampled " + sampled + " out of " + dim + " pixels (" + String.format("%.1f", (float)(100*sampled/dim)) + " %)");
+        return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
+        // TODO sumr / sampled: Integer division in floating-point context
+    }
+}
 /* JSON EXAMPLE
 
 {
@@ -99,8 +251,8 @@ public class PreviewingPlugin {
       "uuid": "00000003-c001-1bd1-0000-0179a7bfe2df"
     },
     {
-      "iokijhufgc d": 130477,
-      "zuuid": "00000003-c001-1bd0-0000-0179a7b1dbda"
+      "id": 130477,
+      "uuid": "00000003-c001-1bd0-0000-0179a7b1dbda"
     },
     {
       "id": 86761,

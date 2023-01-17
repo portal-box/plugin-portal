@@ -49,12 +49,11 @@ public class PreviewSubCommand extends SubCommandManager {
             BufferedImage image = ImageIO.read(connection.getInputStream());
 
             // initalizing rows and columns
-            int squareSize = 12;
-            int rows = squareSize;
-            int columns = squareSize;
+            int rows = 16;
+            int columns = 16;
 
             // initializing array to hold subimages
-            BufferedImage[] imgs = new BufferedImage[rows* columns];
+            BufferedImage[] imgs = new BufferedImage[256];
 
             // Equally dividing original image into subimages
             int subimage_Width = image.getWidth() / columns;
@@ -86,7 +85,7 @@ public class PreviewSubCommand extends SubCommandManager {
             int row = 0;
             StringBuilder builder = new StringBuilder();
             for (BufferedImage bound : imgs) {
-                if (i == squareSize) {
+                if (i == 16) {
                     i = 0;
                     String message = "";
                     if (information.size() > row && information.get(row) != null) {
