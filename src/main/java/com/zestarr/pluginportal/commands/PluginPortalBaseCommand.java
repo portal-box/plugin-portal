@@ -13,15 +13,14 @@ import java.util.List;
 
 public class PluginPortalBaseCommand extends CommandManager {
 
-    HelpSubCommand helpSubCommand = new HelpSubCommand();
-    InstallSubCommand installSubCommand = new InstallSubCommand();
-    ListSubCommand listSubCommand = new ListSubCommand();
-    PreviewSubCommand previewSubCommand = new PreviewSubCommand();
-    SettingsSubCommand settingsSubCommand = new SettingsSubCommand();
-    UpdateSubCommand updateSubCommand = new UpdateSubCommand();
-
     private final PluginPortal plugin;
 
+    private final HelpSubCommand helpSubCommand = new HelpSubCommand();
+    private final InstallSubCommand installSubCommand = new InstallSubCommand();
+    private final ListSubCommand listSubCommand = new ListSubCommand();
+    private final PreviewSubCommand previewSubCommand = new PreviewSubCommand();
+    private final SettingsSubCommand settingsSubCommand = new SettingsSubCommand();
+    private final UpdateSubCommand updateSubCommand = new UpdateSubCommand();
 
     public PluginPortalBaseCommand(PluginPortal plugin) {
         super(
@@ -52,8 +51,6 @@ public class PluginPortalBaseCommand extends CommandManager {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, String[] args) {
-
-
 
         if (args.length == 1) {
             ArrayList<String> tabComplete = new ArrayList<>();
