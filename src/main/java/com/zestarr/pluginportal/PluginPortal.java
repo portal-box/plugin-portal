@@ -24,7 +24,6 @@ public final class PluginPortal extends JavaPlugin {
         try {
             marketplaceManager = new MarketplaceManager(this);
             Bukkit.getPluginManager().registerEvents(localPluginManager = new LocalPluginManager(this), this);
-            //Bukkit.getPluginManager().registerEvents(pluginStatusListener = new PluginStatusListener(this), this);
             downloadManager = new DownloadManager(this);
         } catch (Exception x) {
             x.printStackTrace();
@@ -34,12 +33,6 @@ public final class PluginPortal extends JavaPlugin {
 
         Metrics metrics = new Metrics(this, 17273);
 
-        /*
-        Bukkit.getScheduler().runTaskLaterAsynchronously( this, () -> {
-            localPluginManager.updateAllPlugins();
-        }, 20);
-
-         */
     }
 
     public MarketplaceManager getMarketplaceManager() {
