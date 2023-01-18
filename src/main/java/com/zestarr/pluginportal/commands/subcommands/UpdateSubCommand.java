@@ -32,7 +32,6 @@ public class UpdateSubCommand extends SubCommandManager {
         LocalPlugin plugin = PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().get(name);
         if (!plugin.updateNeeded() && !FlagUtil.getFlags(SubCommandEnum.UPDATE, args).contains(Flags.FORCE)) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7" + name + " is already up to date."));
-            return;
         } else {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Updating &b" + name));
             Bukkit.getScheduler().runTaskAsynchronously(PluginPortal.getMainInstance(), () -> {
