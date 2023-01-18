@@ -2,7 +2,6 @@ package com.zestarr.pluginportal.managers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.utils.JsonUtil;
 
 import java.io.IOException;
@@ -16,7 +15,7 @@ public class MarketplaceManager {
 
     private final HashMap<Integer, String> marketplaceCache = new HashMap<>();
 
-    public MarketplaceManager(PluginPortal portal) throws IOException {
+    public MarketplaceManager() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonData = mapper.readTree(JsonUtil.getPluginJson());
 

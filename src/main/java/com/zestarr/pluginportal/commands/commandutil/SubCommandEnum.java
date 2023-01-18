@@ -11,7 +11,6 @@ public enum SubCommandEnum {
     SETTINGS("Settings", "/ppm settings", "pluginportal.ppm.settings", null),
     UPDATE("Update", "/ppm update (Plugin Name) <Optional Flags>", "pluginportal.ppm.update", List.of(Flags.FORCE));
 
-
     SubCommandEnum(String command, String commandUsage, String permission, List<Flags> flags) {
         this.command = command;
         this.commandUsage = commandUsage;

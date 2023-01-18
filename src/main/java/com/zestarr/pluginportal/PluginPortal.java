@@ -22,7 +22,7 @@ public final class PluginPortal extends JavaPlugin {
         }
 
         try {
-            marketplaceManager = new MarketplaceManager(this);
+            marketplaceManager = new MarketplaceManager();
             Bukkit.getPluginManager().registerEvents(localPluginManager = new LocalPluginManager(this), this);
             downloadManager = new DownloadManager(this);
         } catch (Exception x) {
@@ -31,8 +31,7 @@ public final class PluginPortal extends JavaPlugin {
 
         new PluginPortalBaseCommand(this);
 
-        Metrics metrics = new Metrics(this, 17273);
-
+        new Metrics(this, 17273);
     }
 
     public MarketplaceManager getMarketplaceManager() {
