@@ -125,21 +125,19 @@ public class PreviewingPlugin {
 
             // rows and columns
             int squareSize = 12;
-            int rows = squareSize;
-            int columns = squareSize;
 
             // array to hold sub-images
-            BufferedImage[] imgs = new BufferedImage[rows * columns];
+            BufferedImage[] imgs = new BufferedImage[squareSize * squareSize];
 
             // Equally dividing original image into images
-            int subimage_Width = image.getWidth() / columns;
-            int subimage_Height = image.getHeight() / rows;
+            int subimage_Width = image.getWidth() / squareSize;
+            int subimage_Height = image.getHeight() / squareSize;
 
             int current_img = 0;
 
             // iterating over rows and columns for each sub-image
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
+            for (int i = 0; i < squareSize; i++) {
+                for (int j = 0; j < squareSize; j++) {
                     // Creating sub image
                     imgs[current_img] = new BufferedImage(subimage_Width, subimage_Height, image.getType());
                     Graphics2D img_creator = imgs[current_img].createGraphics();
@@ -172,9 +170,9 @@ public class PreviewingPlugin {
                     }
 
                     if (containDownloadPrompt) {
-                        if (row == rows - 4) {
+                        if (row == squareSize - 4) {
                             componentBuilder.append(ChatUtil.format("&7Would you still like to download this plugin?"));
-                        } else if (row == rows - 3) {
+                        } else if (row == squareSize - 3) {
                             componentBuilder.append(ChatUtil.format("&7Please run /ppm install " + this.spigotName + " &a-f"));
                         }
                     }
@@ -186,14 +184,6 @@ public class PreviewingPlugin {
                 i++;
                 Color color = ChatUtil.getAverageColor(bound);
                 builder.append(ChatColor.of(color)).append("▉");
-
-                switch (i) {
-                    case 0:
-                        break;
-                    case 1:
-                        break;
-                    // etc
-                } // TODO
             }
 
             connection.getInputStream().close();
