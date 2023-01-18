@@ -1,9 +1,7 @@
 package com.zestarr.pluginportal.type;
 
-import com.zestarr.pluginportal.PluginPortal;
 import com.zestarr.pluginportal.utils.FileUtil;
 import lombok.Data;
-import org.bukkit.Bukkit;
 
 import java.io.File;
 
