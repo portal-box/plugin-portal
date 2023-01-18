@@ -15,7 +15,7 @@ import java.util.Map;
 public class FileUtil {
 
     public static String getSHA256(File file) {
-        MessageDigest md = null;
+        MessageDigest md;
         try {
             md = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException e) {
@@ -27,7 +27,7 @@ public class FileUtil {
         try (FileInputStream fis = new FileInputStream(file)) {
             byte[] dataBytes = new byte[1024];
 
-            int nread = 0;
+            int nread;
             while ((nread = fis.read(dataBytes)) != -1) {
                 md.update(dataBytes, 0, nread);
             }

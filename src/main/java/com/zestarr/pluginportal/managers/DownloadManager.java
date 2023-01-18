@@ -27,7 +27,7 @@ public class DownloadManager {
             FileOutputStream outputStream = new FileOutputStream(new File("plugins", fileName + (fileName.endsWith(".jar") ? "" : ".jar")));
 
             byte[] buffer = new byte[4096];
-            int bytesRead = 0;
+            int bytesRead;
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
