@@ -4,6 +4,7 @@ import com.zestarr.pluginportal.commands.commandutil.Flags;
 import com.zestarr.pluginportal.commands.commandutil.SubCommandEnum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class FlagUtil {
@@ -28,9 +29,7 @@ public class FlagUtil {
     public static ArrayList<String> getFlagStrings(SubCommandEnum subCommandEnum) {
         ArrayList<String> flagStrings = new ArrayList<>();
         for (Flags flags : subCommandEnum.getFlags()) {
-            for (String flag : flags.getFlagsString()) {
-                flagStrings.add(flag);
-            }
+            flagStrings.addAll(Arrays.asList(flags.getFlagsString()));
         }
         return flagStrings;
     }
