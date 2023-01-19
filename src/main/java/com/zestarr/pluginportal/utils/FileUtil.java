@@ -91,17 +91,18 @@ public class FileUtil {
                     }
                 }
             }
+
             if (!exists) {
                 deletedPlugins.add(localPlugin);
                 System.out.println("Deleted plugin: " + localPlugin.getPreviewingPlugin().getSpigotName());
             }
 
         }
+
         for (LocalPlugin localPlugin : deletedPlugins) {
             plugin.getLocalPluginManager().getPlugins().remove(localPlugin.getPreviewingPlugin().getSpigotName());
         }
 
         saveData(plugin);
     }
-
 }

@@ -17,8 +17,8 @@ public class UpdateSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args) {
         if (args.length == 1) {
-
             List<LocalPlugin> localPlugins = PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values().stream().filter(LocalPlugin::updateNeeded).toList();
+
             if (localPlugins.size() == 0) {
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7No plugins require an update :)"));
                 return;
@@ -47,7 +47,5 @@ public class UpdateSubCommand extends SubCommandManager {
             });
 
         }
-
-
     }
 }

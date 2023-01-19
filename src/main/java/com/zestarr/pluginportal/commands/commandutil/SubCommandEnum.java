@@ -4,6 +4,7 @@ package com.zestarr.pluginportal.commands.commandutil;
 import java.util.List;
 
 public enum SubCommandEnum {
+
     HELP("Help", "/pp help", "pluginportal.pp.help", null),
     INSTALL("Install", "/pp install (Plugin Name) <Optional Flags>", "pluginportal.pp.install", List.of(Flags.FORCE)),
     LIST("List", "/pp list", "pluginportal.pp.list", null),
@@ -38,5 +39,4 @@ public enum SubCommandEnum {
     public List<Flags> getFlags() {
         return flags;
     }
-
 }

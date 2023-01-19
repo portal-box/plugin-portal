@@ -24,6 +24,7 @@ public class LocalPluginManager implements Listener {
 
     public LocalPluginManager(PluginPortal plugin) throws IOException {
         this.plugin = plugin;
+
         dataFile = new File(plugin.getDataFolder(), "plugins.json");
         if (!dataFile.exists()) {
             dataFile.createNewFile();
@@ -48,9 +49,11 @@ public class LocalPluginManager implements Listener {
         for (LocalPlugin plugin : localPlugins.values()) {
             names.add(plugin.getFileName().replace(".jar", ""));
         }
+
         return names;
     }
 
-    public HashMap<String, LocalPlugin> getPlugins() { return localPlugins; }
-
+    public HashMap<String, LocalPlugin> getPlugins() {
+        return localPlugins;
+    }
 }

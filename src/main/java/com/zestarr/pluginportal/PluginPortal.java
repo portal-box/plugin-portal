@@ -30,7 +30,6 @@ public final class PluginPortal extends JavaPlugin {
         }
 
         new PluginPortalBaseCommand(this);
-
         new Metrics(this, 17273);
     }
 

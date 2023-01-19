@@ -33,5 +33,4 @@ public class FlagUtil {
         }
         return flagStrings;
     }
-
 }

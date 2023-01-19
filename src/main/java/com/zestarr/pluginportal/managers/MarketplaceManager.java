@@ -39,7 +39,7 @@ public class MarketplaceManager {
                 return number;
             }
         }
+
         return -1;
     }
-
 }

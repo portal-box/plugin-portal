@@ -18,5 +18,4 @@ public enum FileType {
         this.extension = extension;
         this.supported = supported;
     }
-
 }

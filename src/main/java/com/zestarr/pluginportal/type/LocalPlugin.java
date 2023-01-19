@@ -26,6 +26,7 @@ public class LocalPlugin {
         return !matchesVersion(new PreviewingPlugin(previewingPlugin.getId()).getUpdateDate());
     }
 
-    public File getFile() { return new File("plugins", (fileName + (fileName.endsWith(".jar") ? "" : ".jar"))); }
-
+    public File getFile() {
+        return new File("plugins", (fileName + (fileName.endsWith(".jar") ? "" : ".jar")));
+    }
 }

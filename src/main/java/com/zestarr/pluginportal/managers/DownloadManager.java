@@ -43,5 +43,4 @@ public class DownloadManager {
             return null;
         }
     }
-
 }

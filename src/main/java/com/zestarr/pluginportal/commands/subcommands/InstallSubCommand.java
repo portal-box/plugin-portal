@@ -15,12 +15,10 @@ import org.bukkit.entity.Player;
 
 import java.util.Set;
 
-// TODO: This needs to implement PreviewingPlugin#sendPreview
 public class InstallSubCommand extends SubCommandManager {
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-
         Set<Flags> flags = FlagUtil.getFlags(SubCommandEnum.INSTALL, args);
 
         if (args.length <= 1) {
