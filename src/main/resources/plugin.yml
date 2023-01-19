@@ -1,6 +1,6 @@
 name: PluginPortal
 version: '${version}'
-main: com.zestarr.pluginportal.PluginPortal
+main: link.portalbox.pluginportal.PluginPortal
 api-version: 1.16
 authors: [ Zestarr, Stephen ]
 description: Plugin Package Manager
