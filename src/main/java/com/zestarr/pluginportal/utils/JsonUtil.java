@@ -52,8 +52,9 @@ public class JsonUtil {
                     .scheme("https")
                     .host("raw.githubusercontent.com")
                     .addPathSegment("portal-box")
-                    .addPathSegment("PluginPortal")
+                    .addPathSegment("plugin-portal")
                     .addPathSegment("master")
+                    .addPathSegment("resources")
                     .addPathSegment("PluginList.json")
                     .build();
 

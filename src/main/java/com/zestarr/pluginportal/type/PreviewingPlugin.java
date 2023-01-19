@@ -121,8 +121,7 @@ public class PreviewingPlugin {
         }
 
         try {
-            // "https://i.imgur.com/V9jfjSJ.png"; // White
-            String url = this.getIconUrl().length() == 0 ? "https://i.imgur.com/bbxn0Zy.png" : this.getIconUrl();
+            String url = this.getIconUrl().length() == 0 ? "https://raw.githubusercontent.com/portal-box/plugin-portal/master/resources/PluginPortalLogo.png" : this.getIconUrl();
 
             URL imageUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) imageUrl.openConnection();
@@ -179,7 +178,7 @@ public class PreviewingPlugin {
                         if (row == squareSize - 4) {
                             componentBuilder.append(ChatUtil.format("&7Would you still like to download this plugin?"));
                         } else if (row == squareSize - 3) {
-                            componentBuilder.append(ChatUtil.format("&7Please run /pp install " + this.spigotName + " &a-f"));
+                            componentBuilder.append(ChatUtil.format("&7Please run /pp install PluginName &a-f"));
                         }
                     }
 
