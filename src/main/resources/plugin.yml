@@ -4,3 +4,4 @@ main: link.portalbox.pluginportal.PluginPortal
 api-version: 1.16
 authors: [ Zestarr, Stephen ]
 description: Plugin Package Manager
+website: https://portalbox.link
