@@ -8,7 +8,6 @@ import com.zestarr.pluginportal.utils.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-@SuppressWarnings("unused")
 public final class PluginPortal extends JavaPlugin {
 
     private MarketplaceManager marketplaceManager;
