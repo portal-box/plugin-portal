@@ -11,14 +11,21 @@ import com.zestarr.pluginportal.utils.FlagUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
+import java.util.List;
+
 public class UpdateSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
         if (args.length == 1) {
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins that can be updated: "));
-            for (LocalPlugin plugin : PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values()) {
-                if (plugin.updateNeeded()) {
-                    sender.sendMessage(ChatUtil.format(" &a+ &7" + plugin.getPreviewingPlugin().getSpigotName()));
+
+            List<LocalPlugin> localPlugins = PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values().stream().filter(LocalPlugin::updateNeeded).toList();
+            if (localPlugins.size() == 0) {
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7No plugins require an update :)"));
+                return;
+            } else {
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &7Listing all plugins that can be updated: "));
+                for (LocalPlugin localPlugin : localPlugins) {
+                    sender.sendMessage(ChatUtil.format(" &a+ &7" + localPlugin.getPreviewingPlugin().getSpigotName()));
                 }
             }
         }
