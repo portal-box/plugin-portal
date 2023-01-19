@@ -5,9 +5,9 @@ import org.bukkit.command.CommandSender;
 
 public abstract class SubCommandManager {
 
-    public boolean execute(CommandSender sender, String commandLabel, String[] args, SubCommandEnum subCommandEnum) {
+    public boolean execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
         if (sender.hasPermission(subCommandEnum.getPermission())) {
-            execute(sender, args, subCommandEnum);
+            execute(sender, args);
 
             return true;
         } else {
@@ -17,7 +17,7 @@ public abstract class SubCommandManager {
         return false;
     }
 
-    public abstract void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum);
+    public abstract void execute(CommandSender sender, String[] args);
 
 
 }
