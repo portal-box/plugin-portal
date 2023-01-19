@@ -22,7 +22,7 @@ public class PreviewSubCommand extends SubCommandManager {
             PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
 
             if (!PluginPortal.getMainInstance().getMarketplaceManager().getAllNames().contains(spigotName)) {
-                sender.sendMessage(ChatUtil.format("&7&l[&b&lPPM&7&l] &8&l> &cPlugin does not exist."));
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &cPlugin does not exist."));
                 return;
             }
 

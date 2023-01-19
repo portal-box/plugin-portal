@@ -26,9 +26,9 @@ public class PluginPortalBaseCommand extends CommandManager {
     public PluginPortalBaseCommand(PluginPortal plugin) {
         super(
                 "pluginportal",
-                new String[]{"ppm"},
+                new String[]{"pp", "ppm"},
                 "Primary command to handle the Plugin Portal Package Manager",
-                "ppm.primarycommand"
+                "pp.primarycommand"
         );
 
         this.plugin = plugin;

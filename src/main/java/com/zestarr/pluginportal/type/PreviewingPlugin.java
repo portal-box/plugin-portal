@@ -175,7 +175,7 @@ public class PreviewingPlugin {
                         if (row == rows - 4) {
                             componentBuilder.append(ChatUtil.format("&7Would you still like to download this plugin?"));
                         } else if (row == rows - 3) {
-                            componentBuilder.append(ChatUtil.format("&7Please run /ppm install " + this.spigotName + " &a-f"));
+                            componentBuilder.append(ChatUtil.format("&7Please run /pp install " + this.spigotName + " &a-f"));
                         }
                     }
 

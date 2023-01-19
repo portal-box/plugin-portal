@@ -4,12 +4,12 @@ package com.zestarr.pluginportal.commands.commandutil;
 import java.util.List;
 
 public enum SubCommandEnum {
-    HELP("Help", "/ppm help", "pluginportal.ppm.help", null),
-    INSTALL("Install", "/ppm install (Plugin Name) <Optional Flags>", "pluginportal.ppm.install", List.of(Flags.FORCE)),
-    LIST("List", "/ppm list", "pluginportal.ppm.list", null),
-    PREVIEW("Preview", "/ppm preview (Plugin Name)", "pluginportal.ppm.preview", null),
-    SETTINGS("Settings", "/ppm settings", "pluginportal.ppm.settings", null),
-    UPDATE("Update", "/ppm update (Plugin Name) <Optional Flags>", "pluginportal.ppm.update", List.of(Flags.FORCE));
+    HELP("Help", "/pp help", "pluginportal.pp.help", null),
+    INSTALL("Install", "/pp install (Plugin Name) <Optional Flags>", "pluginportal.pp.install", List.of(Flags.FORCE)),
+    LIST("List", "/pp list", "pluginportal.pp.list", null),
+    PREVIEW("Preview", "/pp preview (Plugin Name)", "pluginportal.pp.preview", null),
+    SETTINGS("Settings", "/pp settings", "pluginportal.pp.settings", null),
+    UPDATE("Update", "/pp update (Plugin Name) <Optional Flags>", "pluginportal.pp.update", List.of(Flags.FORCE));
 
 
     SubCommandEnum(String command, String commandUsage, String permission, List<Flags> flags) {
