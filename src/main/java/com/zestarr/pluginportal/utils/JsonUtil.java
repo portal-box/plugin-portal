@@ -51,7 +51,7 @@ public class JsonUtil {
             HttpUrl url = new HttpUrl.Builder()
                     .scheme("https")
                     .host("raw.githubusercontent.com")
-                    .addPathSegment("Zestarr")
+                    .addPathSegment("portal-box")
                     .addPathSegment("PluginPortal")
                     .addPathSegment("master")
                     .addPathSegment("PluginList.json")

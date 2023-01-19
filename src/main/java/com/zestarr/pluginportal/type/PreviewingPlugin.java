@@ -125,19 +125,21 @@ public class PreviewingPlugin {
 
             // rows and columns
             int squareSize = 12;
+            int rows = squareSize;
+            int columns = squareSize;
 
             // array to hold sub-images
-            BufferedImage[] imgs = new BufferedImage[squareSize * squareSize];
+            BufferedImage[] imgs = new BufferedImage[rows * columns];
 
             // Equally dividing original image into images
-            int subimage_Width = image.getWidth() / squareSize;
-            int subimage_Height = image.getHeight() / squareSize;
+            int subimage_Width = image.getWidth() / columns;
+            int subimage_Height = image.getHeight() / rows;
 
             int current_img = 0;
 
             // iterating over rows and columns for each sub-image
-            for (int i = 0; i < squareSize; i++) {
-                for (int j = 0; j < squareSize; j++) {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columns; j++) {
                     // Creating sub image
                     imgs[current_img] = new BufferedImage(subimage_Width, subimage_Height, image.getType());
                     Graphics2D img_creator = imgs[current_img].createGraphics();
@@ -170,9 +172,9 @@ public class PreviewingPlugin {
                     }
 
                     if (containDownloadPrompt) {
-                        if (row == squareSize - 4) {
+                        if (row == rows - 4) {
                             componentBuilder.append(ChatUtil.format("&7Would you still like to download this plugin?"));
-                        } else if (row == squareSize - 3) {
+                        } else if (row == rows - 3) {
                             componentBuilder.append(ChatUtil.format("&7Please run /ppm install " + this.spigotName + " &a-f"));
                         }
                     }
@@ -182,8 +184,16 @@ public class PreviewingPlugin {
                     row++;
                 }
                 i++;
-                Color color = ChatUtil.getAverageColor(bound);
+                Color color = getAverageColor(bound);
                 builder.append(ChatColor.of(color)).append("▉");
+
+                switch (i) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    // etc
+                } // TODO
             }
 
             connection.getInputStream().close();
@@ -191,5 +201,27 @@ public class PreviewingPlugin {
             e.printStackTrace();
         }
         player.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
+    }
+
+    public Color getAverageColor(BufferedImage bi) {
+        int step = 5;
+
+        int sampled = 0;
+        long sumr = 0, sumg = 0, sumb = 0;
+        for (int x = 0; x < bi.getWidth(); x++) {
+            for (int y = 0; y < bi.getHeight(); y++) {
+                if (x % step == 0 && y % step == 0) {
+                    Color pixel = new Color(bi.getRGB(x, y));
+                    sumr += pixel.getRed();
+                    sumg += pixel.getGreen();
+                    sumb += pixel.getBlue();
+                    sampled++;
+                }
+            }
+        }
+        int dim = bi.getWidth() * bi.getHeight();
+        // Log.info("step=" + step + " sampled " + sampled + " out of " + dim + " pixels (" + String.format("%.1f", (float)(100*sampled/dim)) + " %)");
+        return new Color(Math.round(sumr / sampled), Math.round(sumg / sampled), Math.round(sumb / sampled));
+        // TODO sumr / sampled: Integer division in floating-point context
     }
 }
