@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly('org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT')
+    compileOnly('org.spigotmc:spigot-api:1.16.1-R0.1-SNAPSHOT')
 
 
     compileOnly 'org.projectlombok:lombok:1.18.24'
@@ -38,11 +38,6 @@ dependencies {
 
     //implementation("org.bstats:bstats-bukkit:3.0.0")
 
-}
-
-shadowJar {
-    relocate 'co.aikar.commands', 'com.zestarr.pluginportal.acf'
-    relocate 'co.aikar.locales', 'com.zestarr.pluginportal.locales'
 }
 
 def targetJavaVersion = 17

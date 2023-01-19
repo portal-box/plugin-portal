@@ -27,7 +27,7 @@ public class PreviewingPlugin {
     private String spigotName, version, tag, iconUrl = null;
     private String[] testedVersions, authors = null;
     private int id, downloads = 0;
-    private long releaseData, updateDate = 0;
+    private long releaseData,  updateDate = 0;
     private double price, rating, fileSize = 0;
     private boolean premium = false;
     private FileType fileType = null;
