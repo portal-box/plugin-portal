@@ -50,7 +50,13 @@ public class PreviewingPlugin {
             this.updateDate = root.get("updateDate").asLong();
             this.price = root.get("price").asDouble();
             this.rating = root.get("rating").get("average").asDouble();
-            this.premium = false;
+
+            try {
+                this.premium = root.get("premium").asBoolean();
+            } catch (NullPointerException exception) {
+                this.premium = false;
+            }
+
             this.fileSize = root.get("file").get("size").asDouble();
 
             String url = root.get("icon").get("url").asText();
@@ -84,10 +90,10 @@ public class PreviewingPlugin {
             component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatUtil.format("&b" + this.getTag()))));
             informationAsComponents.add(component);
 
-            component = new TextComponent(ChatUtil.format("Downloads: &b" + this.getDownloads()));
+            component = new TextComponent(ChatUtil.format("Downloads: &b" +String.format("%,d", this.getDownloads())));
             informationAsComponents.add(component);
 
-            component = new TextComponent(ChatUtil.format("Rating: &b" + this.getRating()));
+            component = new TextComponent(ChatUtil.format("Rating: &e⭐&b" + this.getRating()));
             informationAsComponents.add(component);
 
             if (this.getFileType().equals(FileType.EXTERNAL)) {

@@ -38,6 +38,11 @@ public class InstallSubCommand extends SubCommandManager {
 
         PreviewingPlugin previewingPlugin = new PreviewingPlugin(id);
 
+        if (PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().containsKey(PluginPortal.getMainInstance().getMarketplaceManager().getMarketplaceCache().get(id))) {
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Plugin is already installed."));
+            return;
+        }
+
         if (previewingPlugin.isPremium()) {
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &cThis plugin is a premium plugin. Please purchase it on spigotmc.org to install it!"));
             return;
@@ -55,7 +60,7 @@ public class InstallSubCommand extends SubCommandManager {
                 sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &cThere was an error installing " + spigotName + "."));
                 return;
             }
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &b" + spigotName + " &7has been installed."));
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &b" + spigotName + " &7has been installed. Please restart your server for the download to take effect."));
         });
     }
 }

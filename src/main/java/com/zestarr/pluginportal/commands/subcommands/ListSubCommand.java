@@ -10,6 +10,12 @@ import org.bukkit.command.CommandSender;
 public class ListSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
+
+        if (PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values().size() == 0) {
+            sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7You have no plugins installed via Plugin Portal."));
+            return;
+        }
+
         sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Listing all installed plugins..."));
         for (LocalPlugin plugin : PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values()) {
             if (plugin.getPreviewingPlugin().getSpigotName() != null && !plugin.getPreviewingPlugin().getSpigotName().isEmpty()) {

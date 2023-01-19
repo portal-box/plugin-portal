@@ -15,6 +15,12 @@ public class UpdateSubCommand extends SubCommandManager {
     @Override
     public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
         if (args.length == 1) {
+
+            if (PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values().size() == 0) {
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7All plugins are up to date!."));
+                return;
+            }
+
             sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Listing all plugins that can be updated: "));
             for (LocalPlugin plugin : PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values()) {
                 if (plugin.updateNeeded()) {
