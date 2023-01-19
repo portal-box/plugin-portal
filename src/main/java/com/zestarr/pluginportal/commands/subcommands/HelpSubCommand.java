@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 
 public class HelpSubCommand extends SubCommandManager {
     @Override
-    public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
+    public void execute(CommandSender sender, String[] args) {
         sender.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPP&7]&8 ---------------------->\n"));
         sender.sendMessage(" "); // \n didnt work???
 

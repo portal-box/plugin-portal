@@ -1,7 +1,6 @@
 package com.zestarr.pluginportal.commands.subcommands;
 
 import com.zestarr.pluginportal.PluginPortal;
-import com.zestarr.pluginportal.commands.commandutil.SubCommandEnum;
 import com.zestarr.pluginportal.commands.commandutil.SubCommandManager;
 import com.zestarr.pluginportal.managers.MarketplaceManager;
 import com.zestarr.pluginportal.type.PreviewingPlugin;
@@ -12,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class PreviewSubCommand extends SubCommandManager {
     @Override
-    public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
+    public void execute(CommandSender sender, String[] args) {
         Bukkit.getScheduler().runTaskAsynchronously(PluginPortal.getMainInstance(), () -> {
             MarketplaceManager marketplaceManager = PluginPortal.getMainInstance().getMarketplaceManager();
 

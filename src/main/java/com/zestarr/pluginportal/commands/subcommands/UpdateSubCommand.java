@@ -15,7 +15,7 @@ import java.util.List;
 
 public class UpdateSubCommand extends SubCommandManager {
     @Override
-    public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
+    public void execute(CommandSender sender, String[] args) {
         if (args.length == 1) {
 
             List<LocalPlugin> localPlugins = PluginPortal.getMainInstance().getLocalPluginManager().getPlugins().values().stream().filter(LocalPlugin::updateNeeded).toList();

@@ -19,7 +19,7 @@ import java.util.Set;
 public class InstallSubCommand extends SubCommandManager {
 
     @Override
-    public void execute(CommandSender sender, String[] args, SubCommandEnum subCommandEnum) {
+    public void execute(CommandSender sender, String[] args) {
 
         Set<Flags> flags = FlagUtil.getFlags(SubCommandEnum.INSTALL, args);
 
