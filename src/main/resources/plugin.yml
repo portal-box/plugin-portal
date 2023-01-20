@@ -1,5 +1,5 @@
 name: PluginPortal
-version: '${version}'
+version: "0.9"
 main: link.portalbox.pluginportal.PluginPortal
 api-version: 1.16
 authors: [ Zestarr, Stephen ]

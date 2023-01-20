@@ -36,7 +36,7 @@ public class PreviewingPlugin {
     public PreviewingPlugin(int id) {
         this.id = id;
         try {
-            String responseBody = JsonUtil.getJsonData(id);
+            String responseBody = JsonUtil.getSpigetJson(id);
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readValue(responseBody, JsonNode.class);
 
