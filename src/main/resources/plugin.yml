@@ -2,6 +2,6 @@ name: PluginPortal
 version: "0.9"
 main: link.portalbox.pluginportal.PluginPortal
 api-version: 1.16
-authors: [ Zestarr, Stephen ]
+authors: [ Zestarr, Stephen, Shreyas Ayyengar ]
 description: Plugin Package Manager
 website: https://portalbox.link
