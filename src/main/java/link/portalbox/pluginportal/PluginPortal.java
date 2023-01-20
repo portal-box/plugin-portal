@@ -19,7 +19,7 @@ public final class PluginPortal extends JavaPlugin {
     private LocalPluginManager localPluginManager;
     private DownloadManager downloadManager;
 
-    private static boolean isPluginLatestVersion = true;
+    private static boolean IS_PLUGIN_LATEST_VERSION = true;
 
     @Override
     public void onEnable() {
@@ -42,7 +42,7 @@ public final class PluginPortal extends JavaPlugin {
 
         Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = null;
+            JsonNode root;
             try {
                 root = mapper.readValue(JsonUtil.getDataJson(), JsonNode.class);
             } catch (JsonProcessingException e) {
@@ -50,7 +50,7 @@ public final class PluginPortal extends JavaPlugin {
             }
             if (!root.get("latestVersion").equals(getDescription().getVersion())) {
                 getLogger().warning("You are running an outdated version of PluginPortal! Please update to the latest version!");
-                isPluginLatestVersion = false;
+                IS_PLUGIN_LATEST_VERSION = false;
             }
         });
     }
@@ -72,6 +72,6 @@ public final class PluginPortal extends JavaPlugin {
     }
 
     public boolean isIsPluginLatestVersion() {
-        return isPluginLatestVersion;
+        return IS_PLUGIN_LATEST_VERSION;
     }
 }
