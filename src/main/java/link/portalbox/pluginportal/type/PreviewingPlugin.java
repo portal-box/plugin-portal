@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import link.portalbox.pluginportal.utils.ChatUtil;
 import link.portalbox.pluginportal.utils.JsonUtil;
-import lombok.Data;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -21,13 +20,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-@Data
 public class PreviewingPlugin {
 
+    // TODO possibly remove complete unused references.
     private String spigotName, version, tag, iconUrl = null;
     private String[] testedVersions, authors = null;
     private int id, downloads = 0;
-    private long releaseData,  updateDate = 0;
+    private long releaseData, updateDate = 0;
     private double price, rating, fileSize = 0;
     private boolean premium = false;
     private FileType fileType = null;
@@ -196,5 +195,51 @@ public class PreviewingPlugin {
             e.printStackTrace();
         }
         player.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
+    }
+
+    // Getters/Setters -----------------------------------------------------------------------------------------------
+
+    public String getSpigotName() {
+        return spigotName;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getDownloads() {
+        return downloads;
+    }
+
+    public long getUpdateDate() {
+        return updateDate;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public double getFileSize() {
+        return fileSize;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public FileType getFileType() {
+        return fileType;
+    }
+
+    public SizeUnit getSizeUnit() {
+        return sizeUnit;
     }
 }

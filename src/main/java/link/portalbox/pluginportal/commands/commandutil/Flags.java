@@ -1,15 +1,16 @@
 package link.portalbox.pluginportal.commands.commandutil;
 
-import lombok.Getter;
-
 public enum Flags {
 
     FORCE(new String[]{"-f", "--force"});
 
-    @Getter
     private final String[] flagsString;
 
     Flags(String[] flagsString) {
         this.flagsString = flagsString;
+    }
+
+    public String[] getFlagsString() {
+        return flagsString;
     }
 }

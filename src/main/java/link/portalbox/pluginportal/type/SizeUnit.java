@@ -1,7 +1,5 @@
 package link.portalbox.pluginportal.type;
 
-import lombok.Getter;
-
 public enum SizeUnit {
 
     NONE("NOT AVAILABLE"),
@@ -9,11 +7,13 @@ public enum SizeUnit {
     MB("MB"),
     GB("GB");
 
-    @Getter
     private final String unit;
 
     SizeUnit(String unit) {
         this.unit = unit;
     }
 
+    public String getUnit() {
+        return unit;
+    }
 }

@@ -15,11 +15,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PluginPortal extends JavaPlugin {
 
+    private static boolean IS_PLUGIN_LATEST_VERSION = true;
+
     private MarketplaceManager marketplaceManager;
     private LocalPluginManager localPluginManager;
     private DownloadManager downloadManager;
-
-    private static boolean IS_PLUGIN_LATEST_VERSION = true;
 
     @Override
     public void onEnable() {
@@ -48,7 +48,7 @@ public final class PluginPortal extends JavaPlugin {
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
-            if (!root.get("latestVersion").equals(getDescription().getVersion())) {
+            if (!root.get("latestVersion").asText().equals(getDescription().getVersion())) {
                 getLogger().warning("You are running an outdated version of PluginPortal! Please update to the latest version!");
                 IS_PLUGIN_LATEST_VERSION = false;
             }
