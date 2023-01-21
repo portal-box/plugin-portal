@@ -22,22 +22,18 @@ repositories {
 dependencies {
     compileOnly('org.spigotmc:spigot-api:1.16.1-R0.1-SNAPSHOT')
 
-
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    implementation 'com.squareup.moshi:moshi:1.14.0'
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+
+    implementation('com.squareup.moshi:moshi:1.14.0')
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
-
     implementation('com.fasterxml.jackson.core:jackson-databind:2.14.0')
-
-    //implementation("org.bstats:bstats-bukkit:3.0.0")
-
 }
 
 def targetJavaVersion = 17
@@ -49,10 +45,6 @@ java {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
 }
-
-//compileKotlin {
-//    kotlinOptions.javaParameters = true
-//}
 
 tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
