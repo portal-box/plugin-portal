@@ -19,10 +19,10 @@ public class StatusListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         if (event.getPlayer().isOp() || event.getPlayer().hasPermission("pp.primarycommand")) {
-            if (!PluginPortal.getMainInstance().isIsPluginLatestVersion()) return;
+            if (PluginPortal.getMainInstance().isIsPluginLatestVersion()) return;
             try {
                 Player player = event.getPlayer();
-                TextComponent component = new TextComponent(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Plugin Portal needs to be updated. Please download the latest version from: "));
+                TextComponent component = new TextComponent(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Plugin Portal needs to be updated. Please download the latest version from: &b&l[CLICK HERE]"));
                 component.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, new ObjectMapper().readValue(JsonUtil.getDataJson(), JsonNode.class).get("downloadURL").asText()));
                 player.spigot().sendMessage(component);
             } catch (Exception exception) {

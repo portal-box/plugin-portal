@@ -1,123 +1,41 @@
 package link.portalbox.pluginportal.utils;
 
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class JsonUtil {
-    public static String getSpigetJson(int id) {
+    public static String getJson(String urlStr) {
         try {
-            OkHttpClient client = new OkHttpClient();
-
-            // Build the URL for the API request
-            HttpUrl url = new HttpUrl.Builder()
-                    .scheme("https")
-                    .host("api.spiget.org")
-                    .addPathSegment("v2")
-                    .addPathSegment("resources")
-                    .addPathSegment(String.valueOf(id))
-                    .build();
-
-            // Create the request
-            Request request = new Request.Builder()
-                    .url(url)
-                    .get()
-                    .build();
-
-            // Send the request and get the response
-            try (Response response = client.newCall(request).execute()) {
-
-                // Check the status code
-                int status = response.code();
-                if (status == 200) {
-                    // Read the response body
-                    return response.body().string();
+            URL url = new URL(urlStr);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            if (conn.getResponseCode() == 200) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder response = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    response.append(line);
                 }
+                br.close();
+                return response.toString();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
+    }
+
+    public static String getSpigetJson(int id) {
+        return getJson("https://api.spiget.org/v2/resources/" + id);
     }
 
     public static String getPluginJson() {
-        try {
-            OkHttpClient client = new OkHttpClient();
-
-            // Build the URL for the API request
-            HttpUrl url = new HttpUrl.Builder()
-                    .scheme("https")
-                    .host("raw.githubusercontent.com")
-                    .addPathSegment("portal-box")
-                    .addPathSegment("plugin-portal")
-                    .addPathSegment("master")
-                    .addPathSegment("resources")
-                    .addPathSegment("PluginList.json")
-                    .build();
-
-            // Create the request
-            Request request = new Request.Builder()
-                    .url(url)
-                    .get()
-                    .build();
-
-            // Send the request and get the response
-            try (Response response = client.newCall(request).execute()) {
-
-                // Check the status code
-                int status = response.code();
-                if (status == 200) {
-                    // Read the response body
-                    return response.body().string();
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return getJson("https://raw.githubusercontent.com/portal-box/plugin-portal/master/resources/PluginList.json");
     }
 
     public static String getDataJson() {
-        try {
-            OkHttpClient client = new OkHttpClient();
-
-            // Build the URL for the API request
-            HttpUrl url = new HttpUrl.Builder()
-                    .scheme("https")
-                    .host("raw.githubusercontent.com")
-                    .addPathSegment("portal-box")
-                    .addPathSegment("plugin-portal")
-                    .addPathSegment("master")
-                    .addPathSegment("resources")
-                    .addPathSegment("Data.json")
-                    .build();
-
-            // Create the request
-            Request request = new Request.Builder()
-                    .url(url)
-                    .get()
-                    .build();
-
-            // Send the request and get the response
-            try (Response response = client.newCall(request).execute()) {
-
-                // Check the status code
-                int status = response.code();
-                if (status == 200) {
-                    // Read the response body
-                    return response.body().string();
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return getJson("https://raw.githubusercontent.com/portal-box/plugin-portal/master/resources/Data.json");
     }
 }

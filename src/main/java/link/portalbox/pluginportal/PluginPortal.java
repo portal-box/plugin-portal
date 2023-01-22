@@ -49,7 +49,7 @@ public final class PluginPortal extends JavaPlugin {
                 throw new RuntimeException(e);
             }
             if (!root.get("latestVersion").asText().equals(getDescription().getVersion())) {
-                getLogger().warning("You are running an outdated version of PluginPortal! Please update to the latest version!");
+                getLogger().severe("You are running an outdated version of PluginPortal! Please update to the latest version!");
                 IS_PLUGIN_LATEST_VERSION = false;
             }
         });
