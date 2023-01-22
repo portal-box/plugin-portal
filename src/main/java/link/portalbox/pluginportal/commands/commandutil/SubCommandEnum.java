@@ -5,6 +5,7 @@ import java.util.List;
 
 public enum SubCommandEnum {
 
+    DELETE("delete", "/pp delete (File Name)", "pluginportal.pp.delete", null),
     HELP("Help", "/pp help", "pluginportal.pp.help", null),
     INSTALL("Install", "/pp install (Plugin Name) <Optional Flags>", "pluginportal.pp.install", List.of(Flags.FORCE)),
     LIST("List", "/pp list", "pluginportal.pp.list", null),

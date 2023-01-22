@@ -24,7 +24,6 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
-
     </repositories>
 
     <dependencies>
@@ -52,5 +51,6 @@
             <artifactId>moshi-kotlin</artifactId>
             <version>1.14.0</version>
         </dependency>
+
     </dependencies>
 </project>
