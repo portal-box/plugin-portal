@@ -16,6 +16,7 @@ public class PluginPortalBaseCommand extends CommandManager {
 
     private final PluginPortal plugin;
 
+    private final DeleteSubCommand deleteSubCommand = new DeleteSubCommand();
     private final HelpSubCommand helpSubCommand = new HelpSubCommand();
     private final InstallSubCommand installSubCommand = new InstallSubCommand();
     private final ListSubCommand listSubCommand = new ListSubCommand();
@@ -40,6 +41,7 @@ public class PluginPortalBaseCommand extends CommandManager {
             helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
         } else {
             switch (args[0].toLowerCase()) {
+                case "delete" -> deleteSubCommand.execute(sender, args, SubCommandEnum.DELETE);
                 case "install" -> installSubCommand.execute(sender, args, SubCommandEnum.INSTALL);
                 case "list" -> listSubCommand.execute(sender, args, SubCommandEnum.LIST);
                 case "preview" -> previewSubCommand.execute(sender, args, SubCommandEnum.PREVIEW);

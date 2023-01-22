@@ -3,14 +3,11 @@ package link.portalbox.pluginportal.commands.subcommands;
 import link.portalbox.pluginportal.PluginPortal;
 import link.portalbox.pluginportal.commands.commandutil.SubCommandManager;
 import link.portalbox.pluginportal.utils.ChatUtil;
-import org.bukkit.Bukkit;
+import link.portalbox.pluginportal.utils.PluginUtil;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.apache.commons.lang.ArrayUtils.removeElement;
 
 public class DeleteSubCommand extends SubCommandManager {
     @Override
@@ -21,16 +18,23 @@ public class DeleteSubCommand extends SubCommandManager {
             return;
         }
 
-        ArrayList<String> fileNames = new ArrayList<>();
-        String fileName = args[1];
+        if (PluginUtil.getAllPlugins().contains(args[1])) {
+            {
+                new File(PluginPortal.getMainInstance().getDataFolder(), args[1]).deleteOnExit();
+                sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Attempted to delete &b" + args[1]));
 
-        for (File file : PluginPortal.getMainInstance().getDataFolder().listFiles()) {
-            fileNames.add(file.getName());
+                Plugin plugin = PluginUtil.getPluginByName(args[1]);
+                if (plugin == null) return;
+                boolean isPluginDisabled = PluginUtil.disableServerPlugin(plugin);
+                if (isPluginDisabled) {
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &b" + args[1] + " &7has been disabled."));
+                } else {
+                    sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &b" + args[1] + " &7is already disabled or an error occurred."));
+                }
+
+
+            }
+
         }
-
-        if (fileNames.contains(fileName)) {
-            sender.sendMessage(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Deleting " + fileName + "..."));
-        }
-
     }
 }

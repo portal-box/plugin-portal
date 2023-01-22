@@ -5,6 +5,7 @@ import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 import link.portalbox.pluginportal.PluginPortal;
 import link.portalbox.pluginportal.type.LocalPlugin;
+import org.bukkit.plugin.Plugin;
 
 import java.io.*;
 import java.security.MessageDigest;
@@ -105,4 +106,6 @@ public class FileUtil {
 
         saveData(plugin);
     }
+
+
 }
