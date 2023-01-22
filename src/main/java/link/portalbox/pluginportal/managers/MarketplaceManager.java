@@ -1,13 +1,11 @@
 package link.portalbox.pluginportal.managers;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import link.portalbox.pluginportal.utils.JsonUtil;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 
@@ -15,14 +13,14 @@ public class MarketplaceManager {
 
     private final HashMap<Integer, String> marketplaceCache = new HashMap<>();
 
-    public MarketplaceManager() throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonData = mapper.readTree(JsonUtil.getPluginJson());
-
-        for (Iterator<Map.Entry<String, JsonNode>> it = jsonData.fields(); it.hasNext(); ) {
-            Map.Entry<String, JsonNode> entry = it.next();
-            marketplaceCache.put(Integer.parseInt(entry.getKey()), entry.getValue().asText());
-        }
+    public MarketplaceManager() {
+        Gson gson = new Gson();
+        JsonElement jsonData = gson.fromJson(JsonUtil.getPluginJson(), JsonElement.class);
+        try {
+            for (Map.Entry<String, JsonElement> entry : jsonData.getAsJsonObject().entrySet()) {
+                marketplaceCache.put(Integer.parseInt(entry.getKey()), entry.getValue().getAsString());
+            }
+        } catch (Exception ignored) {}
     }
 
     public Collection<String> getAllNames() {

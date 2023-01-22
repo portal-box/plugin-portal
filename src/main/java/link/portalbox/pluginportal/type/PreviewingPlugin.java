@@ -1,8 +1,7 @@
 package link.portalbox.pluginportal.type;
 
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import link.portalbox.pluginportal.utils.ChatUtil;
 import link.portalbox.pluginportal.utils.JsonUtil;
 import net.md_5.bungee.api.ChatColor;
@@ -23,57 +22,59 @@ import java.util.ArrayList;
 public class PreviewingPlugin {
 
     // TODO possibly remove complete unused references.
-    private String spigotName, version, tag, iconUrl = null;
-    private String[] testedVersions, authors = null;
-    private int id, downloads = 0;
-    private long releaseData, updateDate = 0;
-    private double price, rating, fileSize = 0;
+    private final String spigotName;
+    private final String version;
+    private final String tag;
+    private String iconUrl = null;
+    private String[] testedVersions;
+    private final String[] authors = null;
+    private final int id;
+    private int downloads = 0;
+    private final long releaseData;
+    private long updateDate = 0;
+    private final double price;
+    private final double rating;
+    private double fileSize = 0;
     private boolean premium = false;
     private FileType fileType = null;
     private SizeUnit sizeUnit = null;
 
     public PreviewingPlugin(int id) {
         this.id = id;
+        String responseBody = JsonUtil.getSpigetJson(id);
+        Gson gson = new Gson();
+        JsonObject root = gson.fromJson(responseBody, JsonObject.class);
+
+        this.spigotName = root.get("name").getAsString();
+        this.tag = root.get("tag").getAsString();
+        this.version = root.get("version").getAsString();
+        this.downloads = root.get("downloads").getAsInt();
+        this.releaseData = root.get("releaseDate").getAsLong();
+        this.updateDate = root.get("updateDate").getAsLong();
+        this.price = root.get("price").getAsDouble();
+        this.rating = root.get("rating").getAsJsonObject().get("average").getAsDouble();
+
         try {
-            String responseBody = JsonUtil.getSpigetJson(id);
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readValue(responseBody, JsonNode.class);
-
-            this.spigotName = root.get("name").asText();
-            this.tag = root.get("tag").asText();
-            this.version = root.get("version").asText();
-            //this.authors = root.get("authors").findValuesAsText("name").toArray(new String[0]); Not sure about which value this is. There's contributors and auths
-            //this.testedVersions = root.get("testedVersions").findValuesAsText("name").toArray(new String[0]);
-            this.downloads = root.get("downloads").asInt();
-            this.releaseData = root.get("releaseDate").asLong();
-            this.updateDate = root.get("updateDate").asLong();
-            this.price = root.get("price").asDouble();
-            this.rating = root.get("rating").get("average").asDouble();
-
-            try {
-                this.premium = root.get("premium").asBoolean();
-            } catch (NullPointerException exception) {
-                this.premium = false;
-            }
-
-            this.fileSize = root.get("file").get("size").asDouble();
-
-            String url = root.get("icon").get("url").asText();
-            this.iconUrl = url.isEmpty() ? "https://i.imgur.com/V9jfjSJ.png" : "https://www.spigotmc.org/" + root.get("icon").get("url").asText();
-
-            String sizeUnit = root.get("file").get("sizeUnit").asText();
-            this.sizeUnit = sizeUnit.isEmpty() ? SizeUnit.NONE : SizeUnit.valueOf(sizeUnit);
-
-            switch (root.get("file").get("type").asText().toLowerCase()) {
-                case ".jar" -> this.fileType = FileType.JAR;
-                case ".zip" -> this.fileType = FileType.ZIP;
-                case ".sk" -> this.fileType = FileType.SKRIPT;
-                default -> this.fileType = FileType.EXTERNAL; // Includes "external"
-            }
-
-        } catch (JacksonException exception) {
-            exception.printStackTrace();
+            this.premium = root.get("premium").getAsBoolean();
+        } catch (NullPointerException exception) {
+            this.premium = false;
         }
+
+        this.fileSize = root.get("file").getAsJsonObject().get("size").getAsDouble();
+
+        String url = root.get("icon").getAsJsonObject().get("url").getAsString();
+        this.iconUrl = url.isEmpty() ? "https://i.imgur.com/V9jfjSJ.png" : "https://www.spigotmc.org/" + root.get("icon").getAsJsonObject().get("url").getAsString();
+
+        String sizeUnit = root.get("file").getAsJsonObject().get("sizeUnit").getAsString();
+        this.sizeUnit = sizeUnit.isEmpty() ? SizeUnit.NONE : SizeUnit.valueOf(sizeUnit);
+
+        switch (root.get("file").getAsJsonObject().get("type").getAsString().toLowerCase()) {
+            case ".jar" -> this.fileType = FileType.JAR;
+            case ".zip" -> this.fileType = FileType.ZIP;
+            case ".sk" -> this.fileType = FileType.SKRIPT;
+            default -> this.fileType = FileType.EXTERNAL; // Includes "external"
+        }
+
 
     }
 

@@ -1,13 +1,12 @@
 package link.portalbox.pluginportal.utils;
 
-import com.squareup.moshi.JsonAdapter;
-import com.squareup.moshi.Moshi;
-import com.squareup.moshi.Types;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import link.portalbox.pluginportal.PluginPortal;
 import link.portalbox.pluginportal.type.LocalPlugin;
-import org.bukkit.plugin.Plugin;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -49,34 +48,27 @@ public class FileUtil {
     }
 
     public static void saveData(PluginPortal plugin) {
-        try {
-            Moshi moshi = new Moshi.Builder().build();
-            JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
-            String json = jsonAdapater.toJson(plugin.getLocalPluginManager().getPlugins());
-            BufferedWriter writer = new BufferedWriter(new FileWriter(plugin.getLocalPluginManager().getDataFile()));
-            writer.write(json);
-            writer.flush();
-            writer.close();
+        Gson gson = new Gson();
+        String json = gson.toJson(plugin.getLocalPluginManager().getPlugins());
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(plugin.getLocalPluginManager().getDataFile()))) {
+            writer.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static void loadData(PluginPortal plugin, File dataFile) {
-        try {
-            Moshi moshi = new Moshi.Builder().build();
-            JsonAdapter<Map<String, LocalPlugin>> jsonAdapater = moshi.adapter(Types.newParameterizedType(Map.class, String.class, LocalPlugin.class));
-            BufferedReader reader = new BufferedReader(new FileReader(dataFile));
-            Map<String, LocalPlugin> map = jsonAdapater.fromJson(reader.readLine());
+        Gson gson = new Gson();
+        try (BufferedReader reader = new BufferedReader(new FileReader(dataFile))) {
+            Type type = new TypeToken<Map<String, LocalPlugin>>(){}.getType();
+            Map<String, LocalPlugin> map = gson.fromJson(reader, type);
             if (map != null) {
                 plugin.getLocalPluginManager().getPlugins().putAll(map);
             }
-            reader.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
         scanDeletedPlugins(plugin);
     }
 

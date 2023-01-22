@@ -1,7 +1,7 @@
 package link.portalbox.pluginportal.listener;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import link.portalbox.pluginportal.PluginPortal;
 import link.portalbox.pluginportal.utils.ChatUtil;
 import link.portalbox.pluginportal.utils.JsonUtil;
@@ -22,8 +22,9 @@ public class StatusListener implements Listener {
             if (PluginPortal.getMainInstance().isIsPluginLatestVersion()) return;
             try {
                 Player player = event.getPlayer();
+                JsonObject jsonObject = new JsonParser().parse(JsonUtil.getDataJson()).getAsJsonObject();
                 TextComponent component = new TextComponent(ChatUtil.format("&7&l[&b&lPP&7&l] &8&l> &7Plugin Portal needs to be updated. Please download the latest version from: &b&l[CLICK HERE]"));
-                component.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, new ObjectMapper().readValue(JsonUtil.getDataJson(), JsonNode.class).get("downloadURL").asText()));
+                component.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, jsonObject.get("downloadURL").getAsString()));
                 player.spigot().sendMessage(component);
             } catch (Exception exception) {
                 exception.printStackTrace();

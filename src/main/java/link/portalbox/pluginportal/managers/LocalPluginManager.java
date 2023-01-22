@@ -50,7 +50,6 @@ public class LocalPluginManager implements Listener {
         return names;
     }
 
-    // Getters -----------------------------------------------------------------
     public HashMap<String, LocalPlugin> getPlugins() {
         return localPlugins;
     }
