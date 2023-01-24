@@ -6,9 +6,7 @@ import link.portalbox.pluginportal.PluginPortal;
 import link.portalbox.pluginportal.utils.ChatUtil;
 import link.portalbox.pluginportal.utils.JsonUtil;
 import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.hover.content.Text;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +17,7 @@ public class StatusListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         if (event.getPlayer().isOp() || event.getPlayer().hasPermission("pp.primarycommand")) {
-            if (PluginPortal.getMainInstance().isIsPluginLatestVersion()) return;
+            if (PluginPortal.getMainInstance().isUpdated()) return;
             try {
                 Player player = event.getPlayer();
                 JsonObject jsonObject = new JsonParser().parse(JsonUtil.getDataJson()).getAsJsonObject();

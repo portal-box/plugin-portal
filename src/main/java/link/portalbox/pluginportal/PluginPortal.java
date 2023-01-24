@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PluginPortal extends JavaPlugin {
 
-    private static boolean IS_PLUGIN_LATEST_VERSION = true;
+    private static boolean LATEST_VERSION = true;
 
     private MarketplaceManager marketplaceManager;
     private LocalPluginManager localPluginManager;
@@ -45,7 +45,7 @@ public final class PluginPortal extends JavaPlugin {
             root = gson.fromJson(JsonUtil.getDataJson(), JsonElement.class);
             if (!root.getAsJsonObject().get("latestVersion").getAsString().equals(getDescription().getVersion())) {
                 getLogger().severe("You are running an outdated version of PluginPortal! Please update to the latest version!");
-                IS_PLUGIN_LATEST_VERSION = false;
+                LATEST_VERSION = false;
             }
         });
     }
@@ -66,7 +66,7 @@ public final class PluginPortal extends JavaPlugin {
         return JavaPlugin.getPlugin(PluginPortal.class);
     }
 
-    public boolean isIsPluginLatestVersion() {
-        return IS_PLUGIN_LATEST_VERSION;
+    public boolean isUpdated() {
+        return LATEST_VERSION;
     }
 }
