@@ -5,6 +5,7 @@ import link.portalbox.pluginportal.commands.commandutil.SubCommandEnum;
 import link.portalbox.pluginportal.commands.commandutil.CommandManager;
 import link.portalbox.pluginportal.commands.subcommands.*;
 import link.portalbox.pluginportal.utils.FlagUtil;
+import link.portalbox.pluginportal.utils.ServerPluginUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
@@ -41,7 +42,7 @@ public class PluginPortalBaseCommand extends CommandManager {
             helpSubCommand.execute(sender, args, SubCommandEnum.HELP);
         } else {
             switch (args[0].toLowerCase()) {
-                case "delete" -> deleteSubCommand.execute(sender, args, SubCommandEnum.DELETE);
+                //case "delete" -> deleteSubCommand.execute(sender, args, SubCommandEnum.DELETE);
                 case "install" -> installSubCommand.execute(sender, args, SubCommandEnum.INSTALL);
                 case "list" -> listSubCommand.execute(sender, args, SubCommandEnum.LIST);
                 case "preview" -> previewSubCommand.execute(sender, args, SubCommandEnum.PREVIEW);
@@ -64,10 +65,14 @@ public class PluginPortalBaseCommand extends CommandManager {
             switch (args[0].toLowerCase()) {
                 case "install", "preview" -> {
                     if (args[1].length() <= 2) return List.of("Keep Typing...", args[1]);
-                    return StringUtil.copyPartialMatches(args[1], plugin.getMarketplaceManager().getAllNames(), new ArrayList<>());
+                    return StringUtil.copyPartialMatches(args[1], plugin.getPortalAPI().getMarketplaceManager().getAllNames(), new ArrayList<>());
                 }
                 case "update" -> {
                     return StringUtil.copyPartialMatches(args[1], plugin.getLocalPluginManager().getAllNames(), new ArrayList<>());
+                }
+
+                case "delete" -> {
+                    return StringUtil.copyPartialMatches(args[1], ServerPluginUtil.getAllPlugins(), new ArrayList<>());
                 }
                 default -> {
                     return null;

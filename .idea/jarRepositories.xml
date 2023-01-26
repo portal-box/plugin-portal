@@ -2,9 +2,19 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="lenni0451-maven-releases" />
+      <option name="name" value="Lenni0451 Maven Repository" />
+      <option name="url" value="https://maven.lenni0451.net/releases" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jitpack.io" />
+      <option name="name" value="jitpack.io" />
+      <option name="url" value="https://jitpack.io" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="MavenRepo" />
@@ -45,6 +55,11 @@
       <option name="id" value="maven" />
       <option name="name" value="maven" />
       <option name="url" value="https://repo.aikar.co/content/groups/aikar/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Lenni0451 releases" />
+      <option name="name" value="Lenni0451 releases" />
+      <option name="url" value="https://maven.lenni0451.net/releases" />
     </remote-repository>
   </component>
 </project>

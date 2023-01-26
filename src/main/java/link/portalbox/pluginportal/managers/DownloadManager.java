@@ -2,7 +2,7 @@ package link.portalbox.pluginportal.managers;
 
 import link.portalbox.pluginportal.PluginPortal;
 import link.portalbox.pluginportal.type.LocalPlugin;
-import link.portalbox.pluginportal.type.PreviewingPlugin;
+import link.portalbox.type.SpigetPlugin;
 
 import java.io.*;
 import java.net.URL;
@@ -16,13 +16,13 @@ public class DownloadManager {
         this.portal = portal;
     }
 
-    public LocalPlugin download(PreviewingPlugin plugin) {
+    public LocalPlugin download(SpigetPlugin plugin) {
         try {
             URL url = new URL("https://api.spiget.org/v2/resources/" + plugin.getId() + "/download");
             URLConnection connection = url.openConnection();
             connection.setRequestProperty("User-Agent", "github.com/Zestarr/PluginPortal");
 
-            String fileName = PluginPortal.getMainInstance().getMarketplaceManager().getMarketplaceCache().get(plugin.getId());
+            String fileName = PluginPortal.getMainInstance().getPortalAPI().getMarketplaceManager().getMarketplaceCache().get(plugin.getId());
             InputStream inputStream = connection.getInputStream();
             FileOutputStream outputStream = new FileOutputStream(new File("plugins", fileName + (fileName.endsWith(".jar") ? "" : ".jar")));
 

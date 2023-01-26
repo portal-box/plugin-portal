@@ -1,37 +1,37 @@
 package link.portalbox.pluginportal.type;
 
 import link.portalbox.pluginportal.utils.FileUtil;
+import link.portalbox.type.SpigetPlugin;
 
 import java.io.File;
 
 public class LocalPlugin {
 
-    private final PreviewingPlugin previewingPlugin;
+    private final SpigetPlugin spigetPlugin;
     private String sha256, fileName;
 
-    public LocalPlugin(PreviewingPlugin previewingPlugin, String fileName) {
-        this.previewingPlugin = previewingPlugin;
+    public LocalPlugin(SpigetPlugin spigetPlugin, String fileName) {
+        this.spigetPlugin = spigetPlugin;
         this.fileName = fileName;
         this.sha256 = FileUtil.getSHA256(new File("plugins", fileName + (fileName.endsWith(".jar") ? "" : ".jar")));
 
     }
 
     public boolean matchesVersion(long updateDate) {
-        return previewingPlugin.getUpdateDate() == updateDate;
+        return spigetPlugin.getUpdateDate() == updateDate;
     }
 
     public boolean updateNeeded() {
-        return !matchesVersion(new PreviewingPlugin(previewingPlugin.getId()).getUpdateDate());
+        return !matchesVersion(new SpigetPlugin(spigetPlugin.getId()).getUpdateDate());
     }
 
     public File getFile() {
         return new File("plugins", (fileName + (fileName.endsWith(".jar") ? "" : ".jar")));
     }
 
-    // Getters/Setters ------------------------------------------------------------------------------------------------
 
-    public PreviewingPlugin getPreviewingPlugin() {
-        return previewingPlugin;
+    public SpigetPlugin getSpigetPlugin() {
+        return spigetPlugin;
     }
 
     public String getSha256() {

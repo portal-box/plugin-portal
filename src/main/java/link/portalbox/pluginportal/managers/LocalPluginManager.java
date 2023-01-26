@@ -18,20 +18,23 @@ public class LocalPluginManager implements Listener {
     private final HashMap<String, LocalPlugin> localPlugins = new HashMap<>();
     private final PluginPortal plugin;
 
-    private final File dataFile;
+    private File dataFile;
 
-    public LocalPluginManager(PluginPortal plugin) throws IOException {
+    public LocalPluginManager(PluginPortal plugin) {
         this.plugin = plugin;
-
-        dataFile = new File(plugin.getDataFolder(), "plugins.json");
-        if (!dataFile.exists()) {
-            dataFile.createNewFile();
-            FileWriter writer = new FileWriter(dataFile);
-            writer.write("{}");
-            writer.flush();
-            writer.close();
+        try {
+            dataFile = new File(plugin.getDataFolder(), "plugins.json");
+            if (!dataFile.exists()) {
+                dataFile.createNewFile();
+                FileWriter writer = new FileWriter(dataFile);
+                writer.write("{}");
+                writer.flush();
+                writer.close();
+            }
+            Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () -> FileUtil.loadData(plugin, dataFile), 20L);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () -> FileUtil.loadData(plugin, dataFile), 20L);
     }
 
     public void add(String fileName, LocalPlugin localPlugin) {

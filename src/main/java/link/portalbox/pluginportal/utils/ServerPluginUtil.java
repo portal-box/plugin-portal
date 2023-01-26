@@ -3,12 +3,16 @@ package link.portalbox.pluginportal.utils;
 import link.portalbox.pluginportal.PluginPortal;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginLoader;
+import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class PluginUtil {
+public class ServerPluginUtil {
 
     public static Plugin getPluginByName(String name) {
         for (Plugin loopedPlugin : PluginPortal.getMainInstance().getServer().getPluginManager().getPlugins()) {
@@ -59,4 +63,25 @@ public class PluginUtil {
         }
         return pluginNames;
     }
+
+    public static void deletePlugin(JavaPlugin plugin, PluginLoader loader) {
+        PluginDescriptionFile desc = plugin.getDescription();
+        String name = desc.getName();
+
+        // Disable the plugin
+        plugin.onDisable();
+
+        // Remove the plugin from the server's list of plugins
+        Plugin target = Bukkit.getServer().getPluginManager().getPlugin(name);
+        Bukkit.getServer().getPluginManager().disablePlugin(target);
+
+        // Delete the plugin's jar file from the plugins directory
+        File pluginFile = target.getDataFolder().getParentFile();
+        pluginFile.delete();
+
+        // remove the plugin from the PluginLoader
+        loader.disablePlugin(target);
+    }
+
+
 }

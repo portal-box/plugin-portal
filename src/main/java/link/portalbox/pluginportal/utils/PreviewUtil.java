@@ -1,9 +1,8 @@
-package link.portalbox.pluginportal.type;
+package link.portalbox.pluginportal.utils;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import link.portalbox.pluginportal.utils.ChatUtil;
-import link.portalbox.pluginportal.utils.JsonUtil;
+import link.portalbox.type.FileType;
+import link.portalbox.type.SizeUnit;
+import link.portalbox.type.SpigetPlugin;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -19,109 +18,52 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class PreviewingPlugin {
+public class PreviewUtil {
 
-    // TODO possibly remove complete unused references.
-    private final String spigotName;
-    private final String version;
-    private final String tag;
-    private String iconUrl = null;
-    private String[] testedVersions;
-    private final String[] authors = null;
-    private final int id;
-    private int downloads = 0;
-    private final long releaseData;
-    private long updateDate = 0;
-    private final double price;
-    private final double rating;
-    private double fileSize = 0;
-    private boolean premium = false;
-    private FileType fileType = null;
-    private SizeUnit sizeUnit = null;
-
-    public PreviewingPlugin(int id) {
-        this.id = id;
-        String responseBody = JsonUtil.getSpigetJson(id);
-        Gson gson = new Gson();
-        JsonObject root = gson.fromJson(responseBody, JsonObject.class);
-
-        this.spigotName = root.get("name").getAsString();
-        this.tag = root.get("tag").getAsString();
-        this.version = root.get("version").getAsString();
-        this.downloads = root.get("downloads").getAsInt();
-        this.releaseData = root.get("releaseDate").getAsLong();
-        this.updateDate = root.get("updateDate").getAsLong();
-        this.price = root.get("price").getAsDouble();
-        this.rating = root.get("rating").getAsJsonObject().get("average").getAsDouble();
-
-        try {
-            this.premium = root.get("premium").getAsBoolean();
-        } catch (NullPointerException exception) {
-            this.premium = false;
-        }
-
-        this.fileSize = root.get("file").getAsJsonObject().get("size").getAsDouble();
-
-        String url = root.get("icon").getAsJsonObject().get("url").getAsString();
-        this.iconUrl = url.isEmpty() ? "https://i.imgur.com/V9jfjSJ.png" : "https://www.spigotmc.org/" + root.get("icon").getAsJsonObject().get("url").getAsString();
-
-        String sizeUnit = root.get("file").getAsJsonObject().get("sizeUnit").getAsString();
-        this.sizeUnit = sizeUnit.isEmpty() ? SizeUnit.NONE : SizeUnit.valueOf(sizeUnit);
-
-        switch (root.get("file").getAsJsonObject().get("type").getAsString().toLowerCase()) {
-            case ".jar" -> this.fileType = FileType.JAR;
-            case ".zip" -> this.fileType = FileType.ZIP;
-            case ".sk" -> this.fileType = FileType.SKRIPT;
-            default -> this.fileType = FileType.EXTERNAL; // Includes "external"
-        }
-
-
-    }
-
-    public void sendPreview(Player player, boolean containDownloadPrompt) {
+    public static void sendPreview(Player player, SpigetPlugin spigetPlugin, boolean containDownloadPrompt) {
         player.sendMessage(ChatUtil.format("&8<---------------------- &7[&b&lPPM&7]&8 ---------------------->"));
 
         ArrayList<TextComponent> informationAsComponents = new ArrayList<>();
         try {
-            TextComponent component = new TextComponent(ChatUtil.format("Name: &b" + this.getSpigotName()));
+            TextComponent component = new TextComponent(ChatUtil.format("Name: &b" + spigetPlugin.getSpigotName()));
             informationAsComponents.add(component);
 
             component = new TextComponent(ChatUtil.format("Description: &b&l[Hover Here]"));
-            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatUtil.format("&b" + this.getTag()))));
+            component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatUtil.format("&b" + spigetPlugin.getTag()))));
             informationAsComponents.add(component);
 
-            component = new TextComponent(ChatUtil.format("Downloads: &b" + String.format("%,d", this.getDownloads())));
+            component = new TextComponent(ChatUtil.format("Downloads: &b" + String.format("%,d", spigetPlugin.getDownloads())));
             informationAsComponents.add(component);
 
-            component = new TextComponent(ChatUtil.format("Rating: &e⭐&b" + this.getRating()));
+            component = new TextComponent(ChatUtil.format("Rating: &e⭐&b" + spigetPlugin.getRating()));
             informationAsComponents.add(component);
 
-            if (this.getFileType().equals(FileType.EXTERNAL)) {
+            if (spigetPlugin.getFileType().equals(FileType.EXTERNAL)) {
                 component = new TextComponent(ChatUtil.format("Spigot Link: &b"));
 
                 TextComponent link = new TextComponent(ChatUtil.format("&b&l[Click Here]"));
-                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org/resources/" + this.getId()));
+                link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org/resources/" + spigetPlugin.getId()));
                 link.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(ChatUtil.format("&bClick to open the Spigot page"))));
 
                 component.addExtra(link);
                 informationAsComponents.add(component);
             } else {
-                component = new TextComponent(ChatUtil.format("File Size: &b" + (this.getSizeUnit() != SizeUnit.NONE ? this.getFileSize() + this.getSizeUnit().getUnit() : SizeUnit.NONE.getUnit())));
+                component = new TextComponent(ChatUtil.format("File Size: &b" + (spigetPlugin.getSizeUnit() != SizeUnit.NONE ? spigetPlugin.getFileSize() + spigetPlugin.getSizeUnit().getUnit() : SizeUnit.NONE.getUnit())));
                 informationAsComponents.add(component);
 
-                component = new TextComponent(ChatUtil.format("File Type: &b" + this.getFileType().getExtension()));
+                component = new TextComponent(ChatUtil.format("File Type: &b" + spigetPlugin.getFileType().getExtension()));
                 informationAsComponents.add(component);
             }
 
-            component = new TextComponent(ChatUtil.format("Directly Downloadable: &b" + (this.getFileType().isSupported() ? "Yes" : "No")));
+            component = new TextComponent(ChatUtil.format("Directly Downloadable: &b" + (spigetPlugin.getFileType().isSupported() ? "Yes" : "No")));
             informationAsComponents.add(component);
         } catch (Exception exception) {
             exception.printStackTrace();
-            informationAsComponents.add(new TextComponent(ChatUtil.format("&cError ID: " + this.getId() + ". Please report this to our discord.")));
+            informationAsComponents.add(new TextComponent(ChatUtil.format("&cError ID: " + spigetPlugin.getId() + ". Please report this to our discord.")));
         }
 
         try {
-            String url = this.getIconUrl().length() == 0 ? "https://raw.githubusercontent.com/portal-box/plugin-portal/master/resources/PluginPortalLogo.png" : this.getIconUrl();
+            String url = spigetPlugin.getIconUrl().length() == 0 ? "https://raw.githubusercontent.com/portal-box/plugin-portal/master/resources/PluginPortalLogo.png" : spigetPlugin.getIconUrl();
 
             URL imageUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) imageUrl.openConnection();
@@ -198,49 +140,4 @@ public class PreviewingPlugin {
         player.sendMessage(ChatUtil.format("&8-----------------------------------------------------"));
     }
 
-    // Getters/Setters -----------------------------------------------------------------------------------------------
-
-    public String getSpigotName() {
-        return spigotName;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public String getIconUrl() {
-        return iconUrl;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getDownloads() {
-        return downloads;
-    }
-
-    public long getUpdateDate() {
-        return updateDate;
-    }
-
-    public double getRating() {
-        return rating;
-    }
-
-    public double getFileSize() {
-        return fileSize;
-    }
-
-    public boolean isPremium() {
-        return premium;
-    }
-
-    public FileType getFileType() {
-        return fileType;
-    }
-
-    public SizeUnit getSizeUnit() {
-        return sizeUnit;
-    }
 }
