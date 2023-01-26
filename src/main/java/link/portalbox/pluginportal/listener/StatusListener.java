@@ -17,7 +17,7 @@ public class StatusListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         if (event.getPlayer().isOp() || event.getPlayer().hasPermission("pp.primarycommand")) {
-            if (PluginPortal.getMainInstance().isIsPluginLatestVersion()) return;
+            if (PluginPortal.getMainInstance().isUpdated()) return;
             try {
                 Player player = event.getPlayer();
                 JsonObject jsonObject = new JsonParser().parse(JsonUtil.getJson("https://raw.githubusercontent.com/portal-box/plugin-portal/master/resources/Data.json")).getAsJsonObject();
